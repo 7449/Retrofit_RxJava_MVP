@@ -23,7 +23,7 @@ Demo基于Retrofit_RxJava,并且采用了MVP模式
 	butterknife:7.0.1：
 地址：[https://github.com/JakeWharton/butterknife](https://github.com/JakeWharton/butterknife)
 
-	//添加了但是没有使用的框架
+#添加了但是没有使用的框架
 	
 	swipeback1.0.2:
 地址：[https://github.com/liuguangqiang/SwipeBack](https://github.com/liuguangqiang/SwipeBack)
