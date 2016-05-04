@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edittext_margintop">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/edittext_hint"
+            android:inputType="number"
+            app:met_baseColor="@color/colorPrimary" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_rows"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/edittext_hint_rows"
+            android:inputType="number"
+            tools:ignore="Deprecated" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:text="@string/new_image_btn"
+        tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srf_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_image">
+
+        <com.example.y.mvp.widget.MyRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>
