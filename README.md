@@ -1,0 +1,2 @@
+# Retrofit_RxJava_MVP
+Demo基于Retrofit_RxJava,并且采用了MVP模式
