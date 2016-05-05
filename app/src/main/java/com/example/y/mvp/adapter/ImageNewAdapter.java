@@ -1,7 +1,6 @@
 package com.example.y.mvp.adapter;
 
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +24,8 @@ import butterknife.Bind;
 public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
 
 
-    public ImageNewAdapter(Activity activity, List<ImageNewInfo> datas) {
-        super(activity, datas);
+    public ImageNewAdapter(List<ImageNewInfo> datas) {
+        super(datas);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
             viewHolder.tvTitle.setText(data.getTitle());
             viewHolder.tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
             viewHolder.tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(activity, viewHolder.iv, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(UIUtils.getContext(), viewHolder.iv, Api.IMAGER_URL + data.getImg());
         }
     }
 

@@ -52,7 +52,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
     @Override
     public View initView() {
-        return View.inflate(mActivity, R.layout.fragment_new_image, null);
+        return View.inflate(UIUtils.getActivity(), R.layout.fragment_new_image, null);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
         recyclerView.setLoadingData(this);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
 
-        adapter = new ImageNewAdapter(UIUtils.getActivity(), data);
+        adapter = new ImageNewAdapter(data);
         recyclerView.setAdapter(adapter);
 
         btImage.setOnClickListener(new View.OnClickListener() {

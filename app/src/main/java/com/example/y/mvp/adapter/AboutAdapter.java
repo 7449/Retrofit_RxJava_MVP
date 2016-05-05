@@ -1,7 +1,6 @@
 package com.example.y.mvp.adapter;
 
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +18,8 @@ import butterknife.Bind;
  */
 public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
 
-    public AboutAdapter(Activity activity, List<String> datas) {
-        super(activity, datas);
+    public AboutAdapter(List<String> datas) {
+        super(datas);
     }
 
     @Override

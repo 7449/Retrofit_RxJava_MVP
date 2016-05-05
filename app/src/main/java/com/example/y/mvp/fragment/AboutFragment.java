@@ -30,7 +30,7 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     public View initView() {
-        return View.inflate(mActivity, R.layout.fragment_about, null);
+        return View.inflate(UIUtils.getActivity(), R.layout.fragment_about, null);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AboutFragment extends BaseFragment {
         list.add(UIUtils.getString(R.string.about_text2));
 
 
-        aboutAdapter = new AboutAdapter(mActivity, list);
+        aboutAdapter = new AboutAdapter(list);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));

@@ -51,7 +51,7 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     public View initView() {
         if (inflate == null) {
-            inflate = View.inflate(mActivity, R.layout.fragment_main, null);
+            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_main, null);
             srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
             recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
             isPrepared = true;
@@ -75,7 +75,7 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         srfLayout.setOnRefreshListener(this);
 
 
-        adapter = new ImageListAdapter(mActivity, list);
+        adapter = new ImageListAdapter(list);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLoadingData(this);

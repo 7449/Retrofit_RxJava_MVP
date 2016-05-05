@@ -29,7 +29,9 @@ public class ActivityUtils {
 
     // 收起软键盘
     public static void closeSyskeyBroad() {
-        ((InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        if (UIUtils.getActivity().getCurrentFocus().getWindowToken() != null) {
+            ((InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
     //屏幕高度

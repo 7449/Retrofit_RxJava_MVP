@@ -33,7 +33,7 @@ public class MainViewPagerFragment extends BaseFragment implements TabNameView {
 
     @Override
     public View initView() {
-        return View.inflate(mActivity, R.layout.fragment_viewpager, null);
+        return View.inflate(UIUtils.getActivity(), R.layout.fragment_viewpager, null);
     }
 
     @Override

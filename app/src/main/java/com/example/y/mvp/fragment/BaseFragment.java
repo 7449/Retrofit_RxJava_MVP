@@ -1,13 +1,14 @@
 package com.example.y.mvp.fragment;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.ButterKnife;
 
@@ -17,7 +18,6 @@ import butterknife.ButterKnife;
 @SuppressWarnings("ALL")
 public abstract class BaseFragment extends Fragment {
 
-    Activity mActivity;
     boolean isVisible;
     static final String FRAGMENT_INDEX = "fragment_index";
     int index = 0;
@@ -26,7 +26,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity = getActivity();
         Bundle bundle = getArguments();
         if (bundle != null) {
             index = bundle.getInt(FRAGMENT_INDEX);
@@ -58,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     void Toast(String content) {
-        Toast.makeText(mActivity, content, Toast.LENGTH_LONG).show();
+        Toast.makeText(UIUtils.getContext(), content, Toast.LENGTH_LONG).show();
     }
 
 

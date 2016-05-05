@@ -1,11 +1,12 @@
 package com.example.y.mvp.adapter;
 
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.y.mvp.utils.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,15 +22,11 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     static final int TYPE_ITEM = 0;
     static final int TYPE_FOOTER = 1;
-    final Activity activity;
-    private final LayoutInflater mInflater;
     private List<T> mDatas = new LinkedList<>();
     private OnItemClickListener<T> mOnItemClickListener;
     private boolean showFoot = false;
 
-    public BaseRecyclerViewAdapter(Activity activity, List<T> datas) {
-        this.activity = activity;
-        mInflater = LayoutInflater.from(activity);
+    public BaseRecyclerViewAdapter(List<T> datas) {
         if (datas != null) {
             mDatas = datas;
         }
@@ -142,7 +139,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     private int getRealPosition(RecyclerView.ViewHolder holder) {
         int position = holder.getLayoutPosition();
-        return mInflater == null ? position : position - 1;
+        return LayoutInflater.from(UIUtils.getContext()) == null ? position : position - 1;
     }
 
     protected abstract void onBind(RecyclerView.ViewHolder holder, int position, T data);
