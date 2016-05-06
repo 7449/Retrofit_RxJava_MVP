@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.ButterKnife;
+import rx.Subscription;
 
 /**
  * by y on 2016/4/28.
@@ -21,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
     boolean isVisible;
     static final String FRAGMENT_INDEX = "fragment_index";
     int index = 0;
+    protected Subscription subscription;
 
 
     @Override
@@ -77,5 +79,13 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        unsubscribe();
+    }
+
+
+    protected void unsubscribe() {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
     }
 }

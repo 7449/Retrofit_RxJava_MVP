@@ -42,5 +42,6 @@ public class NetWorkRequest {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-
+    
+    
 }

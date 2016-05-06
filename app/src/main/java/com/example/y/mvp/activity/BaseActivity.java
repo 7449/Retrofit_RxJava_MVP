@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
+import rx.Subscription;
 
 /**
  * by y on 2016/4/28.
@@ -16,6 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private static Context context;
     private static Activity activity;
+    protected Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         return activity;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unsubscribe();
+    }
+
+    protected void unsubscribe() {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+    }
 
     protected abstract int getLayoutId();
 
