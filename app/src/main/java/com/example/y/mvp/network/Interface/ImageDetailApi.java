@@ -13,6 +13,6 @@ import rx.Observable;
  */
 public interface ImageDetailApi {
 
-    @GET(Api.IMAGE_SHOW + "?id" + "id" + "id")
+    @GET(Api.IMAGE_SHOW)
     Observable<ImageDetailBean> getImageDetail(@Query("id") int id);
 }

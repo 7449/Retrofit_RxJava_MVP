@@ -13,7 +13,7 @@ import rx.Observable;
  */
 public interface ImageNewApi {
 
-    @GET(Api.IMAGE_NEW + "?id" + "id" + "id" + "&" + "rows" + "rows")
+    @GET(Api.IMAGE_NEW)
     Observable<ImageNewBean> getImageNews(@Query("id") int id, @Query("rows") int rows);
 
 }

@@ -14,7 +14,7 @@ import rx.Observable;
 public interface ImageListApi {
 
 
-    @GET(Api.IMAGE_LIST + "?id" + "id" + "id" + "&" + "page" + "page")
+    @GET(Api.IMAGE_LIST)
     Observable<ImageListBean> getImageList(@Query("id") int id, @Query("page") int page);
 
 
