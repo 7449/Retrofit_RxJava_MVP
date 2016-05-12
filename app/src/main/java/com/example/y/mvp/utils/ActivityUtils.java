@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 /**
  * by y on 2016/4/29.
  */
+@SuppressWarnings("ALL")
 public class ActivityUtils {
 
     public static void startActivity(Class<?> clz) {

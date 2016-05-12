@@ -25,9 +25,6 @@ public class AboutFragment extends BaseFragment {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private AboutAdapter aboutAdapter;
-    private List<String> list;
-
     @Override
     public View initView() {
         return View.inflate(UIUtils.getActivity(), R.layout.fragment_about, null);
@@ -36,13 +33,13 @@ public class AboutFragment extends BaseFragment {
     @Override
     public void initData() {
 
-        list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
         list.add(UIUtils.getString(R.string.about_text1));
         list.add(UIUtils.getString(R.string.about_text2));
 
 
-        aboutAdapter = new AboutAdapter(list);
+        AboutAdapter aboutAdapter = new AboutAdapter(list);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));

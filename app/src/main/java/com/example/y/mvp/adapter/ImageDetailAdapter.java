@@ -15,11 +15,11 @@ import com.example.y.mvp.utils.UIUtils;
 import java.util.List;
 
 /**
- * Created by y on 2016/5/3.
+ * by y on 2016/5/3.
  */
 public class ImageDetailAdapter extends PagerAdapter {
 
-    private List<ImageDetailInfo> info;
+    private final List<ImageDetailInfo> info;
 
     public ImageDetailAdapter(List<ImageDetailInfo> info) {
         this.info = info;

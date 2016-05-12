@@ -5,6 +5,10 @@ package com.example.y.mvp.network;
  */
 public class Api {
 
+
+    /**
+     * 图片
+     **/
     public static final String BASE_API = "http://www.tngou.net/tnfs/api/";
 
     //图片URL前缀
@@ -21,5 +25,11 @@ public class Api {
 
     //图片详情
     public static final String IMAGE_SHOW = "show";
+
+
+    /**
+     * 搜索
+     **/
+    public static final String ENCYCLOPEDIA_API = "http://www.tngou.net/api/search";
 
 }

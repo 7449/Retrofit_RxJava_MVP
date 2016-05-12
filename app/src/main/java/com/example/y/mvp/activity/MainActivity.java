@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.fragment.AboutFragment;
+import com.example.y.mvp.fragment.EncyclopediaFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.MainViewPagerFragment;
 import com.example.y.mvp.mvp.presenter.MainViewPresenter;
@@ -61,6 +62,12 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public void switchEncyclopedia() {
+        toolBar.setTitle(UIUtils.getString(R.string.encyclopedia));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new EncyclopediaFragment()).commit();
     }
 
     @Override

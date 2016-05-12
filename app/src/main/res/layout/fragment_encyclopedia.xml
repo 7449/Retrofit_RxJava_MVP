@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/et_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/encyclopedia_hint"
+        app:met_baseColor="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/btn_encyclopedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="@string/new_image_btn"
+        tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srf_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.y.mvp.widget.MyRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

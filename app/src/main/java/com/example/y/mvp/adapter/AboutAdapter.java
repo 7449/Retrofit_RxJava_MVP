@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * Created by y on 2016/5/3.
+ * by y on 2016/5/3.
  */
 public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
 

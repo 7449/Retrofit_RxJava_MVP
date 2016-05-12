@@ -1,5 +1,6 @@
 package com.example.y.mvp.network;
 
+import com.example.y.mvp.mvp.Bean.EncyclopediaBean;
 import com.example.y.mvp.mvp.Bean.ImageDetailBean;
 import com.example.y.mvp.mvp.Bean.ImageListBean;
 import com.example.y.mvp.mvp.Bean.ImageNewBean;
@@ -13,6 +14,15 @@ import rx.schedulers.Schedulers;
  * by y on 2016/5/6.
  */
 public class NetWorkRequest {
+
+
+    public static void encyclopedia(String keyword, int page, Subscriber<EncyclopediaBean> subscriber) {
+        Network.getEncyclopediaApi().getEncyclopedia(keyword, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
 
 
     public static void imageDetail(int id, Subscriber<ImageDetailBean> subscriber) {
@@ -42,6 +52,6 @@ public class NetWorkRequest {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    
-    
+
+
 }

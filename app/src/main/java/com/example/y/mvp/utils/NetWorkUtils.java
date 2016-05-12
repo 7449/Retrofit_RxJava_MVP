@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 /**
  * by 12406 on 2016/4/29.
  */
-public class NetWorkUtils {
+class NetWorkUtils {
 
 
     public static boolean isWifi(Context mContext) {

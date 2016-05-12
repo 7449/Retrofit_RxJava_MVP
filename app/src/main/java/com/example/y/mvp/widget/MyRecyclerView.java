@@ -66,8 +66,6 @@ public class MyRecyclerView extends RecyclerView {
         if (layoutManagerType == null) {
             if (layoutManager instanceof LinearLayoutManager) {
                 layoutManagerType = LAYOUT_MANAGER_TYPE.LINEAR;
-            } else if (layoutManager instanceof GridLayoutManager) {
-                layoutManagerType = LAYOUT_MANAGER_TYPE.GRID;
             } else if (layoutManager instanceof StaggeredGridLayoutManager) {
                 layoutManagerType = LAYOUT_MANAGER_TYPE.STAGGERED_GRID;
             } else {

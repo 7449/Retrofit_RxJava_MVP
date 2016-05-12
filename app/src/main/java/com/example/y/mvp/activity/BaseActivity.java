@@ -13,6 +13,7 @@ import rx.Subscription;
 /**
  * by y on 2016/4/28.
  */
+@SuppressWarnings("ALL")
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static Context context;

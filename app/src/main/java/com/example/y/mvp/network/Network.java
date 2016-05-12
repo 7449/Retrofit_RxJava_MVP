@@ -1,6 +1,7 @@
 package com.example.y.mvp.network;
 
 
+import com.example.y.mvp.network.Interface.EncyclopediaApi;
 import com.example.y.mvp.network.Interface.ImageDetailApi;
 import com.example.y.mvp.network.Interface.ImageListApi;
 import com.example.y.mvp.network.Interface.ImageNewApi;
@@ -16,15 +17,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * by y on 2016/4/28.
  */
-public class Network {
+class Network {
 
     private static TabNameApi tabNameApi;
     private static ImageListApi imageListApi;
     private static ImageNewApi imageNewApi;
     private static ImageDetailApi imageDetailApi;
+    private static EncyclopediaApi encyclopediaApi;
 
     private static final Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static final CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
+
+    public static EncyclopediaApi getEncyclopediaApi() {
+        if (encyclopediaApi == null) {
+            encyclopediaApi = getRetrofit().create(EncyclopediaApi.class);
+        }
+        return encyclopediaApi;
+    }
 
 
     public static TabNameApi getTabNameApi() {
@@ -54,7 +63,6 @@ public class Network {
         }
         return imageDetailApi;
     }
-
 
 
     private static Retrofit getRetrofit() {

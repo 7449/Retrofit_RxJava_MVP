@@ -1,9 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">练习</string>
 
     <string name="network_error">网络异常</string>
-    <string name="network_dialog_ok">退出</string>
-    <string name="network_dialog_message">由于本软件所有的可见数据都是来自网络,所以在没有WIFI的情况下不允许进入</string>
+    <string name="network_dialog_ok" tools:ignore="UnusedResources">退出</string>
+    <string name="network_dialog_message" tools:ignore="UnusedResources">由于本软件所有的可见数据都是来自网络,所以在没有WIFI的情况下不允许进入</string>
     <string name="clear_dialog_message">只是暂时在界面删除,刷新还是会有的,确认删除吗？</string>
     <string name="dialog_ok">确认</string>
     <string name="imageview_message">确认保存图片吗?</string>
@@ -23,7 +23,7 @@
     <string name="new_image_btn">搜索</string>
     <string name="image_new_id">id不能为空</string>
     <string name="edittext_hint_rows">图片数量</string>
-    <string name="number_big">数字过大</string>
+    <string name="number_big" tools:ignore="UnusedResources">数字过大</string>
     <string name="navigation_about">说明</string>
     <string name="toolbar_about">说明</string>
 
@@ -42,5 +42,9 @@
      com.jakewharton:butterknife:7.0.1\n
     </string>
     <string name="competence_error">没有权限无法保存图片</string>
+    <string name="navigation_encyclopedia">搜索百科</string>
+    <string name="encyclopedia">搜索百科</string>
+    <string name="encyclopedia_hint">请输入关键字</string>
+    <string name="encyclopedia_keywork">关键词不能为空</string>
 
 </resources>

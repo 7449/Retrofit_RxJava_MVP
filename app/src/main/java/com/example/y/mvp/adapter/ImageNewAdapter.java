@@ -1,6 +1,7 @@
 package com.example.y.mvp.adapter;
 
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
         super(datas);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onBind(RecyclerView.ViewHolder holder, int position, ImageNewInfo data) {
         if (holder instanceof ViewHolder) {

@@ -114,7 +114,7 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onRefresh() {
-        adapter.isShowFooter(false);
+        hideFoot();
         page = 1;
         adapter.removeAll();
         imageListPresenter.requestNetWork(index + 1, page);
@@ -123,7 +123,7 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     public void onLoadMore() {
         if (!srfLayout.isRefreshing()) {
-            adapter.isShowFooter(true);
+            showFoot();
             ++page;
             imageListPresenter.requestNetWork(index + 1, page);
             LogUtils.i("MainFragment", "recyclerview到底了");

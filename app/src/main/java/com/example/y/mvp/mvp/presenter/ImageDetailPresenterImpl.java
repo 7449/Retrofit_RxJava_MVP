@@ -36,6 +36,7 @@ public class ImageDetailPresenterImpl implements ImageDetailPresenter, ImageDeta
     @Override
     public void competence(int requestCode, int[] grantResults) {
         if (requestCode == Constant.WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
+            //noinspection StatementWithEmptyBody
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             } else {
                 Toast.makeText(UIUtils.getContext(), UIUtils.getString(R.string.competence_error), Toast.LENGTH_LONG).show();
@@ -45,10 +46,9 @@ public class ImageDetailPresenterImpl implements ImageDetailPresenter, ImageDeta
 
     @Override
     public void addData(List<ImageDetailInfo> imageDetailInfo) {
-        if (imageDetailInfo.size() == 0) {
-            return;
+        if (imageDetailInfo.size() != 0) {
+            imageDetailView.setImageDetailInfo(imageDetailInfo);
         }
-        imageDetailView.setImageDetailInfo(imageDetailInfo);
     }
 
     @Override

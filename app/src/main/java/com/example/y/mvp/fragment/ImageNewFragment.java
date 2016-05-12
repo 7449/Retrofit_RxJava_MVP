@@ -44,10 +44,6 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
     private List<ImageNewInfo> data;
     private ImageNewAdapter adapter;
-    private int id;
-    private int rows;
-
-
     ImageNewPresenter imageNewPresenter;
 
     @Override
@@ -75,9 +71,6 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
             @Override
             public void onClick(View view) {
-                if (isNull()) {
-                    return;
-                }
                 onRefresh();
                 ActivityUtils.closeSyskeyBroad();
             }
@@ -101,9 +94,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
     @Override
     public void setImageNewInfo(List<ImageNewInfo> imageNewInfo) {
-        if (imageNewInfo.size() != 0) {
-            data.addAll(imageNewInfo);
-        }
+        data.addAll(imageNewInfo);
     }
 
     @Override
@@ -120,35 +111,11 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     public void onRefresh() {
         srfLayout.setRefreshing(true);
         adapter.removeAll();
-        if (isNull()) {
-            srfLayout.setRefreshing(false);
-            return;
-        }
-        if (id > 100000 || rows > 100000) {
-            Toast(UIUtils.getString(R.string.number_big));
-            srfLayout.setRefreshing(false);
-            return;
-        }
-        imageNewPresenter.requestNetWork(id, rows);
+        imageNewPresenter.requestNetWork(etId.getText().toString().trim(), etRows.getText().toString().trim());
     }
 
     @Override
     public void onLoadMore() {
-    }
-
-    private boolean isNull() {
-        if (etId.getText().toString().trim().isEmpty()) {
-            Toast(UIUtils.getString(R.string.image_new_id));
-            return true;
-        } else {
-            if (etRows.getText().toString().trim().isEmpty()) {
-                rows = 20;
-            } else {
-                rows = Integer.valueOf(etRows.getText().toString().trim());
-            }
-            id = Integer.valueOf(etId.getText().toString().trim());
-        }
-        return false;
     }
 
 }

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".main.widget.MainActivity">
     <group android:checkableBehavior="single">
+
+
         <item
             android:id="@+id/navigation_item_image_classification"
             android:checked="true"
@@ -10,6 +12,9 @@
         <item
             android:id="@+id/navigation_item_new_image"
             android:title="@string/navigation_new_image" />
+        <item
+            android:id="@+id/navigation_encyclopedia"
+            android:title="@string/navigation_encyclopedia" />
 
         <item
             android:id="@+id/navigation_about"

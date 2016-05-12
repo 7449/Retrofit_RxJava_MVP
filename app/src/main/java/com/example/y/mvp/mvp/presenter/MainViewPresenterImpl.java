@@ -19,6 +19,9 @@ public class MainViewPresenterImpl implements MainViewPresenter {
     @Override
     public void switchId(int id) {
         switch (id) {
+            case R.id.navigation_encyclopedia:
+                mainView.switchEncyclopedia();
+                break;
             case R.id.navigation_item_image_classification:
                 mainView.switchImageClassification();
                 break;
