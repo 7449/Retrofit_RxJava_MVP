@@ -126,7 +126,6 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
     @Override
     public void onLoadMore() {
         if (!srfLayout.isRefreshing()) {
-            showFoot();
             ++page;
             encyclopediaPresenter.requestNetWork(etKeyword.getText().toString().trim(), page);
         }

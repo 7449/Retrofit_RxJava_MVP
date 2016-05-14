@@ -12,13 +12,15 @@ public class MainViewPresenterImpl implements MainViewPresenter {
     private final MainView mainView;
 
     public MainViewPresenterImpl(MainView mainView) {
-
         this.mainView = mainView;
     }
 
     @Override
     public void switchId(int id) {
         switch (id) {
+            case R.id.navigation_item_news:
+                mainView.switchNews();
+                break;
             case R.id.navigation_encyclopedia:
                 mainView.switchEncyclopedia();
                 break;

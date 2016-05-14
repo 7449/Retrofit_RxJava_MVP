@@ -51,7 +51,6 @@ public class ImageListPresenterImpl implements ImageListPresenter, ImageListMode
         }
         imageListView.setImageListInfo(imageListInfo);
         imageListView.hideProgress();
-        LogUtils.i("imageListView", "隐藏");
     }
 
     @Override

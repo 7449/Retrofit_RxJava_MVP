@@ -5,7 +5,6 @@ import com.example.y.mvp.mvp.Bean.ImageListBean;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class ImageListModelImpl implements ImageListModel {
         NetWorkRequest.imageList(id, page, new MySubscriber<ImageListBean>() {
             @Override
             public void onError(Throwable e) {
-                LogUtils.i("ImageListModelImpl:-->", e.getMessage());
                 imageListData.error();
             }
 

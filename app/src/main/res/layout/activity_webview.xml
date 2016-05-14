@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/webview_ll"
     android:orientation="vertical">
 
 
@@ -11,17 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <WebView
-            android:id="@+id/webView"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srf_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminateDrawable="@drawable/shape_custom_prgressbar" />
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
 </LinearLayout>

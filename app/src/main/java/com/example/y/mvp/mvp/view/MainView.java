@@ -5,6 +5,9 @@ package com.example.y.mvp.mvp.view;
  */
 public interface MainView {
 
+
+    void switchNews();
+
     void switchEncyclopedia();
     
     void switchImageClassification();

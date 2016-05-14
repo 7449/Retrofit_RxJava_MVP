@@ -2,13 +2,13 @@ package com.example.y.mvp.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 
 import com.example.y.mvp.R;
 
@@ -17,15 +17,15 @@ import butterknife.Bind;
 /**
  * by y on 2016/5/11.
  */
-public class WebViewActivity extends BaseActivity {
+public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 
     @Bind(R.id.webView)
     WebView webView;
-    @Bind(R.id.pb_loading)
-    ProgressBar pbLoading;
     @Bind(R.id.toolBar)
     Toolbar toolBar;
+    @Bind(R.id.srf_layout)
+    SwipeRefreshLayout srfLayout;
     private String url;
     private String title;
 
@@ -34,7 +34,6 @@ public class WebViewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getBundle();
-
         init();
     }
 
@@ -45,21 +44,31 @@ public class WebViewActivity extends BaseActivity {
         webSettings.setAllowFileAccess(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setUseWideViewPort(true);
-        webView.loadUrl(url);
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                pbLoading.setVisibility(View.VISIBLE);
                 super.onPageStarted(view, url, favicon);
-
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                pbLoading.setVisibility(View.GONE);
                 super.onPageFinished(view, url);
+                srfLayout.setRefreshing(false);
             }
         });
+
+        srfLayout.setOnRefreshListener(this);
+
+        srfLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                srfLayout.setRefreshing(true);
+                onRefresh();
+            }
+        });
+
+
     }
 
     @Override
@@ -77,13 +86,8 @@ public class WebViewActivity extends BaseActivity {
         title = bundle.getString("title");
     }
 
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
-            webView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
+    @Override
+    public void onRefresh() {
+        webView.loadUrl(url);
     }
-
 }

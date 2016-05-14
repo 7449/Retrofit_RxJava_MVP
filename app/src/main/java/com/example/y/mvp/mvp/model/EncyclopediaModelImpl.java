@@ -4,7 +4,6 @@ import com.example.y.mvp.mvp.Bean.EncyclopediaBean;
 import com.example.y.mvp.mvp.Bean.EncyclopediaInfo;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class EncyclopediaModelImpl implements EncyclopediaModel {
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                LogUtils.i("EncyclopediaModelImpl:-->", e.getMessage());
                 encycloedData.error();
             }
 

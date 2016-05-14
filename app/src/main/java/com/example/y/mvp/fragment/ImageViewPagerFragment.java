@@ -21,7 +21,7 @@ import butterknife.Bind;
 /**
  * by 12406 on 2016/5/1.
  */
-public class MainViewPagerFragment extends BaseFragment implements TabNameView {
+public class ImageViewPagerFragment extends BaseFragment implements TabNameView {
 
     @Bind(R.id.tab_layout)
     TabLayout tabLayout;

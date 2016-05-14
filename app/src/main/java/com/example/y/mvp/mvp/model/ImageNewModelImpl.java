@@ -5,7 +5,6 @@ import com.example.y.mvp.mvp.Bean.ImageNewBean;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 
@@ -21,7 +20,6 @@ public class ImageNewModelImpl implements ImageNewModel {
         NetWorkRequest.imageNew(id, rows, new MySubscriber<ImageNewBean>() {
             @Override
             public void onError(Throwable e) {
-                LogUtils.i("ImageNewModelImpl", e.getMessage());
                 imageNewData.error();
             }
 

@@ -11,7 +11,8 @@ import com.example.y.mvp.R;
 import com.example.y.mvp.fragment.AboutFragment;
 import com.example.y.mvp.fragment.EncyclopediaFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
-import com.example.y.mvp.fragment.MainViewPagerFragment;
+import com.example.y.mvp.fragment.ImageViewPagerFragment;
+import com.example.y.mvp.fragment.NewsViewPagerFragment;
 import com.example.y.mvp.mvp.presenter.MainViewPresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
 import com.example.y.mvp.mvp.view.MainView;
@@ -38,10 +39,11 @@ public class MainActivity extends BaseActivity implements MainView {
 
 
     private void init() {
+        toolBar.setTitle(UIUtils.getString(R.string.news));
         setSupportActionBar(toolBar);
         setupDrawerContent(navigationView);
         mainViewPresenter = new MainViewPresenterImpl(this);
-        switchImageClassification();
+        switchNews();
     }
 
 
@@ -65,6 +67,13 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
+    public void switchNews() {
+        toolBar.setTitle(UIUtils.getString(R.string.news));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new NewsViewPagerFragment()).commit();
+    }
+
+
+    @Override
     public void switchEncyclopedia() {
         toolBar.setTitle(UIUtils.getString(R.string.encyclopedia));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new EncyclopediaFragment()).commit();
@@ -73,7 +82,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void switchImageClassification() {
         toolBar.setTitle(UIUtils.getString(R.string.toolbar_image_viewpager));
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MainViewPagerFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageViewPagerFragment()).commit();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.example.y.mvp.fragment;
 
-
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -9,13 +9,12 @@ import android.view.View;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
-import com.example.y.mvp.adapter.ImageListAdapter;
+import com.example.y.mvp.adapter.NewsListAdapter;
 import com.example.y.mvp.constant.Constant;
-import com.example.y.mvp.mvp.Bean.ImageListInfo;
-import com.example.y.mvp.mvp.presenter.ImageListPresenter;
-import com.example.y.mvp.mvp.presenter.ImageListPresenterImpl;
-import com.example.y.mvp.mvp.view.ImageListView;
-import com.example.y.mvp.utils.LogUtils;
+import com.example.y.mvp.mvp.Bean.NewsListInfo;
+import com.example.y.mvp.mvp.presenter.NewsListPresenter;
+import com.example.y.mvp.mvp.presenter.NewsListPresenterImpl;
+import com.example.y.mvp.mvp.view.NewsListView;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 
@@ -23,35 +22,37 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * by y on 2016/4/28.
+ * by 12406 on 2016/5/14.
  */
-public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, ImageListView {
+public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, NewsListView {
 
     private boolean isPrepared;
     private boolean isLoad;
+
     private View inflate;
     private SwipeRefreshLayout srfLayout;
     private MyRecyclerView recyclerView;
-    private LinkedList<ImageListInfo> list;
-    private ImageListAdapter adapter;
-    private ImageListPresenter imageListPresenter;
+
+    private LinkedList<NewsListInfo> list;
+    private NewsListAdapter adapter;
+    private NewsListPresenter newsListPresenter;
 
 
     private static int page = 1;
 
-    public static MainFragment newInstance(int index) {
+
+    public static Fragment newInstance(int index) {
         Bundle bundle = new Bundle();
-        MainFragment fragment = new MainFragment();
+        NewsMainFragment fragment = new NewsMainFragment();
         bundle.putInt(FRAGMENT_INDEX, index);
         fragment.setArguments(bundle);
         return fragment;
     }
 
-
     @Override
-    public View initView() {
+    protected View initView() {
         if (inflate == null) {
-            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_main, null);
+            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
             srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
             recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
             isPrepared = true;
@@ -62,33 +63,28 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     protected void initData() {
 
-
         if (!isPrepared || !isVisible || isLoad) {
             return;
         }
 
-        imageListPresenter = new ImageListPresenterImpl(this);
-
+        newsListPresenter = new NewsListPresenterImpl(this);
         list = new LinkedList<>();
-
+        adapter = new NewsListAdapter(list);
 
         srfLayout.setOnRefreshListener(this);
 
-
-        adapter = new ImageListAdapter(list);
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLoadingData(this);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>() {
+        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo>() {
             @Override
-            public void onItemClick(View view, int position, ImageListInfo info) {
-                imageListPresenter.onClick(info);
+            public void onItemClick(View view, int position, NewsListInfo info) {
+                newsListPresenter.onClick(info);
             }
 
             @Override
-            public void onItemLongClick(View view, int position, ImageListInfo info) {
+            public void onItemLongClick(View view, int position, NewsListInfo info) {
 
 
             }
@@ -101,32 +97,30 @@ public class MainFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 onRefresh();
             }
         });
+
         isLoad = true;
     }
 
 
     @Override
-    public void setImageListInfo(List<ImageListInfo> imageListInfo) {
-        list.addAll(imageListInfo);
+    public void setNewsListInfo(List<NewsListInfo> newsListInfo) {
+        list.addAll(newsListInfo);
         adapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onRefresh() {
         hideFoot();
         page = 1;
         adapter.removeAll();
-        imageListPresenter.requestNetWork(index + 1, page);
+        newsListPresenter.requestNetWork(index + 1, page);
     }
 
     @Override
     public void onLoadMore() {
         if (!srfLayout.isRefreshing()) {
-            showFoot();
             ++page;
-            imageListPresenter.requestNetWork(index + 1, page);
-            LogUtils.i("MainFragment", "recyclerview到底了");
+            newsListPresenter.requestNetWork(index + 1, page);
         }
     }
 

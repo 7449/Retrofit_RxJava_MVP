@@ -5,7 +5,6 @@ import com.example.y.mvp.mvp.Bean.TabNameBean;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class TabNameModelImpl implements TabNameModel {
         NetWorkRequest.tabName(new MySubscriber<TabNameBean>() {
             @Override
             public void onError(Throwable e) {
-                LogUtils.i("TabNameModelImpl:-->", e.getMessage());
                 tabNameData.error();
             }
 

@@ -5,7 +5,10 @@ import com.example.y.mvp.network.Interface.EncyclopediaApi;
 import com.example.y.mvp.network.Interface.ImageDetailApi;
 import com.example.y.mvp.network.Interface.ImageListApi;
 import com.example.y.mvp.network.Interface.ImageNewApi;
+import com.example.y.mvp.network.Interface.NewsDetailApi;
+import com.example.y.mvp.network.Interface.NewsListApi;
 import com.example.y.mvp.network.Interface.TabNameApi;
+import com.example.y.mvp.network.Interface.TabNewsApi;
 
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
@@ -24,9 +27,34 @@ class Network {
     private static ImageNewApi imageNewApi;
     private static ImageDetailApi imageDetailApi;
     private static EncyclopediaApi encyclopediaApi;
+    private static TabNewsApi tabNewsApi;
+    private static NewsListApi newsListApi;
+    private static NewsDetailApi newsDetailApil;
 
     private static final Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static final CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
+
+
+    public static NewsDetailApi getNewsDetailApil() {
+        if (newsDetailApil == null) {
+            newsDetailApil = getRetrofit().create(NewsDetailApi.class);
+        }
+        return newsDetailApil;
+    }
+
+    public static NewsListApi getNewsListApi() {
+        if (newsListApi == null) {
+            newsListApi = getRetrofit().create(NewsListApi.class);
+        }
+        return newsListApi;
+    }
+
+    public static TabNewsApi getTabNewsApi() {
+        if (tabNewsApi == null) {
+            tabNewsApi = getRetrofit().create(TabNewsApi.class);
+        }
+        return tabNewsApi;
+    }
 
     public static EncyclopediaApi getEncyclopediaApi() {
         if (encyclopediaApi == null) {

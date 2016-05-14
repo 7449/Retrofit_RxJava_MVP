@@ -6,8 +6,11 @@
 
 
         <item
-            android:id="@+id/navigation_item_image_classification"
+            android:id="@+id/navigation_item_news"
             android:checked="true"
+            android:title="@string/navigation_news" />
+        <item
+            android:id="@+id/navigation_item_image_classification"
             android:title="@string/navigation_image_classification" />
         <item
             android:id="@+id/navigation_item_new_image"

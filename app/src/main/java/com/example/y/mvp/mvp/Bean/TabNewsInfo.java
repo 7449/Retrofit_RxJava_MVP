@@ -1,10 +1,9 @@
 package com.example.y.mvp.mvp.Bean;
 
 /**
- * by y on 2016/4/28.
+ * by 12406 on 2016/5/14.
  */
-@SuppressWarnings("ALL")
-public class TabNameInfo {
+public class TabNewsInfo {
 
     private int id;
     private String name;

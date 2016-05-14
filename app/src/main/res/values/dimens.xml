@@ -16,4 +16,7 @@
     <dimen name="encyclopedia_title_marginTop">3dp</dimen>
     <dimen name="encyclopedia_title_marginLeft">3dp</dimen>
     <dimen name="encyclopedia_text_message">14sp</dimen>
+    <dimen name="news_image_height">100dp</dimen>
+    <dimen name="news_image_width">100dp</dimen>
+    <dimen name="tv_marginLeft">5dp</dimen>
 </resources>

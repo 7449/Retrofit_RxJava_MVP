@@ -5,7 +5,6 @@ import com.example.y.mvp.mvp.Bean.ImageDetailBean;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 
@@ -23,7 +22,6 @@ public class ImageDetailModelImpl implements ImageDetailModel {
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                LogUtils.i("ImageDetailModelImpl:-->", e.getMessage());
                 imageDetailData.error();
             }
 
