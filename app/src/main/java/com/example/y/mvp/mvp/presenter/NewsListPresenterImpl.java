@@ -37,9 +37,7 @@ public class NewsListPresenterImpl implements NewsListPresenter, NewsListModelIm
 
     @Override
     public void addData(List<NewsListInfo> tngou) {
-        if (!tngou.isEmpty()) {
-            newsListView.setNewsListInfo(tngou);
-        }
+        newsListView.setNewsListInfo(tngou);
         newsListView.hideFoot();
         newsListView.hideProgress();
     }

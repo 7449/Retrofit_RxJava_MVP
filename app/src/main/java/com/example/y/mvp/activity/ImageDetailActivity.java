@@ -83,8 +83,10 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
 
     @Override
     public void setImageDetailInfo(List<ImageDetailInfo> imageDetailInfo) {
-        list.addAll(imageDetailInfo);
-        viewPager.setAdapter(bigImageAdapter);
+        if (!imageDetailInfo.isEmpty()) {
+            list.addAll(imageDetailInfo);
+            viewPager.setAdapter(bigImageAdapter);
+        }
     }
 
     @Override

@@ -49,9 +49,7 @@ public class ImageNewPresenterImpl implements ImageNewPresenter, ImageNewModelIm
 
     @Override
     public void addData(List<ImageNewInfo> imageNewInfo) {
-        if (!imageNewInfo.isEmpty()) {
-            imageNewView.setImageNewInfo(imageNewInfo);
-        }
+        imageNewView.setImageNewInfo(imageNewInfo);
         imageNewView.hideProgress();
     }
 

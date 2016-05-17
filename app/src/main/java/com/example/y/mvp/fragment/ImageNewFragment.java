@@ -88,7 +88,9 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
     @Override
     public void setImageNewInfo(List<ImageNewInfo> imageNewInfo) {
-        data.addAll(imageNewInfo);
+        if (!imageNewInfo.isEmpty()) {
+            data.addAll(imageNewInfo);
+        }
     }
 
     @Override

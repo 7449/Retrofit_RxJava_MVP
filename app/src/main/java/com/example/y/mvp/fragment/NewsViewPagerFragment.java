@@ -49,9 +49,11 @@ public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
 
     @Override
     public void addTabName(List<TabNewsInfo> tabNewsInfo) {
-        data.addAll(tabNewsInfo);
-        viewPager.setAdapter(tabNewsAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        if (!tabNewsInfo.isEmpty()) {
+            data.addAll(tabNewsInfo);
+            viewPager.setAdapter(tabNewsAdapter);
+            tabLayout.setupWithViewPager(viewPager);
+        }
     }
 
     @Override

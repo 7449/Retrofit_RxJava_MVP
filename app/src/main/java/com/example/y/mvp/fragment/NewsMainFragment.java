@@ -93,8 +93,10 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void setNewsListInfo(List<NewsListInfo> newsListInfo) {
-        list.addAll(newsListInfo);
-        adapter.notifyDataSetChanged();
+        if (!newsListInfo.isEmpty()) {
+            list.addAll(newsListInfo);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

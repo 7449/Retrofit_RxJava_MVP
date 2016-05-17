@@ -30,9 +30,7 @@ public class TabNewsPresenterImpl implements TabNewsPresenter, TabNewsModelImpl.
 
     @Override
     public void addData(List<TabNewsInfo> newsInfo) {
-        if (!newsInfo.isEmpty()){
-            tabNewsView.addTabName(newsInfo);
-        }
+        tabNewsView.addTabName(newsInfo);
     }
 
     @Override

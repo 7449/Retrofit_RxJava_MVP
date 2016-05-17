@@ -53,9 +53,11 @@ public class ImageViewPagerFragment extends BaseFragment implements TabNameView 
 
     @Override
     public void addTabName(List<TabNameInfo> tabNameInfo) {
-        data.addAll(tabNameInfo);
-        viewPager.setAdapter(tabNameAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        if (!tabNameInfo.isEmpty()) {
+            data.addAll(tabNameInfo);
+            viewPager.setAdapter(tabNameAdapter);
+            tabLayout.setupWithViewPager(viewPager);
+        }
     }
 
     @Override

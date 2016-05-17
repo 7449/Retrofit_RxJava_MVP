@@ -41,9 +41,7 @@ public class ImageListPresenterImpl implements ImageListPresenter, ImageListMode
 
     @Override
     public void addData(List<ImageListInfo> imageListInfo) {
-        if (!imageListInfo.isEmpty()) {
-            imageListView.setImageListInfo(imageListInfo);
-        }
+        imageListView.setImageListInfo(imageListInfo);
         imageListView.hideFoot();
         imageListView.hideProgress();
     }

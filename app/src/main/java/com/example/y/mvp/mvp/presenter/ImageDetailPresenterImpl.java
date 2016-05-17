@@ -46,9 +46,7 @@ public class ImageDetailPresenterImpl implements ImageDetailPresenter, ImageDeta
 
     @Override
     public void addData(List<ImageDetailInfo> imageDetailInfo) {
-        if (!imageDetailInfo.isEmpty()) {
-            imageDetailView.setImageDetailInfo(imageDetailInfo);
-        }
+        imageDetailView.setImageDetailInfo(imageDetailInfo);
     }
 
     @Override

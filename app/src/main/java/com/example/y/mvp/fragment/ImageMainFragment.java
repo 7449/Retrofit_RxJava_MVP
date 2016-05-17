@@ -92,8 +92,10 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
     @Override
     public void setImageListInfo(List<ImageListInfo> imageListInfo) {
-        list.addAll(imageListInfo);
-        adapter.notifyDataSetChanged();
+        if (!imageListInfo.isEmpty()) {
+            list.addAll(imageListInfo);
+            adapter.notifyDataSetChanged();
+        }
     }
 
 
