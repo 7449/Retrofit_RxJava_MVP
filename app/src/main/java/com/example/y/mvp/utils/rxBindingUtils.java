@@ -12,11 +12,11 @@ import rx.functions.Action1;
  * by y on 2016/5/17.
  */
 @SuppressWarnings("ALL")
-class rxBindingUtils {
+public class RxBindingUtils {
 
 
     //防手抖
-    public static void clicks(View view, final rxBinding rxBinding) {
+    public static void clicks(View view, final RxBinding rxBinding) {
         RxView.clicks(view)
                 .throttleFirst(600, TimeUnit.MILLISECONDS)
                 .subscribe(new Action1<Void>() {
@@ -29,7 +29,7 @@ class rxBindingUtils {
     }
 
 
-    public interface rxBinding {
+    public interface RxBinding {
         void clicks();
     }
 }

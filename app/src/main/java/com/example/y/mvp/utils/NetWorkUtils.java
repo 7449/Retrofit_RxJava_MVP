@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
  * by 12406 on 2016/4/29.
  */
 @SuppressWarnings("ALL")
-class NetWorkUtils {
+public class NetWorkUtils {
 
 
     public static boolean isWifi(Context mContext) {

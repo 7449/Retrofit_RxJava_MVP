@@ -43,13 +43,11 @@
      com.rengwuxian.materialedittext:library:2.1.4\n
      com.jakewharton:butterknife:7.0.1\n
     </string>
-    <string name="navigation_encyclopedia">搜索百科</string>
-    <string name="encyclopedia">搜索百科</string>
-    <string name="encyclopedia_hint">请输入关键字</string>
-    <string name="encyclopedia_keywork">关键词不能为空</string>
     <string name="navigation_news">新闻列表</string>
     <string name="news">新闻</string>
     <string name="news_time">时间:</string>
     <string name="news_fromname">来源:</string>
+    <string name="test">测试</string>
+    <string name="toolbar_test">测试</string>
 
 </resources>

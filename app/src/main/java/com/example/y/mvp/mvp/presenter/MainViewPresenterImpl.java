@@ -21,9 +21,6 @@ public class MainViewPresenterImpl implements MainViewPresenter {
             case R.id.navigation_item_news:
                 mainView.switchNews();
                 break;
-            case R.id.navigation_encyclopedia:
-                mainView.switchEncyclopedia();
-                break;
             case R.id.navigation_item_image_classification:
                 mainView.switchImageClassification();
                 break;
@@ -33,6 +30,8 @@ public class MainViewPresenterImpl implements MainViewPresenter {
             case R.id.navigation_about:
                 mainView.switchAbout();
                 break;
+            case R.id.navigation_Test:
+                mainView.switchTest();
         }
     }
 }

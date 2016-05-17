@@ -9,10 +9,10 @@ import android.view.MenuItem;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.fragment.AboutFragment;
-import com.example.y.mvp.fragment.EncyclopediaFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
 import com.example.y.mvp.fragment.NewsViewPagerFragment;
+import com.example.y.mvp.fragment.TestFragment;
 import com.example.y.mvp.mvp.presenter.MainViewPresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
 import com.example.y.mvp.mvp.view.MainView;
@@ -75,13 +75,6 @@ public class MainActivity extends BaseActivity implements MainView {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new NewsViewPagerFragment()).commit();
     }
 
-
-    @Override
-    public void switchEncyclopedia() {
-        toolBar.setTitle(UIUtils.getString(R.string.encyclopedia));
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new EncyclopediaFragment()).commit();
-    }
-
     @Override
     public void switchImageClassification() {
         toolBar.setTitle(UIUtils.getString(R.string.toolbar_image_viewpager));
@@ -99,4 +92,12 @@ public class MainActivity extends BaseActivity implements MainView {
         toolBar.setTitle(UIUtils.getString(R.string.toolbar_about));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new AboutFragment()).commit();
     }
+
+    @Override
+    public void switchTest() {
+        toolBar.setTitle(UIUtils.getString(R.string.toolbar_test));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new TestFragment()).commit();
+    }
+
+
 }

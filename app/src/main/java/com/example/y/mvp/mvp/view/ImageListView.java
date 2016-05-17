@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * by y on 2016/4/28.
  */
+@SuppressWarnings("ALL")
 public interface ImageListView {
 
     void setImageListInfo(List<ImageListInfo> imageListInfo);

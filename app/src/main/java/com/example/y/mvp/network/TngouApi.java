@@ -1,6 +1,5 @@
 package com.example.y.mvp.network;
 
-import com.example.y.mvp.mvp.Bean.EncyclopediaBean;
 import com.example.y.mvp.mvp.Bean.ImageDetailBean;
 import com.example.y.mvp.mvp.Bean.ImageListBean;
 import com.example.y.mvp.mvp.Bean.ImageNewBean;
@@ -8,7 +7,6 @@ import com.example.y.mvp.mvp.Bean.NewsDetailBean;
 import com.example.y.mvp.mvp.Bean.NewsListBean;
 import com.example.y.mvp.mvp.Bean.TabNameBean;
 import com.example.y.mvp.mvp.Bean.TabNewsBean;
-import com.example.y.mvp.network.Api;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -45,10 +43,5 @@ public interface TngouApi {
 
     @GET(Api.IMAGE_SHOW)
     Observable<ImageDetailBean> getImageDetail(@Query("id") int id);
-
-
-    @GET(Api.ENCYCLOPEDIA_API)
-    Observable<EncyclopediaBean> getEncyclopedia(@Query("keyword") String keyword, @Query("page") int page);
-
 
 }

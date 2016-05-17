@@ -23,12 +23,6 @@ public class Api {
     //图片详情
     public static final String IMAGE_SHOW = "tnfs/api/show";
 
-
-    /**
-     * 搜索
-     **/
-    public static final String ENCYCLOPEDIA_API = "http://www.tngou.net/api/search";
-
     //新闻分类
     public static final String TAB_NEWS = "api/top/classify";
 

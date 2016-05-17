@@ -16,11 +16,10 @@
             android:id="@+id/navigation_item_new_image"
             android:title="@string/navigation_new_image" />
         <item
-            android:id="@+id/navigation_encyclopedia"
-            android:title="@string/navigation_encyclopedia" />
-
-        <item
             android:id="@+id/navigation_about"
             android:title="@string/navigation_about" />
+        <item
+            android:id="@+id/navigation_Test"
+            android:title="@string/test" />
     </group>
 </menu>

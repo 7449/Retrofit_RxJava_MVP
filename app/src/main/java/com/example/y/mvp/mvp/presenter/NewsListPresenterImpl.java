@@ -22,10 +22,11 @@ public class NewsListPresenterImpl implements NewsListPresenter, NewsListModelIm
 
     @Override
     public void requestNetWork(int id, int page) {
-        if (page != 1) {
+        if (page == 1) {
+            newsListView.showProgress();
+        } else {
             newsListView.showFoot();
         }
-        newsListView.showProgress();
         newsListModel.netWorkNewList(id, page, this);
     }
 

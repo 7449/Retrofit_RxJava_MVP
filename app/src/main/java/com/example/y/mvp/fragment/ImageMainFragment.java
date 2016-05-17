@@ -25,8 +25,7 @@ import java.util.List;
  * by y on 2016/4/28.
  */
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, ImageListView,
-        BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo> {
+        MyRecyclerView.LoadingData, ImageListView, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo> {
 
     private boolean isPrepared;
     private boolean isLoad;

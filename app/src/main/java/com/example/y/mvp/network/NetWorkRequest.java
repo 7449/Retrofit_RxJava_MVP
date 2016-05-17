@@ -1,6 +1,5 @@
 package com.example.y.mvp.network;
 
-import com.example.y.mvp.mvp.Bean.EncyclopediaBean;
 import com.example.y.mvp.mvp.Bean.ImageDetailBean;
 import com.example.y.mvp.mvp.Bean.ImageListBean;
 import com.example.y.mvp.mvp.Bean.ImageNewBean;
@@ -36,13 +35,6 @@ public class NetWorkRequest {
 
     public static void tabNews(Subscriber<TabNewsBean> subscriber) {
         Network.getTngouApi().getTabNews()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
-    public static void encyclopedia(String keyword, int page, Subscriber<EncyclopediaBean> subscriber) {
-        Network.getTngouApi().getEncyclopedia(keyword, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
