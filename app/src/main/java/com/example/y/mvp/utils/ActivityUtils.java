@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+
+import java.io.File;
 
 /**
  * by y on 2016/4/29.
@@ -55,6 +58,20 @@ public class ActivityUtils {
         UIUtils.getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
         int i = outRect.top;
         return i;
+    }
+    
+    //获取图库路径
+    public static File ImagePath(){
+        String sdcard = Environment.getExternalStorageDirectory().toString();
+        File file = new File(sdcard + "/DCIM");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        File mFile = new File(file + "/Demo");
+        if (!mFile.exists()) {
+            mFile.mkdirs();
+        }
+        return mFile.getAbsoluteFile();
     }
 
 

@@ -51,11 +51,13 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
         init();
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         imageDetailPresenter.competence(requestCode, grantResults);
     }
+
 
     private void init() {
         imageDetailPresenter = new ImageDetailPresenterImpl(this);
@@ -89,4 +91,5 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
     public void netWorkError() {
         Toast(UIUtils.getString(R.string.network_error));
     }
+
 }

@@ -12,7 +12,9 @@
     <string name="list_adapter_views">访问量:</string>
 
     <string name="save_picture_failed"> 保存失败 </string>
-    <string name="save_picture_success"> 图片成功保存至 %s 目录 </string>
+    <string name="save_picture_success"> 图片成功保存 </string>
+    <string name="competence_error">没有权限无法保存图片</string>
+
 
     <string name="loading">加载中</string>
     <string name="navigation_new_image">最新图片</string>
@@ -41,7 +43,6 @@
      com.rengwuxian.materialedittext:library:2.1.4\n
      com.jakewharton:butterknife:7.0.1\n
     </string>
-    <string name="competence_error">没有权限无法保存图片</string>
     <string name="navigation_encyclopedia">搜索百科</string>
     <string name="encyclopedia">搜索百科</string>
     <string name="encyclopedia_hint">请输入关键字</string>
