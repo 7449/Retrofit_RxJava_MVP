@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
@@ -24,11 +23,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewFragment extends BaseFragment implements ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData {
+public class ImageNewFragment extends BaseFragment implements ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
 
 
     @SuppressWarnings("unused")
@@ -37,9 +37,6 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     @SuppressWarnings("unused")
     @Bind(R.id.et_rows)
     MaterialEditText etRows;
-    @SuppressWarnings("unused")
-    @Bind(R.id.btn_image)
-    Button btImage;
     @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
     MyRecyclerView recyclerView;
@@ -50,6 +47,20 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     private List<ImageNewInfo> data;
     private ImageNewAdapter adapter;
     private ImageNewPresenter imageNewPresenter;
+
+
+    @SuppressWarnings("unused")
+    @OnClick({R.id.btn_image})
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.btn_image:
+                onRefresh();
+                ActivityUtils.closeSyskeyBroad();
+                break;
+        }
+
+    }
 
     @Override
     public View initView() {
@@ -70,31 +81,9 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
 
         adapter = new ImageNewAdapter(data);
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
 
-        btImage.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                onRefresh();
-                ActivityUtils.closeSyskeyBroad();
-            }
-
-
-        });
-
-        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo>() {
-            @Override
-            public void onItemClick(View view, int position, ImageNewInfo info) {
-
-                imageNewPresenter.onClick(info);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position, ImageNewInfo info) {
-
-            }
-        });
     }
 
     @Override
@@ -113,8 +102,12 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     }
 
     @Override
-    public void onRefresh() {
+    public void showProgress() {
         srfLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void onRefresh() {
         adapter.removeAll();
         imageNewPresenter.requestNetWork(etId.getText().toString().trim(), etRows.getText().toString().trim());
     }
@@ -123,4 +116,13 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     public void onLoadMore() {
     }
 
+    @Override
+    public void onItemClick(View view, int position, ImageNewInfo info) {
+        imageNewPresenter.onClick(info);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position, ImageNewInfo info) {
+
+    }
 }

@@ -16,9 +16,10 @@ public interface EncyclopediaView {
 
     void hideProgress();
 
+    void showProgress();
+
     void showFoot();
 
     void hideFoot();
-
     
 }

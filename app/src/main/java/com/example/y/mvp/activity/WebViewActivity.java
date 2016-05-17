@@ -9,6 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.y.mvp.R;
+import com.example.y.mvp.utils.ActivityUtils;
 
 import butterknife.Bind;
 
@@ -29,6 +30,14 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
     SwipeRefreshLayout srfLayout;
     private String url;
     private String title;
+
+
+    public static void startIntent(String url, String title) {
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        bundle.putString("title", title);
+        ActivityUtils.startActivity(WebViewActivity.class, bundle);
+    }
 
 
     @Override
@@ -77,11 +86,10 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
 
     private void getBundle() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            return;
+        if (!bundle.isEmpty()) {
+            url = bundle.getString("url");
+            title = bundle.getString("title");
         }
-        url = bundle.getString("url");
-        title = bundle.getString("title");
     }
 
     @Override

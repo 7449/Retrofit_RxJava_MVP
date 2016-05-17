@@ -1,7 +1,6 @@
 package com.example.y.mvp.adapter;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import com.example.y.mvp.R;
 import com.example.y.mvp.activity.WebViewActivity;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.network.Api;
-import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.TimeUtils;
 import com.example.y.mvp.utils.UIUtils;
@@ -47,10 +45,7 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
             viewHolder.tvUrl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("url", data.getFromurl());
-                    bundle.putString("title", data.getTitle());
-                    ActivityUtils.startActivity(WebViewActivity.class, bundle);
+                    WebViewActivity.startIntent(data.getFromurl(), data.getTitle());
                 }
             });
         }

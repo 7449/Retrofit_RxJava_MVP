@@ -29,7 +29,9 @@ public class TabNamePresenterImpl implements TabNamePresenter, TabNameModelImpl.
 
     @Override
     public void addData(List<TabNameInfo> tabNameInfo) {
-        tabNameView.addTabName(tabNameInfo);
+        if (!tabNameInfo.isEmpty()) {
+            tabNameView.addTabName(tabNameInfo);
+        }
     }
 
     @Override

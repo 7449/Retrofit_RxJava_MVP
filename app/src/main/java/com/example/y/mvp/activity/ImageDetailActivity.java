@@ -10,6 +10,7 @@ import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.mvp.presenter.ImageDetailPresenter;
 import com.example.y.mvp.mvp.presenter.ImageDetailPresenterImpl;
 import com.example.y.mvp.mvp.view.ImageDetailView;
+import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.CompetenceUtils;
 import com.example.y.mvp.utils.UIUtils;
 
@@ -33,6 +34,14 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
     private ImageDetailPresenter imageDetailPresenter;
     private ImageDetailAdapter bigImageAdapter;
 
+
+    public static void startIntent(int id, String title) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", id);
+        bundle.putString("title", title);
+        ActivityUtils.startActivity(ImageDetailActivity.class, bundle);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +49,6 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
         CompetenceUtils.Storage();
         getBundle();
         init();
-
-
     }
 
     @Override
@@ -55,8 +62,6 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
         list = new LinkedList<>();
         imageDetailPresenter.requestNetWork(id);
         bigImageAdapter = new ImageDetailAdapter(list);
-
-
     }
 
 
@@ -68,10 +73,9 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
 
     private void getBundle() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            return;
+        if (!bundle.isEmpty()) {
+            id = bundle.getInt("id");
         }
-        id = bundle.getInt("id");
     }
 
 

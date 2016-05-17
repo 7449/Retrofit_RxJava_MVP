@@ -1,7 +1,6 @@
 package com.example.y.mvp.mvp.presenter;
 
 
-import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.y.mvp.R;
@@ -10,7 +9,6 @@ import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.model.ImageNewModel;
 import com.example.y.mvp.mvp.model.ImageNewModelImpl;
 import com.example.y.mvp.mvp.view.ImageNewView;
-import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
@@ -39,24 +37,20 @@ public class ImageNewPresenterImpl implements ImageNewPresenter, ImageNewModelIm
             if (rows.isEmpty()) {
                 rows = "20";
             }
+            imageNewView.showProgress();
             imageNewModel.netWorkNew(Integer.valueOf(id), Integer.valueOf(rows), this);
         }
     }
 
     @Override
     public void onClick(ImageNewInfo info) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("id", info.getId());
-        bundle.putString("title", info.getTitle());
-        ActivityUtils.startActivity(ImageDetailActivity.class, bundle);
+        ImageDetailActivity.startIntent(info.getId(), info.getTitle());
     }
 
     @Override
     public void addData(List<ImageNewInfo> imageNewInfo) {
-        if (imageNewInfo.size() != 0) {
+        if (!imageNewInfo.isEmpty()) {
             imageNewView.setImageNewInfo(imageNewInfo);
-        } else {
-            Toast.makeText(UIUtils.getContext(), UIUtils.getString(R.string.image_new_id), Toast.LENGTH_LONG).show();
         }
         imageNewView.hideProgress();
     }

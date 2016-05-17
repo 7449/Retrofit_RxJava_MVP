@@ -14,6 +14,8 @@ public interface NewsListView {
     void netWorkError();
 
     void hideProgress();
+    
+    void showProgress();
 
     void showFoot();
 

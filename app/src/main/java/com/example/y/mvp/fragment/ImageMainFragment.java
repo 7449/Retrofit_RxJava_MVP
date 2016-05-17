@@ -24,7 +24,8 @@ import java.util.List;
 /**
  * by y on 2016/4/28.
  */
-public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, ImageListView {
+public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
+        MyRecyclerView.LoadingData, ImageListView, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo> {
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -72,28 +73,16 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
         srfLayout.setOnRefreshListener(this);
 
         adapter = new ImageListAdapter(list);
+        adapter.setOnItemClickListener(this);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLoadingData(this);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>() {
-            @Override
-            public void onItemClick(View view, int position, ImageListInfo info) {
-                imageListPresenter.onClick(info);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position, ImageListInfo info) {
-
-
-            }
-        });
 
         srfLayout.post(new Runnable() {
             @Override
             public void run() {
-                srfLayout.setRefreshing(true);
                 onRefresh();
             }
         });
@@ -110,7 +99,6 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        hideFoot();
         page = 1;
         adapter.removeAll();
         imageListPresenter.requestNetWork(index + 1, page);
@@ -136,11 +124,26 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     }
 
     @Override
+    public void showProgress() {
+        srfLayout.setRefreshing(true);
+    }
+
+    @Override
     public void showFoot() {
         adapter.isShowFooter(true);
     }
 
     public void hideFoot() {
         adapter.isShowFooter(false);
+    }
+
+    @Override
+    public void onItemClick(View view, int position, ImageListInfo info) {
+        imageListPresenter.onClick(info);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position, ImageListInfo info) {
+
     }
 }

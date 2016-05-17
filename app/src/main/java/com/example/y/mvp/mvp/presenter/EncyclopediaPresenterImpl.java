@@ -1,6 +1,5 @@
 package com.example.y.mvp.mvp.presenter;
 
-import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.y.mvp.R;
@@ -9,7 +8,6 @@ import com.example.y.mvp.mvp.Bean.EncyclopediaInfo;
 import com.example.y.mvp.mvp.model.EncyclopediaModel;
 import com.example.y.mvp.mvp.model.EncyclopediaModelImpl;
 import com.example.y.mvp.mvp.view.EncyclopediaView;
-import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
@@ -34,30 +32,25 @@ public class EncyclopediaPresenterImpl implements EncyclopediaPresenter, Encyclo
             encyclopediaView.showFoot();
         }
         if (keyword.isEmpty()) {
-            encyclopediaView.hideProgress();
             Toast.makeText(UIUtils.getContext(), UIUtils.getString(R.string.encyclopedia_keywork), Toast.LENGTH_LONG).show();
         } else {
+            encyclopediaView.showProgress();
             encyclopediaModel.netWorkEncyclopedia(keyword, page, this);
         }
     }
 
     @Override
     public void onClick(EncyclopediaInfo info) {
-        Bundle bundle = new Bundle();
-        bundle.putString("url", info.getUrl());
-        bundle.putString("title",info.getTitle());
-        ActivityUtils.startActivity(WebViewActivity.class, bundle);
+        WebViewActivity.startIntent(info.getUrl(), info.getTitle());
     }
 
     @Override
     public void addData(List<EncyclopediaInfo> encyclopediaInfo) {
-        if (encyclopediaInfo.size() == 0) {
-            encyclopediaView.hideFoot();
-            encyclopediaView.hideProgress();
+        if (!encyclopediaInfo.isEmpty()) {
+            encyclopediaView.setEncyclopedia(encyclopediaInfo);
         }
-        encyclopediaView.setEncyclopedia(encyclopediaInfo);
+        encyclopediaView.hideFoot();
         encyclopediaView.hideProgress();
-
     }
 
     @Override

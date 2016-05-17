@@ -24,7 +24,8 @@ import java.util.List;
 /**
  * by 12406 on 2016/5/14.
  */
-public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, NewsListView {
+public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
+        MyRecyclerView.LoadingData, NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -70,6 +71,7 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
         newsListPresenter = new NewsListPresenterImpl(this);
         list = new LinkedList<>();
         adapter = new NewsListAdapter(list);
+        adapter.setOnItemClickListener(this);
 
         srfLayout.setOnRefreshListener(this);
 
@@ -77,23 +79,10 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
         recyclerView.setLoadingData(this);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo>() {
-            @Override
-            public void onItemClick(View view, int position, NewsListInfo info) {
-                newsListPresenter.onClick(info);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position, NewsListInfo info) {
-
-
-            }
-        });
 
         srfLayout.post(new Runnable() {
             @Override
             public void run() {
-                srfLayout.setRefreshing(true);
                 onRefresh();
             }
         });
@@ -110,7 +99,6 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
-        hideFoot();
         page = 1;
         adapter.removeAll();
         newsListPresenter.requestNetWork(index + 1, page);
@@ -136,11 +124,26 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     }
 
     @Override
+    public void showProgress() {
+        srfLayout.setRefreshing(true);
+    }
+
+    @Override
     public void showFoot() {
         adapter.isShowFooter(true);
     }
 
     public void hideFoot() {
         adapter.isShowFooter(false);
+    }
+
+    @Override
+    public void onItemClick(View view, int position, NewsListInfo info) {
+        newsListPresenter.onClick(info);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position, NewsListInfo info) {
+
     }
 }

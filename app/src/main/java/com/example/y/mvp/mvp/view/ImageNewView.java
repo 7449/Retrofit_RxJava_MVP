@@ -15,5 +15,7 @@ public interface ImageNewView {
     void netWorkError();
 
     void hideProgress();
+    
+    void showProgress();
 
 }

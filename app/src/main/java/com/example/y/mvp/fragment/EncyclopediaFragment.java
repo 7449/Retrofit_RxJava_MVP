@@ -27,7 +27,9 @@ import butterknife.OnClick;
 /**
  * by y on 2016/5/11.
  */
-public class EncyclopediaFragment extends BaseFragment implements EncyclopediaView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData {
+public class EncyclopediaFragment extends BaseFragment implements EncyclopediaView,
+        SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData,
+        BaseRecyclerViewAdapter.OnItemClickListener<EncyclopediaInfo> {
 
 
     @SuppressWarnings("unused")
@@ -72,6 +74,7 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
         data = new LinkedList<>();
         encyclopediaPresenter = new EncyclopediaPresenterImpl(this);
         adapter = new EncyclopediaAdapter(data);
+        adapter.setOnItemClickListener(this);
 
         srfLayout.setOnRefreshListener(this);
         recyclerView.setHasFixedSize(true);
@@ -79,17 +82,6 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<EncyclopediaInfo>() {
-            @Override
-            public void onItemClick(View view, int position, EncyclopediaInfo info) {
-                encyclopediaPresenter.onClick(info);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position, EncyclopediaInfo info) {
-
-            }
-        });
     }
 
 
@@ -109,6 +101,11 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
     }
 
     @Override
+    public void showProgress() {
+        srfLayout.setRefreshing(true);
+    }
+
+    @Override
     public void showFoot() {
         adapter.isShowFooter(true);
     }
@@ -120,8 +117,6 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
 
     @Override
     public void onRefresh() {
-        hideFoot();
-        srfLayout.setRefreshing(true);
         adapter.removeAll();
         page = 1;
         encyclopediaPresenter.requestNetWork(etKeyword.getText().toString().trim(), page);
@@ -133,5 +128,15 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
             ++page;
             encyclopediaPresenter.requestNetWork(etKeyword.getText().toString().trim(), page);
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position, EncyclopediaInfo info) {
+        encyclopediaPresenter.onClick(info);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position, EncyclopediaInfo info) {
+
     }
 }

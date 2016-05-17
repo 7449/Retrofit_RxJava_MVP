@@ -1,14 +1,11 @@
 package com.example.y.mvp.mvp.presenter;
 
 
-import android.os.Bundle;
-
 import com.example.y.mvp.activity.ImageDetailActivity;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.model.ImageListModel;
 import com.example.y.mvp.mvp.model.ImageListModelImpl;
 import com.example.y.mvp.mvp.view.ImageListView;
-import com.example.y.mvp.utils.ActivityUtils;
 
 import java.util.List;
 
@@ -30,25 +27,23 @@ public class ImageListPresenterImpl implements ImageListPresenter, ImageListMode
         if (page != 1) {
             imageListView.showFoot();
         }
+        imageListView.showProgress();
         imageListModel.netWorkList(id, page, this);
     }
 
 
     @Override
     public void onClick(ImageListInfo info) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("id", info.getId());
-        bundle.putString("title", info.getTitle());
-        ActivityUtils.startActivity(ImageDetailActivity.class, bundle);
+        ImageDetailActivity.startIntent(info.getId(), info.getTitle());
     }
 
 
     @Override
     public void addData(List<ImageListInfo> imageListInfo) {
-        if (imageListInfo.size() == 0) {
-            imageListView.hideFoot();
+        if (!imageListInfo.isEmpty()) {
+            imageListView.setImageListInfo(imageListInfo);
         }
-        imageListView.setImageListInfo(imageListInfo);
+        imageListView.hideFoot();
         imageListView.hideProgress();
     }
 

@@ -15,6 +15,8 @@ public interface ImageListView {
     void netWorkError();
 
     void hideProgress();
+    
+    void showProgress();
 
     void showFoot();
 

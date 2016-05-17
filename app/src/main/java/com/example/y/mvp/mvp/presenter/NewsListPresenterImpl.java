@@ -25,6 +25,7 @@ public class NewsListPresenterImpl implements NewsListPresenter, NewsListModelIm
         if (page != 1) {
             newsListView.showFoot();
         }
+        newsListView.showProgress();
         newsListModel.netWorkNewList(id, page, this);
     }
 
@@ -35,10 +36,10 @@ public class NewsListPresenterImpl implements NewsListPresenter, NewsListModelIm
 
     @Override
     public void addData(List<NewsListInfo> tngou) {
-        if (tngou.size() == 0) {
-            newsListView.hideFoot();
+        if (!tngou.isEmpty()) {
+            newsListView.setNewsListInfo(tngou);
         }
-        newsListView.setNewsListInfo(tngou);
+        newsListView.hideFoot();
         newsListView.hideProgress();
     }
 

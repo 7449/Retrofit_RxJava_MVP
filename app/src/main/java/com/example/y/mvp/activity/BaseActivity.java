@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.y.mvp.utils.ActivityCollector;
+import com.example.y.mvp.utils.LogUtils;
+
 import butterknife.ButterKnife;
 import rx.Subscription;
 
@@ -34,6 +37,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         // 全屏显示
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
+        LogUtils.i("BaseActivity", getClass().getSimpleName());
+        ActivityCollector.addActivity(this);
     }
 
     //隐藏状态栏
