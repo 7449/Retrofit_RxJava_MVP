@@ -23,8 +23,10 @@ import butterknife.Bind;
  */
 public class ImageViewPagerFragment extends BaseFragment implements TabNameView {
 
+    @SuppressWarnings("unused")
     @Bind(R.id.tab_layout)
     TabLayout tabLayout;
+    @SuppressWarnings("unused")
     @Bind(R.id.viewPager)
     ViewPager viewPager;
 

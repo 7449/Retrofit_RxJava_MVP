@@ -62,10 +62,13 @@ public class EncyclopediaAdapter extends BaseRecyclerViewAdapter<EncyclopediaInf
     class ViewHolder extends BaseRecyclerViewHolder {
 
 
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
         ImageView image;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_title)
         TextView tvTitle;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_url)
         TextView tvUrl;
 

@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class NewsListPresenterImpl implements NewsListPresenter, NewsListModelImpl.NewsListData {
 
-    private NewsListModel newsListModel;
-    private NewsListView newsListView;
+    private final NewsListModel newsListModel;
+    private final NewsListView newsListView;
 
     public NewsListPresenterImpl(NewsListView newsListView) {
         this.newsListView = newsListView;

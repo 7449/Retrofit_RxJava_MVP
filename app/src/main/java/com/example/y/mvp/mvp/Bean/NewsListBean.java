@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * by 12406 on 2016/5/15.
  */
+@SuppressWarnings("ALL")
 public class NewsListBean {
 
     private List<NewsListInfo> tngou;

@@ -5,13 +5,14 @@ import java.util.List;
 /**
  * by y on 2016/5/11.
  */
+@SuppressWarnings("ALL")
 public class EncyclopediaBean {
 
 
-    public String total;
+    private String total;
 
 
-    public String status;
+    private String status;
 
 
     private List<EncyclopediaInfo> tngou;

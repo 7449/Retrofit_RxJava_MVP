@@ -22,8 +22,10 @@ import butterknife.Bind;
  */
 public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
 
+    @SuppressWarnings("unused")
     @Bind(R.id.tab_layout)
     TabLayout tabLayout;
+    @SuppressWarnings("unused")
     @Bind(R.id.viewPager)
     ViewPager viewPager;
 

@@ -19,57 +19,58 @@ import rx.schedulers.Schedulers;
 public class NetWorkRequest {
 
 
+    @SuppressWarnings("unused")
     public static void newsDetail(int id, Subscriber<NewsDetailBean> subscriber) {
-        Network.getNewsDetailApil().getNewsDetail(id)
+        Network.getTngouApi().getNewsDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void newsList(int id, int page, Subscriber<NewsListBean> subscriber) {
-        Network.getNewsListApi().getNewsList(id, page)
+        Network.getTngouApi().getNewsList(id, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void tabNews(Subscriber<TabNewsBean> subscriber) {
-        Network.getTabNewsApi().getTabNews()
+        Network.getTngouApi().getTabNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void encyclopedia(String keyword, int page, Subscriber<EncyclopediaBean> subscriber) {
-        Network.getEncyclopediaApi().getEncyclopedia(keyword, page)
+        Network.getTngouApi().getEncyclopedia(keyword, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void imageDetail(int id, Subscriber<ImageDetailBean> subscriber) {
-        Network.getImageDetailApi().getImageDetail(id)
+        Network.getTngouApi().getImageDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void imageList(int id, int page, Subscriber<ImageListBean> subscriber) {
-        Network.getImageListApi().getImageList(id, page)
+        Network.getTngouApi().getImageList(id, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void imageNew(int id, int rows, Subscriber<ImageNewBean> subscriber) {
-        Network.getImageNewApi().getImageNews(id, rows)
+        Network.getTngouApi().getImageNews(id, rows)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
     public static void tabName(Subscriber<TabNameBean> subscriber) {
-        Network.getTabNameApi().getTabName()
+        Network.getTngouApi().getTabName()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

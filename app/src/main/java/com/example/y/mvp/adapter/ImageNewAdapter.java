@@ -50,12 +50,16 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
 
     class ViewHolder extends BaseRecyclerViewHolder {
 
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
         ImageView iv;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_title)
         TextView tvTitle;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_size)
         TextView tvSize;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_count)
         TextView tvCount;
 

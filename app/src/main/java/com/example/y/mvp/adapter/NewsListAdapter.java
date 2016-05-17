@@ -1,5 +1,6 @@
 package com.example.y.mvp.adapter;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
         super(datas);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onBind(RecyclerView.ViewHolder holder, int position, final NewsListInfo data) {
         if (holder instanceof ViewHolder) {
@@ -74,14 +76,19 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
 
     class ViewHolder extends BaseRecyclerViewHolder {
 
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
         ImageView image;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_fromname)
         TextView tvFromname;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_time)
         TextView tvTime;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_title)
         TextView tvTitle;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_url)
         TextView tvUrl;
 

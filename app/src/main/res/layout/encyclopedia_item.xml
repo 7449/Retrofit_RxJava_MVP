@@ -28,7 +28,8 @@
             android:layout_marginLeft="@dimen/encyclopedia_title_marginLeft"
             android:layout_marginTop="@dimen/encyclopedia_title_marginTop"
             android:layout_toRightOf="@+id/image"
-            android:textSize="@dimen/encyclopedia_text" />
+            android:textSize="@dimen/encyclopedia_text"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/tv_url"
@@ -39,7 +40,8 @@
             android:layout_marginTop="@dimen/encyclopedia_title_marginTop"
             android:layout_toRightOf="@+id/image"
             android:autoLink="web"
-            android:textSize="@dimen/encyclopedia_text_message" />
+            android:textSize="@dimen/encyclopedia_text_message"
+            tools:ignore="RtlHardcoded" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

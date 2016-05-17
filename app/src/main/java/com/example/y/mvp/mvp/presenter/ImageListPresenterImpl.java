@@ -9,7 +9,6 @@ import com.example.y.mvp.mvp.model.ImageListModel;
 import com.example.y.mvp.mvp.model.ImageListModelImpl;
 import com.example.y.mvp.mvp.view.ImageListView;
 import com.example.y.mvp.utils.ActivityUtils;
-import com.example.y.mvp.utils.LogUtils;
 
 import java.util.List;
 

@@ -25,6 +25,7 @@ import butterknife.Bind;
 public class ImageDetailActivity extends BaseActivity implements ImageDetailView {
 
 
+    @SuppressWarnings("unused")
     @Bind(R.id.viewPager)
     ViewPager viewPager;
     private int id;
@@ -65,7 +66,7 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
     }
 
 
-    public void getBundle() {
+    private void getBundle() {
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
             return;

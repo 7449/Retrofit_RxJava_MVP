@@ -40,6 +40,8 @@ public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
 
     class ViewHolder extends BaseRecyclerViewHolder {
 
+
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_about)
         TextView tvAbout;
 

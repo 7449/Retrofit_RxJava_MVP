@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/tv_marginLeft"
             android:layout_toRightOf="@+id/image"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -44,7 +45,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_fromname"
-                    android:padding="@dimen/image_list_padding" />
+                    android:padding="@dimen/image_list_padding"
+                    tools:ignore="RtlHardcoded" />
 
             </RelativeLayout>
 

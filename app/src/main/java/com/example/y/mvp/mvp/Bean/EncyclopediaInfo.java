@@ -3,6 +3,7 @@ package com.example.y.mvp.mvp.Bean;
 /**
  * by y on 2016/5/11.
  */
+@SuppressWarnings("ALL")
 public class EncyclopediaInfo {
 
     private long id;  //ID标记

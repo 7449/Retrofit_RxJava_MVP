@@ -22,10 +22,13 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements MainView {
 
+    @SuppressWarnings("unused")
     @Bind(R.id.toolBar)
     Toolbar toolBar;
+    @SuppressWarnings("unused")
     @Bind(R.id.navigation_view)
     NavigationView navigationView;
+    @SuppressWarnings("unused")
     @Bind(R.id.dl_layout)
     DrawerLayout drawerLayout;
     private MainViewPresenter mainViewPresenter;

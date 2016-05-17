@@ -31,20 +31,25 @@ import butterknife.Bind;
 public class ImageNewFragment extends BaseFragment implements ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData {
 
 
+    @SuppressWarnings("unused")
     @Bind(R.id.et_id)
     MaterialEditText etId;
+    @SuppressWarnings("unused")
     @Bind(R.id.et_rows)
     MaterialEditText etRows;
+    @SuppressWarnings("unused")
     @Bind(R.id.btn_image)
     Button btImage;
+    @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
     MyRecyclerView recyclerView;
+    @SuppressWarnings("unused")
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;
 
     private List<ImageNewInfo> data;
     private ImageNewAdapter adapter;
-    ImageNewPresenter imageNewPresenter;
+    private ImageNewPresenter imageNewPresenter;
 
     @Override
     public View initView() {

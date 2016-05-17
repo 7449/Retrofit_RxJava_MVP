@@ -22,6 +22,7 @@ import butterknife.Bind;
 public class AboutFragment extends BaseFragment {
 
 
+    @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 

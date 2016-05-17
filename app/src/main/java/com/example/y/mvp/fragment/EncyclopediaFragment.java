@@ -30,10 +30,13 @@ import butterknife.OnClick;
 public class EncyclopediaFragment extends BaseFragment implements EncyclopediaView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData {
 
 
+    @SuppressWarnings("unused")
     @Bind(R.id.et_keyword)
     MaterialEditText etKeyword;
+    @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
     MyRecyclerView recyclerView;
+    @SuppressWarnings("unused")
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;
 
@@ -43,6 +46,7 @@ public class EncyclopediaFragment extends BaseFragment implements EncyclopediaVi
     private static int page = 1;
 
 
+    @SuppressWarnings("unused")
     @OnClick({R.id.btn_encyclopedia})
     public void onClick(View view) {
         switch (view.getId()) {
