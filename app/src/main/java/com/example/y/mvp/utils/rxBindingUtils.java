@@ -12,7 +12,7 @@ import rx.functions.Action1;
  * by y on 2016/5/17.
  */
 @SuppressWarnings("ALL")
-public class RxBindingUtils {
+public class rxBindingUtils {
 
 
     //防手抖

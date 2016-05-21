@@ -7,8 +7,8 @@ import android.widget.EditText;
 import com.example.y.mvp.R;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.utils.LogUtils;
-import com.example.y.mvp.utils.RxBindingUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.utils.rxBindingUtils;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
 import butterknife.Bind;
@@ -21,7 +21,7 @@ import static android.text.TextUtils.isEmpty;
  * by y on 2016/5/17.
  */
 @SuppressWarnings("ALL")
-public class TestFragment extends BaseFragment implements RxBindingUtils.RxBinding, Func3Interface {
+public class TestFragment extends BaseFragment implements rxBindingUtils.RxBinding, Func3Interface {
 
 
     @Bind(R.id.et1)
@@ -50,7 +50,7 @@ public class TestFragment extends BaseFragment implements RxBindingUtils.RxBindi
         oneEditText = RxTextView.textChanges(et1).skip(1);
         twoEditText = RxTextView.textChanges(et2).skip(1);
         threeEditText = RxTextView.textChanges(et3).skip(1);
-        RxBindingUtils.clicks(btn, this);
+        rxBindingUtils.clicks(btn, this);
         test(this);
     }
 
@@ -80,7 +80,7 @@ public class TestFragment extends BaseFragment implements RxBindingUtils.RxBindi
     @Override
     public void clicks() {
         LogUtils.i("TestFragment", "被点击了");
-        Toast(et1.getText().toString()+"+"+et2.getText().toString()+"+"+et3.getText().toString());
+        Toast(et1.getText().toString() + "+" + et2.getText().toString() + "+" + et3.getText().toString());
     }
 
     @Override

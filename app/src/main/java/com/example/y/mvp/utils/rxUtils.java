@@ -6,7 +6,7 @@ import rx.Subscription;
  * by y on 2016/5/17.
  */
 @SuppressWarnings("ALL")
-public class RxUtils {
+public class rxUtils {
 
     public static void unsubscribe(Subscription subscription) {
         if (subscription != null && !subscription.isUnsubscribed()) {
