@@ -56,7 +56,6 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
         switch (view.getId()) {
             case R.id.btn_image:
                 onRefresh();
-                ActivityUtils.closeSyskeyBroad();
                 break;
         }
 

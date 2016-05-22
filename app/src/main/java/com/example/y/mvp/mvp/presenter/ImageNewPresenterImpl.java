@@ -9,6 +9,7 @@ import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.model.ImageNewModel;
 import com.example.y.mvp.mvp.model.ImageNewModelImpl;
 import com.example.y.mvp.mvp.view.ImageNewView;
+import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class ImageNewPresenterImpl implements ImageNewPresenter, ImageNewModelIm
             if (rows.isEmpty()) {
                 rows = "20";
             }
+            ActivityUtils.closeSyskeyBroad();
             imageNewView.showProgress();
             imageNewModel.netWorkNew(Integer.valueOf(id), Integer.valueOf(rows), this);
         }
