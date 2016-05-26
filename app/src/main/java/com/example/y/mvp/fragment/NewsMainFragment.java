@@ -34,12 +34,12 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     private SwipeRefreshLayout srfLayout;
     private MyRecyclerView recyclerView;
 
-    private LinkedList<NewsListInfo> list;
     private NewsListAdapter adapter;
     private NewsListPresenter newsListPresenter;
 
 
     private static int page = 1;
+    private static boolean isNull = false;
 
 
     public static Fragment newInstance(int index) {
@@ -69,7 +69,7 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
         }
 
         newsListPresenter = new NewsListPresenterImpl(this);
-        list = new LinkedList<>();
+        LinkedList<NewsListInfo> list = new LinkedList<>();
         adapter = new NewsListAdapter(list);
         adapter.setOnItemClickListener(this);
 
@@ -93,9 +93,10 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void setNewsListInfo(List<NewsListInfo> newsListInfo) {
-        if (!newsListInfo.isEmpty()) {
-            list.addAll(newsListInfo);
-            adapter.notifyDataSetChanged();
+        if (newsListInfo.isEmpty()) {
+            isNull = true;
+        } else {
+            adapter.addAll(newsListInfo);
         }
     }
 
@@ -103,14 +104,14 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     public void onRefresh() {
         page = 1;
         adapter.removeAll();
-        newsListPresenter.requestNetWork(index + 1, page);
+        newsListPresenter.requestNetWork(index + 1, page, isNull);
     }
 
     @Override
     public void onLoadMore() {
         if (!srfLayout.isRefreshing()) {
             ++page;
-            newsListPresenter.requestNetWork(index + 1, page);
+            newsListPresenter.requestNetWork(index + 1, page, isNull);
         }
     }
 

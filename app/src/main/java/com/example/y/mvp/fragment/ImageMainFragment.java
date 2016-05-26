@@ -15,6 +15,7 @@ import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.presenter.ImageListPresenter;
 import com.example.y.mvp.mvp.presenter.ImageListPresenterImpl;
 import com.example.y.mvp.mvp.view.ImageListView;
+import com.example.y.mvp.utils.LogUtils;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 
@@ -32,12 +33,12 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     private View inflate;
     private SwipeRefreshLayout srfLayout;
     private MyRecyclerView recyclerView;
-    private LinkedList<ImageListInfo> list;
     private ImageListAdapter adapter;
     private ImageListPresenter imageListPresenter;
 
 
     private static int page = 1;
+    private static boolean isNull = false;
 
     public static ImageMainFragment newInstance(int index) {
         Bundle bundle = new Bundle();
@@ -68,7 +69,7 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
         imageListPresenter = new ImageListPresenterImpl(this);
 
-        list = new LinkedList<>();
+        LinkedList<ImageListInfo> list = new LinkedList<>();
 
         srfLayout.setOnRefreshListener(this);
 
@@ -92,9 +93,11 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
     @Override
     public void setImageListInfo(List<ImageListInfo> imageListInfo) {
-        if (!imageListInfo.isEmpty()) {
-            list.addAll(imageListInfo);
-            adapter.notifyDataSetChanged();
+        if (imageListInfo.isEmpty()) {
+            isNull = true;
+        } else {
+            LogUtils.i("addAll", "addAll");
+            adapter.addAll(imageListInfo);
         }
     }
 
@@ -103,14 +106,14 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     public void onRefresh() {
         page = 1;
         adapter.removeAll();
-        imageListPresenter.requestNetWork(index + 1, page);
+        imageListPresenter.requestNetWork(index + 1, page, isNull);
     }
 
     @Override
     public void onLoadMore() {
         if (!srfLayout.isRefreshing()) {
             ++page;
-            imageListPresenter.requestNetWork(index + 1, page);
+            imageListPresenter.requestNetWork(index + 1, page, isNull);
         }
     }
 

@@ -9,7 +9,7 @@ import com.example.y.mvp.mvp.Bean.ImageListInfo;
 public interface ImageListPresenter {
 
 
-    void requestNetWork(int id, int page);
+    void requestNetWork(int id, int page, boolean isNull);
 
 
     void onClick(ImageListInfo info);

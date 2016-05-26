@@ -33,8 +33,6 @@ public abstract class BaseFragment extends Fragment {
         if (bundle != null) {
             index = bundle.getInt(FRAGMENT_INDEX);
         }
-
-
     }
 
     @Override

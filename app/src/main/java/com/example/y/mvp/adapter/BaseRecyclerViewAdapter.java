@@ -33,7 +33,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     }
 
 
-    public void addItemLast(List<T> datas) {
+    public void addAll(List<T> datas) {
         mDatas.addAll(datas);
     }
 
@@ -43,7 +43,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     public void remove(int position) {
         mDatas.remove(position);
-        notifyDataSetChanged();
+        this.notifyDataSetChanged();
     }
 
     public void removeAll() {
@@ -77,6 +77,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
     public void isShowFooter(boolean showFoot) {
         this.showFoot = showFoot;
+        this.notifyDataSetChanged();
     }
 
     public boolean isShowFooter() {

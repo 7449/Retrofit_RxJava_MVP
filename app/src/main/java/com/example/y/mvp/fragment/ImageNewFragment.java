@@ -14,7 +14,6 @@ import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenter;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
 import com.example.y.mvp.mvp.view.ImageNewView;
-import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -44,7 +43,6 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;
 
-    private List<ImageNewInfo> data;
     private ImageNewAdapter adapter;
     private ImageNewPresenter imageNewPresenter;
 
@@ -70,7 +68,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     public void initData() {
 
 
-        data = new LinkedList<>();
+        List<ImageNewInfo> data = new LinkedList<>();
 
         imageNewPresenter = new ImageNewPresenterImpl(this);
 
@@ -88,7 +86,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     @Override
     public void setImageNewInfo(List<ImageNewInfo> imageNewInfo) {
         if (!imageNewInfo.isEmpty()) {
-            data.addAll(imageNewInfo);
+            adapter.addAll(imageNewInfo);
         }
     }
 

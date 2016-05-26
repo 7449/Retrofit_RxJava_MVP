@@ -23,11 +23,13 @@ public class ImageListPresenterImpl implements ImageListPresenter, ImageListMode
     }
 
     @Override
-    public void requestNetWork(int id, int page) {
+    public void requestNetWork(int id, int page, boolean isNull) {
         if (page == 1) {
             imageListView.showProgress();
         } else {
-            imageListView.showFoot();
+            if (!isNull) {
+                imageListView.showFoot();
+            }
         }
         imageListModel.netWorkList(id, page, this);
     }
