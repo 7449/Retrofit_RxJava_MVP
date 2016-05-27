@@ -7,9 +7,9 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.TabNewsAdapter;
 import com.example.y.mvp.mvp.Bean.TabNewsInfo;
-import com.example.y.mvp.mvp.presenter.TabNewsPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.TabNewsPresenterImpl;
-import com.example.y.mvp.mvp.view.TabNewsView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.LinkedList;
@@ -20,7 +20,7 @@ import butterknife.Bind;
 /**
  * by 12406 on 2016/5/14.
  */
-public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
+public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabNewsView {
 
     @SuppressWarnings("unused")
     @Bind(R.id.tab_layout)
@@ -40,7 +40,7 @@ public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
     @Override
     protected void initData() {
 
-        TabNewsPresenter tabNewsPresenter = new TabNewsPresenterImpl(this);
+        BasePresenter.TabNewsPresenter tabNewsPresenter = new TabNewsPresenterImpl(this);
         tabNewsPresenter.requestNetWork();
 
         data = new LinkedList<>();
@@ -48,9 +48,9 @@ public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
     }
 
     @Override
-    public void addTabName(List<TabNewsInfo> tabNewsInfo) {
-        if (!tabNewsInfo.isEmpty()) {
-            data.addAll(tabNewsInfo);
+    public void setData(List<TabNewsInfo> datas) {
+        if (!datas.isEmpty()) {
+            data.addAll(datas);
             viewPager.setAdapter(tabNewsAdapter);
             tabLayout.setupWithViewPager(viewPager);
         }
@@ -59,5 +59,25 @@ public class NewsViewPagerFragment extends BaseFragment implements TabNewsView {
     @Override
     public void netWorkError() {
         Toast(UIUtils.getContext().getResources().getString(R.string.network_error));
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void showFoot() {
+
+    }
+
+    @Override
+    public void hideFoot() {
+
     }
 }

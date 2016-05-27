@@ -4,7 +4,7 @@ package com.example.y.mvp.mvp.Bean;
  * by 12406 on 2016/5/15.
  */
 @SuppressWarnings("ALL")
-public class NewsDetailBean {
+public class NewsDetailInfo {
 
     private int count;//访问次数
     private String description;//描述

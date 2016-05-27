@@ -1,6 +1,7 @@
 package com.example.y.mvp.adapter;
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,24 +31,10 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
         super(datas);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onBind(RecyclerView.ViewHolder holder, int position, final NewsListInfo data) {
         if (holder instanceof ViewHolder) {
-            final ViewHolder viewHolder = (ViewHolder) holder;
-            viewHolder.tvFromname.setText(UIUtils.getString(R.string.news_fromname) + data.getFromname());
-            viewHolder.tvTime.setText(UIUtils.getString(R.string.news_time) + TimeUtils.getDateToString(data.getTime()));
-            viewHolder.tvTitle.setText(data.getTitle());
-            viewHolder.tvUrl.setText(data.getFromurl());
-            ImageLoaderUtils.display(UIUtils.getContext(), viewHolder.image, Api.IMAGER_URL + data.getImg());
-
-
-            viewHolder.tvUrl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    WebViewActivity.startIntent(data.getFromurl(), data.getTitle());
-                }
-            });
+            ((ViewHolder) holder).setData(data);
         }
     }
 
@@ -89,6 +76,26 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
 
         public ViewHolder(View itemView) {
             super(itemView);
+        }
+
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        protected void setData(@NonNull final NewsListInfo data) {
+            super.setData(data);
+            tvTime.setText(UIUtils.getString(R.string.news_time) + TimeUtils.getDateToString(data.getTime()));
+            tvTitle.setText(data.getTitle());
+            tvUrl.setText(data.getFromurl());
+            ImageLoaderUtils.display(UIUtils.getContext(), image, Api.IMAGER_URL + data.getImg());
+
+
+            tvUrl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    WebViewActivity.startIntent(data.getFromurl(), data.getTitle());
+                }
+            });
+
         }
     }
 }

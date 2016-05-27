@@ -1,6 +1,7 @@
 package com.example.y.mvp.adapter;
 
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -153,7 +154,13 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         public BaseRecyclerViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
         }
+
+        protected void setData(@NonNull T data) {
+
+        }
+
     }
 
 }

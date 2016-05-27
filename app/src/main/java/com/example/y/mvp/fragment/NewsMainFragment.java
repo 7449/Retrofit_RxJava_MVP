@@ -12,9 +12,9 @@ import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.NewsListAdapter;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
-import com.example.y.mvp.mvp.presenter.NewsListPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.NewsListPresenterImpl;
-import com.example.y.mvp.mvp.view.NewsListView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * by 12406 on 2016/5/14.
  */
 public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
+        MyRecyclerView.LoadingData, BaseView.NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -35,7 +35,7 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     private MyRecyclerView recyclerView;
 
     private NewsListAdapter adapter;
-    private NewsListPresenter newsListPresenter;
+    private BasePresenter.NewsListPresenter newsListPresenter;
 
 
     private static int page = 1;
@@ -92,15 +92,6 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
 
     @Override
-    public void setNewsListInfo(List<NewsListInfo> newsListInfo) {
-        if (newsListInfo.isEmpty()) {
-            isNull = true;
-        } else {
-            adapter.addAll(newsListInfo);
-        }
-    }
-
-    @Override
     public void onRefresh() {
         page = 1;
         adapter.removeAll();
@@ -115,6 +106,15 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
         }
     }
 
+
+    @Override
+    public void setData(List<NewsListInfo> datas) {
+        if (datas.isEmpty()) {
+            isNull = true;
+        } else {
+            adapter.addAll(datas);
+        }
+    }
 
     @Override
     public void netWorkError() {
@@ -142,7 +142,6 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void onItemClick(View view, int position, NewsListInfo info) {
-        newsListPresenter.onClick(info);
     }
 
     @Override

@@ -1,23 +1,20 @@
 package com.example.y.mvp.mvp.model;
 
 
-import com.example.y.mvp.mvp.Bean.ImageDetailBean;
-import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
+import com.example.y.mvp.mvp.Bean.BaseBean;
 import com.example.y.mvp.network.MySubscriber;
 import com.example.y.mvp.network.NetWorkRequest;
-
-import java.util.List;
 
 /**
  * by y on 2016/4/29.
  */
-public class ImageDetailModelImpl implements ImageDetailModel {
+public class ImageDetailModelImpl implements BaseModel.ImageDetailModel {
 
 
     @Override
-    public void netWorkDetail(int id, final ImageDetailData imageDetailData) {
+    public void netWorkDetail(int id, final BaseDataBridge.ImageDetailData imageDetailData) {
 
-        NetWorkRequest.imageDetail(id, new MySubscriber<ImageDetailBean>() {
+        NetWorkRequest.imageDetail(id, new MySubscriber<BaseBean.ImageDetailBean>() {
 
             @Override
             public void onError(Throwable e) {
@@ -26,18 +23,12 @@ public class ImageDetailModelImpl implements ImageDetailModel {
             }
 
             @Override
-            public void onNext(ImageDetailBean imageDetailBean) {
+            public void onNext(BaseBean.ImageDetailBean imageDetailBean) {
                 super.onNext(imageDetailBean);
-                imageDetailData.addData(imageDetailBean.getList());
+                imageDetailData.addData(imageDetailBean.getInfo());
             }
         });
     }
 
 
-    public interface ImageDetailData {
-
-        void addData(List<ImageDetailInfo> imageDetailInfo);
-
-        void error();
-    }
 }

@@ -7,9 +7,9 @@ import android.support.v4.view.ViewPager;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.ImageDetailAdapter;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
-import com.example.y.mvp.mvp.presenter.ImageDetailPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageDetailPresenterImpl;
-import com.example.y.mvp.mvp.view.ImageDetailView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.CompetenceUtils;
 import com.example.y.mvp.utils.UIUtils;
@@ -23,7 +23,7 @@ import butterknife.Bind;
 /**
  * by y on 2016/4/29.
  */
-public class ImageDetailActivity extends BaseActivity implements ImageDetailView {
+public class ImageDetailActivity extends BaseActivity implements BaseView.ImageDetailView {
 
 
     @SuppressWarnings("unused")
@@ -31,7 +31,7 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
     ViewPager viewPager;
     private int id;
     private LinkedList<ImageDetailInfo> list;
-    private ImageDetailPresenter imageDetailPresenter;
+    private BasePresenter.ImageDetailPresenter imageDetailPresenter;
     private ImageDetailAdapter bigImageAdapter;
 
 
@@ -80,18 +80,37 @@ public class ImageDetailActivity extends BaseActivity implements ImageDetailView
         }
     }
 
-
-    @Override
-    public void setImageDetailInfo(List<ImageDetailInfo> imageDetailInfo) {
-        if (!imageDetailInfo.isEmpty()) {
-            list.addAll(imageDetailInfo);
-            viewPager.setAdapter(bigImageAdapter);
-        }
-    }
-
     @Override
     public void netWorkError() {
         Toast(UIUtils.getString(R.string.network_error));
     }
 
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void showFoot() {
+
+    }
+
+    @Override
+    public void hideFoot() {
+
+    }
+
+
+    @Override
+    public void setData(List<ImageDetailInfo> datas) {
+        if (!datas.isEmpty()) {
+            list.addAll(datas);
+            viewPager.setAdapter(bigImageAdapter);
+        }
+    }
 }

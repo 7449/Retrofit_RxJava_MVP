@@ -60,8 +60,6 @@ public class MyRecyclerView extends RecyclerView {
     public void onScrolled(int dx, int dy) {
         super.onScrolled(dx, dy);
 
-        LogUtils.i("onScrolled", dx + "   " + dy);
-
         RecyclerView.LayoutManager layoutManager = getLayoutManager();
         if (layoutManagerType == null) {
             if (layoutManager instanceof LinearLayoutManager) {
@@ -99,9 +97,6 @@ public class MyRecyclerView extends RecyclerView {
         RecyclerView.LayoutManager layoutManager = getLayoutManager();
         int visibleItemCount = layoutManager.getChildCount();
         int totalItemCount = layoutManager.getItemCount();
-        LogUtils.i("onScrollStateChanged", "visibleItemCount" + visibleItemCount);
-        LogUtils.i("onScrollStateChanged", "lastVisibleItemPosition" + lastVisibleItemPosition);
-        LogUtils.i("onScrollStateChanged", "totalItemCount" + totalItemCount);
         if (visibleItemCount > 0 && state == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition == totalItemCount - 1) {
             loadingData.onLoadMore();
         }

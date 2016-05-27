@@ -2,38 +2,39 @@ package com.example.y.mvp.mvp.presenter;
 
 
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
-import com.example.y.mvp.mvp.model.TabNameModel;
+import com.example.y.mvp.mvp.model.BaseDataBridge;
+import com.example.y.mvp.mvp.model.BaseModel;
 import com.example.y.mvp.mvp.model.TabNameModelImpl;
-import com.example.y.mvp.mvp.view.TabNameView;
+import com.example.y.mvp.mvp.view.BaseView;
 
 import java.util.List;
 
 /**
  * by y on 2016/4/29.
  */
-public class TabNamePresenterImpl implements TabNamePresenter, TabNameModelImpl.TabNameData {
+public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView>
+        implements BasePresenter.TabNamePresenter, BaseDataBridge.TabNameData {
 
-    private final TabNameView tabNameView;
-    private final TabNameModel tabNameModel;
+    private final BaseModel.TabNameModel tabNameModel;
 
-    public TabNamePresenterImpl(TabNameView tabNameView) {
-        this.tabNameView = tabNameView;
+    public TabNamePresenterImpl(BaseView.TabNameView view) {
+        super(view);
         this.tabNameModel = new TabNameModelImpl();
     }
 
 
     @Override
     public void requestNetWork() {
-        tabNameModel.netWorkName(this);
+        tabNameModel.netWork(this);
     }
 
     @Override
     public void addData(List<TabNameInfo> tabNameInfo) {
-        tabNameView.addTabName(tabNameInfo);
+        view.setData(tabNameInfo);
     }
 
     @Override
     public void error() {
-        tabNameView.netWorkError();
+        view.netWorkError();
     }
 }

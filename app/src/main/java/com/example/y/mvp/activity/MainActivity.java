@@ -13,7 +13,7 @@ import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
 import com.example.y.mvp.fragment.NewsViewPagerFragment;
 import com.example.y.mvp.fragment.TestFragment;
-import com.example.y.mvp.mvp.presenter.MainViewPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
 import com.example.y.mvp.mvp.view.MainView;
 import com.example.y.mvp.utils.UIUtils;
@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @SuppressWarnings("unused")
     @Bind(R.id.dl_layout)
     DrawerLayout drawerLayout;
-    private MainViewPresenter mainViewPresenter;
+    private BasePresenter.MainViewPresenter mainViewPresenter;
 
 
     @Override

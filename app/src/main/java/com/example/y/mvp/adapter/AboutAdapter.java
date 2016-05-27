@@ -1,6 +1,7 @@
 package com.example.y.mvp.adapter;
 
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +27,7 @@ public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
     protected void onBind(RecyclerView.ViewHolder holder, int position, String data) {
 
         if (holder instanceof ViewHolder) {
-            final ViewHolder viewHolder = (ViewHolder) holder;
-            viewHolder.tvAbout.setText(data);
+            ((ViewHolder) holder).setData(data);
         }
 
     }
@@ -48,5 +48,11 @@ public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
         ViewHolder(View view) {
             super(view);
         }
+
+        @Override
+        protected void setData(@NonNull String data) {
+            tvAbout.setText(data);
+        }
+
     }
 }

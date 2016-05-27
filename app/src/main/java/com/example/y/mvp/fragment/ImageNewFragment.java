@@ -11,9 +11,9 @@ import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.ImageNewAdapter;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
-import com.example.y.mvp.mvp.presenter.ImageNewPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
-import com.example.y.mvp.mvp.view.ImageNewView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewFragment extends BaseFragment implements ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
+public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
 
 
     @SuppressWarnings("unused")
@@ -44,7 +44,7 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     SwipeRefreshLayout srfLayout;
 
     private ImageNewAdapter adapter;
-    private ImageNewPresenter imageNewPresenter;
+    private BasePresenter.ImageNewPresenter imageNewPresenter;
 
 
     @SuppressWarnings("unused")
@@ -83,10 +83,11 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
 
     }
 
+
     @Override
-    public void setImageNewInfo(List<ImageNewInfo> imageNewInfo) {
-        if (!imageNewInfo.isEmpty()) {
-            adapter.addAll(imageNewInfo);
+    public void setData(List<ImageNewInfo> datas) {
+        if (!datas.isEmpty()) {
+            adapter.addAll(datas);
         }
     }
 
@@ -103,6 +104,16 @@ public class ImageNewFragment extends BaseFragment implements ImageNewView, Swip
     @Override
     public void showProgress() {
         srfLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void showFoot() {
+
+    }
+
+    @Override
+    public void hideFoot() {
+
     }
 
     @Override

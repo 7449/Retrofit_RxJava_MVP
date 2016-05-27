@@ -8,9 +8,9 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.TabNameAdapter;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
-import com.example.y.mvp.mvp.presenter.TabNamePresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.TabNamePresenterImpl;
-import com.example.y.mvp.mvp.view.TabNameView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.LinkedList;
@@ -21,7 +21,7 @@ import butterknife.Bind;
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageViewPagerFragment extends BaseFragment implements TabNameView {
+public class ImageViewPagerFragment extends BaseFragment implements BaseView.TabNameView {
 
     @SuppressWarnings("unused")
     @Bind(R.id.tab_layout)
@@ -42,7 +42,7 @@ public class ImageViewPagerFragment extends BaseFragment implements TabNameView 
     public void initData() {
 
 
-        TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(this);
+        BasePresenter.TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(this);
         tabNamePresenter.requestNetWork();
 
         data = new LinkedList<>();
@@ -52,9 +52,9 @@ public class ImageViewPagerFragment extends BaseFragment implements TabNameView 
 
 
     @Override
-    public void addTabName(List<TabNameInfo> tabNameInfo) {
-        if (!tabNameInfo.isEmpty()) {
-            data.addAll(tabNameInfo);
+    public void setData(List<TabNameInfo> datas) {
+        if (!datas.isEmpty()) {
+            data.addAll(datas);
             viewPager.setAdapter(tabNameAdapter);
             tabLayout.setupWithViewPager(viewPager);
         }
@@ -63,5 +63,25 @@ public class ImageViewPagerFragment extends BaseFragment implements TabNameView 
     @Override
     public void netWorkError() {
         Toast(UIUtils.getContext().getResources().getString(R.string.network_error));
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void showFoot() {
+
+    }
+
+    @Override
+    public void hideFoot() {
+
     }
 }

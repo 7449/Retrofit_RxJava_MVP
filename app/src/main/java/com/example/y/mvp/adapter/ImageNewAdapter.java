@@ -2,6 +2,7 @@ package com.example.y.mvp.adapter;
 
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,15 +30,10 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
         super(datas);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onBind(RecyclerView.ViewHolder holder, int position, ImageNewInfo data) {
         if (holder instanceof ViewHolder) {
-            final ViewHolder viewHolder = (ViewHolder) holder;
-            viewHolder.tvTitle.setText(data.getTitle());
-            viewHolder.tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
-            viewHolder.tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(UIUtils.getContext(), viewHolder.iv, Api.IMAGER_URL + data.getImg());
+            ((ViewHolder) holder).setData(data);
         }
     }
 
@@ -65,6 +61,16 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
 
         ViewHolder(View view) {
             super(view);
+        }
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        protected void setData(@NonNull ImageNewInfo data) {
+            super.setData(data);
+            tvTitle.setText(data.getTitle());
+            tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
+            tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
+            ImageLoaderUtils.display(UIUtils.getContext(), iv, Api.IMAGER_URL + data.getImg());
         }
     }
 }

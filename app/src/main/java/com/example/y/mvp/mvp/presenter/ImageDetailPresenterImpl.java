@@ -7,9 +7,10 @@ import android.widget.Toast;
 import com.example.y.mvp.R;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
-import com.example.y.mvp.mvp.model.ImageDetailModel;
+import com.example.y.mvp.mvp.model.BaseDataBridge;
+import com.example.y.mvp.mvp.model.BaseModel;
 import com.example.y.mvp.mvp.model.ImageDetailModelImpl;
-import com.example.y.mvp.mvp.view.ImageDetailView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
@@ -17,13 +18,13 @@ import java.util.List;
 /**
  * by y on 2016/4/29.
  */
-public class ImageDetailPresenterImpl implements ImageDetailPresenter, ImageDetailModelImpl.ImageDetailData {
+public class ImageDetailPresenterImpl extends BasePresenterImpl<BaseView.ImageDetailView>
+        implements BasePresenter.ImageDetailPresenter, BaseDataBridge.ImageDetailData {
 
-    private final ImageDetailView imageDetailView;
-    private final ImageDetailModel imageDetailModel;
+    private final BaseModel.ImageDetailModel imageDetailModel;
 
-    public ImageDetailPresenterImpl(ImageDetailView imageDetailView) {
-        this.imageDetailView = imageDetailView;
+    public ImageDetailPresenterImpl(BaseView.ImageDetailView view) {
+        super(view);
         this.imageDetailModel = new ImageDetailModelImpl();
     }
 
@@ -46,11 +47,11 @@ public class ImageDetailPresenterImpl implements ImageDetailPresenter, ImageDeta
 
     @Override
     public void addData(List<ImageDetailInfo> imageDetailInfo) {
-        imageDetailView.setImageDetailInfo(imageDetailInfo);
+        view.setData(imageDetailInfo);
     }
 
     @Override
     public void error() {
-        imageDetailView.netWorkError();
+        view.netWorkError();
     }
 }

@@ -14,7 +14,6 @@ public interface MainView {
 
     void switchAbout();
 
-
     void switchTest();
     
 }

@@ -1,40 +1,40 @@
 package com.example.y.mvp.mvp.presenter;
 
 import com.example.y.mvp.mvp.Bean.TabNewsInfo;
-import com.example.y.mvp.mvp.model.TabNewsModel;
+import com.example.y.mvp.mvp.model.BaseDataBridge;
+import com.example.y.mvp.mvp.model.BaseModel;
 import com.example.y.mvp.mvp.model.TabNewsModelImpl;
-import com.example.y.mvp.mvp.view.TabNewsView;
+import com.example.y.mvp.mvp.view.BaseView;
 
 import java.util.List;
 
 /**
  * by 12406 on 2016/5/14.
  */
-public class TabNewsPresenterImpl implements TabNewsPresenter, TabNewsModelImpl.TabNewsData {
+public class TabNewsPresenterImpl extends BasePresenterImpl<BaseView.TabNewsView>
+        implements BasePresenter.TabNewsPresenter, BaseDataBridge.TabNewsData {
 
 
-    private final TabNewsView tabNewsView;
-    private final TabNewsModel tabNewsModel;
+    private final BaseModel.TabNewsModel tabNewsModel;
 
-
-    public TabNewsPresenterImpl(TabNewsView tabNewsView) {
-        this.tabNewsView = tabNewsView;
+    public TabNewsPresenterImpl(BaseView.TabNewsView view) {
+        super(view);
         this.tabNewsModel = new TabNewsModelImpl();
     }
 
 
     @Override
     public void requestNetWork() {
-        tabNewsModel.netWorkName(this);
+        tabNewsModel.netWork(this);
     }
 
     @Override
     public void addData(List<TabNewsInfo> newsInfo) {
-        tabNewsView.addTabName(newsInfo);
+        view.setData(newsInfo);
     }
 
     @Override
     public void error() {
-        tabNewsView.netWorkError();
+        view.netWorkError();
     }
 }

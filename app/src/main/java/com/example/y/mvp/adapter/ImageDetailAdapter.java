@@ -1,6 +1,5 @@
 package com.example.y.mvp.adapter;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,7 +8,6 @@ import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.DiaLogUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
-import com.example.y.mvp.utils.LogUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
@@ -17,34 +15,17 @@ import java.util.List;
 /**
  * by y on 2016/5/3.
  */
-public class ImageDetailAdapter extends PagerAdapter {
+public class ImageDetailAdapter extends BasePagerAdapter<ImageDetailInfo> {
 
-    private final List<ImageDetailInfo> info;
 
-    public ImageDetailAdapter(List<ImageDetailInfo> info) {
-        this.info = info;
+    public ImageDetailAdapter(List<ImageDetailInfo> datas) {
+        super(datas);
     }
 
     @Override
-    public int getCount() {
-        return info.size();
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    protected Object instantiate(ViewGroup container, final int position, ImageDetailInfo data) {
         final ImageView imageView = new ImageView(UIUtils.getContext());
-        LogUtils.i("bigimage -->  adapter", position + "--> 加载");
-        ImageLoaderUtils.display(UIUtils.getActivity(), imageView, Api.IMAGER_URL + info.get(position).getSrc());
+        ImageLoaderUtils.display(UIUtils.getActivity(), imageView, Api.IMAGER_URL + data.getSrc());
         container.addView(imageView);
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

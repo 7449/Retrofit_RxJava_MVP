@@ -12,10 +12,9 @@ import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.ImageListAdapter;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
-import com.example.y.mvp.mvp.presenter.ImageListPresenter;
+import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageListPresenterImpl;
-import com.example.y.mvp.mvp.view.ImageListView;
-import com.example.y.mvp.utils.LogUtils;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 
@@ -26,7 +25,7 @@ import java.util.List;
  * by y on 2016/4/28.
  */
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, ImageListView, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo> {
+        MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -34,7 +33,7 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     private SwipeRefreshLayout srfLayout;
     private MyRecyclerView recyclerView;
     private ImageListAdapter adapter;
-    private ImageListPresenter imageListPresenter;
+    private BasePresenter.ImageListPresenter imageListPresenter;
 
 
     private static int page = 1;
@@ -92,12 +91,11 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
 
     @Override
-    public void setImageListInfo(List<ImageListInfo> imageListInfo) {
-        if (imageListInfo.isEmpty()) {
+    public void setData(List<ImageListInfo> t) {
+        if (t.isEmpty()) {
             isNull = true;
         } else {
-            LogUtils.i("addAll", "addAll");
-            adapter.addAll(imageListInfo);
+            adapter.addAll(t);
         }
     }
 
@@ -151,4 +149,6 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     public void onItemLongClick(View view, int position, ImageListInfo info) {
 
     }
+
+
 }
