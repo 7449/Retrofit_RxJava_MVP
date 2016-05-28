@@ -29,9 +29,10 @@ import butterknife.Bind;
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
     MyRecyclerView recyclerView;
+    @SuppressWarnings("unused")
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;
 
