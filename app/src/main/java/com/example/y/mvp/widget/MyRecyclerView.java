@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 
-import com.example.y.mvp.utils.LogUtils;
-
 /**
  * by 12406 on 2016/4/30.
  */

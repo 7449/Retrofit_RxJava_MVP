@@ -19,6 +19,7 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
                 tabNameData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.TabNameBean tabNameBean) {
                 tabNameData.addData(tabNameBean.getInfo());

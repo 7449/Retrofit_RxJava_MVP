@@ -20,6 +20,7 @@ public class ImageNewModelImpl implements BaseModel.ImageNewModel {
                 imageNewData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.ImageNewBean imageNewBean) {
                 imageNewData.addData(imageNewBean.getInfo());

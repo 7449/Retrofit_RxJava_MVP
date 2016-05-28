@@ -20,6 +20,7 @@ public class NewsListModelImpl implements BaseModel.NewsListModel {
                 newsListData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.NewsListBean newsListBean) {
                 newsListData.addData(newsListBean.getInfo());

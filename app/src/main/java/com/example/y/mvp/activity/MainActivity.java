@@ -15,12 +15,12 @@ import com.example.y.mvp.fragment.NewsViewPagerFragment;
 import com.example.y.mvp.fragment.TestFragment;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
-import com.example.y.mvp.mvp.view.MainView;
+import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity implements MainView {
+public class MainActivity extends BaseActivity implements BaseView.MainView {
 
     @SuppressWarnings("unused")
     @Bind(R.id.toolBar)

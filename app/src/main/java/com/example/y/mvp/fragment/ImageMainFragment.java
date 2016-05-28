@@ -21,20 +21,26 @@ import com.example.y.mvp.widget.MyRecyclerView;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * by y on 2016/4/28.
  */
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
 
+    @SuppressWarnings("WeakerAccess")
+    @Bind(R.id.recyclerView)
+    MyRecyclerView recyclerView;
+    @Bind(R.id.srf_layout)
+    SwipeRefreshLayout srfLayout;
+
     private boolean isPrepared;
     private boolean isLoad;
-    private View inflate;
-    private SwipeRefreshLayout srfLayout;
-    private MyRecyclerView recyclerView;
     private ImageListAdapter adapter;
     private BasePresenter.ImageListPresenter imageListPresenter;
 
+    private View inflate;
 
     private static int page = 1;
     private static boolean isNull = false;
@@ -49,11 +55,9 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
 
 
     @Override
-    public View initView() {
+    protected View initView() {
         if (inflate == null) {
             inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_main, null);
-            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
-            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
             isPrepared = true;
         }
         return inflate;
@@ -149,6 +153,5 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     public void onItemLongClick(View view, int position, ImageListInfo info) {
 
     }
-
 
 }

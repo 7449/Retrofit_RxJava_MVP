@@ -19,6 +19,7 @@ public class ImageListModelImpl implements BaseModel.ImageListModel {
                 imageListData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.ImageListBean imageListBean) {
                 imageListData.addData(imageListBean.getInfo());

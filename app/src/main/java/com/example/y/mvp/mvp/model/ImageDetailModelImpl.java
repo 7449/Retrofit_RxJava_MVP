@@ -22,6 +22,7 @@ public class ImageDetailModelImpl implements BaseModel.ImageDetailModel {
                 imageDetailData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.ImageDetailBean imageDetailBean) {
                 super.onNext(imageDetailBean);

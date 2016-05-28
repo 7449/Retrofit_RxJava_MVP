@@ -21,18 +21,26 @@ import com.example.y.mvp.widget.MyRecyclerView;
 import java.util.LinkedList;
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * by 12406 on 2016/5/14.
  */
 public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         MyRecyclerView.LoadingData, BaseView.NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
 
+    @SuppressWarnings("unused")
+    @Bind(R.id.srf_layout)
+    SwipeRefreshLayout srfLayout;
+    @SuppressWarnings("unused")
+    @Bind(R.id.recyclerView)
+    MyRecyclerView recyclerView;
+
+
     private boolean isPrepared;
     private boolean isLoad;
 
     private View inflate;
-    private SwipeRefreshLayout srfLayout;
-    private MyRecyclerView recyclerView;
 
     private NewsListAdapter adapter;
     private BasePresenter.NewsListPresenter newsListPresenter;
@@ -54,8 +62,6 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     protected View initView() {
         if (inflate == null) {
             inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
-            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
-            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
             isPrepared = true;
         }
         return inflate;
@@ -148,4 +154,5 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     public void onItemLongClick(View view, int position, NewsListInfo info) {
 
     }
+
 }

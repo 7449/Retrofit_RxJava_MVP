@@ -2,16 +2,16 @@ package com.example.y.mvp.mvp.presenter;
 
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.mvp.view.MainView;
+import com.example.y.mvp.mvp.view.BaseView;
 
 /**
  * by 12406 on 2016/5/1.
  */
-public class MainViewPresenterImpl extends BasePresenterImpl<MainView>
+public class MainViewPresenterImpl extends BasePresenterImpl<BaseView.MainView>
         implements BasePresenter.MainViewPresenter {
 
 
-    public MainViewPresenterImpl(MainView view) {
+    public MainViewPresenterImpl(BaseView.MainView view) {
         super(view);
     }
 

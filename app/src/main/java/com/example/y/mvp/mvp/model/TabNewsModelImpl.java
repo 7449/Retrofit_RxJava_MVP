@@ -20,6 +20,7 @@ public class TabNewsModelImpl implements BaseModel.TabNewsModel {
                 tabNewsData.error();
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onNext(BaseBean.TabNewsBean tabNewsBean) {
                 tabNewsData.addData(tabNewsBean.getInfo());

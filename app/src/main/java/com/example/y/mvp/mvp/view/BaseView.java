@@ -45,4 +45,19 @@ public interface BaseView<T> {
 
     interface TabNewsView extends BaseView<TabNewsInfo> {
     }
+
+    interface MainView {
+
+
+        void switchNews();
+
+        void switchImageClassification();
+
+        void switchNewImage();
+
+        void switchAbout();
+
+        void switchTest();
+
+    }
 }
