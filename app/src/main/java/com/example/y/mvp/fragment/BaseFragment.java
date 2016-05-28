@@ -2,6 +2,7 @@ package com.example.y.mvp.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +41,14 @@ public abstract class BaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = initView();
         ButterKnife.bind(this, view);
-        initData();
         LogUtils.i("BaseFragment", getClass().getSimpleName());
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initData();
     }
 
     @Override

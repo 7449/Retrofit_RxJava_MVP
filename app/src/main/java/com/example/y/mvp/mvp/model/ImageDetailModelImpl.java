@@ -26,7 +26,7 @@ public class ImageDetailModelImpl implements BaseModel.ImageDetailModel {
             @Override
             public void onNext(BaseBean.ImageDetailBean imageDetailBean) {
                 super.onNext(imageDetailBean);
-                imageDetailData.addData(imageDetailBean.getInfo());
+                imageDetailData.addData(imageDetailBean.getList());
             }
         });
     }

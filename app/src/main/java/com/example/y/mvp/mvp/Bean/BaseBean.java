@@ -36,6 +36,16 @@ public class BaseBean<T> {
     }
 
     public class ImageDetailBean extends BaseBean<ImageDetailInfo> {
+        private List<ImageDetailInfo> list;
+
+        public List<ImageDetailInfo> getList() {
+            return list;
+        }
+
+        public void setList(List<ImageDetailInfo> list) {
+            this.list = list;
+        }
+
     }
 
 }
