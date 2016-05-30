@@ -11,17 +11,17 @@ public class NewsListInfo {
     private int fcount;//收藏数
     private String fromname;
     private String fromurl;
-    private String id;
+    private int id;
     private String img;//图片
     private String keywords;//关键字
     private Long time;
     private String title;//资讯标题
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

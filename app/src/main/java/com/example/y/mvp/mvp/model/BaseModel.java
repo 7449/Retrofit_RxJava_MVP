@@ -18,6 +18,10 @@ public interface BaseModel<T> {
         void netWorkNewList(int id, int page, BaseDataBridge.NewsListData newsListData);
     }
 
+    interface NewsDetailModel {
+        void netWorkNewsDetail(int id, BaseDataBridge.NewsDetailData newsDetailData);
+    }
+
     interface ImageNewModel {
         void netWorkNew(int id, int rows, BaseDataBridge.ImageNewData imageNewData);
     }

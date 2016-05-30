@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.activity.WebViewActivity;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
@@ -87,15 +86,6 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
             tvTitle.setText(data.getTitle());
             tvUrl.setText(data.getFromurl());
             ImageLoaderUtils.display(UIUtils.getContext(), image, Api.IMAGER_URL + data.getImg());
-
-
-            tvUrl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    WebViewActivity.startIntent(data.getFromurl(), data.getTitle());
-                }
-            });
-
         }
     }
 }

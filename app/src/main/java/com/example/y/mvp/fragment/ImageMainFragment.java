@@ -21,20 +21,14 @@ import com.example.y.mvp.widget.MyRecyclerView;
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * by y on 2016/4/28.
  */
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
 
-    @SuppressWarnings("unused")
-    @Bind(R.id.recyclerView)
-    MyRecyclerView recyclerView;
-    @SuppressWarnings("unused")
-    @Bind(R.id.srf_layout)
-    SwipeRefreshLayout srfLayout;
+    private MyRecyclerView recyclerView;
+    private SwipeRefreshLayout srfLayout;
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -59,6 +53,8 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     protected View initView() {
         if (inflate == null) {
             inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_main, null);
+            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
+            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
             isPrepared = true;
         }
         return inflate;

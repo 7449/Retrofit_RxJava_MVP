@@ -1,5 +1,6 @@
 package com.example.y.mvp.mvp.presenter;
 
+import com.example.y.mvp.activity.NewsDetailActivity;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.model.BaseDataBridge;
 import com.example.y.mvp.mvp.model.BaseModel;
@@ -32,6 +33,11 @@ public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListVi
             }
         }
         newsListModel.netWorkNewList(id, page, this);
+    }
+
+    @Override
+    public void onClick(NewsListInfo info) {
+        NewsDetailActivity.startIntent(info.getId());
     }
 
 

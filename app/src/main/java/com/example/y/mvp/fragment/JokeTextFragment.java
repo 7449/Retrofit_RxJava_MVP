@@ -18,20 +18,14 @@ import com.example.y.mvp.widget.MyRecyclerView;
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * by y on 2016/5/30.
  */
 public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         MyRecyclerView.LoadingData, BaseView.JokeTextView {
 
-    @SuppressWarnings("unused")
-    @Bind(R.id.recyclerView)
-    MyRecyclerView recyclerView;
-    @SuppressWarnings("unused")
-    @Bind(R.id.srf_layout)
-    SwipeRefreshLayout srfLayout;
+    private MyRecyclerView recyclerView;
+    private SwipeRefreshLayout srfLayout;
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -48,6 +42,8 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
     protected View initView() {
         if (inflate == null) {
             inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_text, null);
+            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
+            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
             isPrepared = true;
         }
         return inflate;

@@ -16,6 +16,7 @@ import butterknife.Bind;
 /**
  * by y on 2016/5/11.
  */
+@SuppressWarnings("ALL")
 public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 

@@ -5,6 +5,7 @@ import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.Bean.JokePicBean;
 import com.example.y.mvp.mvp.Bean.JokeTextBean;
+import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
 import com.example.y.mvp.mvp.Bean.TabNewsInfo;
@@ -45,6 +46,16 @@ public interface BaseView<T> {
     }
 
     interface NewsListView extends BaseView<NewsListInfo> {
+    }
+
+    interface NewsDetailView {
+        void setData(NewsDetailInfo datas);
+
+        void netWorkError();
+
+        void hideProgress();
+
+        void showProgress();
     }
 
     interface TabNameView extends BaseView<TabNameInfo> {
