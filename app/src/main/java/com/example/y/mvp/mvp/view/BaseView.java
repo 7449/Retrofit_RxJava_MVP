@@ -3,6 +3,8 @@ package com.example.y.mvp.mvp.view;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
+import com.example.y.mvp.mvp.Bean.JokePicBean;
+import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
 import com.example.y.mvp.mvp.Bean.TabNewsInfo;
@@ -27,6 +29,11 @@ public interface BaseView<T> {
 
     void hideFoot();
 
+    interface JokePicView extends BaseView<JokePicBean.JokePicInfo> {
+    }
+
+    interface JokeTextView extends BaseView<JokeTextBean.JokeTextInfo> {
+    }
 
     interface ImageDetailView extends BaseView<ImageDetailInfo> {
     }
@@ -54,6 +61,8 @@ public interface BaseView<T> {
         void switchImageClassification();
 
         void switchNewImage();
+
+        void switchJoke();
 
         void switchAbout();
 

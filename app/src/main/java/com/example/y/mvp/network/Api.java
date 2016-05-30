@@ -6,7 +6,8 @@ package com.example.y.mvp.network;
 public class Api {
 
 
-    public static final String BASE_API = "http://www.tngou.net/";
+    //天狗api
+    public static final String BASE_API_TNGOU = "http://www.tngou.net/";
 
     //图片URL前缀
     public static final String IMAGER_URL = "http://tnfs.tngou.net/image";
@@ -31,4 +32,19 @@ public class Api {
 
     //新闻详情
     public static final String NEWS_SHOW = "api/top/show";
+
+
+    ///////////////////////////////////////////////////////////////
+
+    //百度api
+    public static final String BASE_API_BAIDU = "http://apis.baidu.com/";
+
+    //百度key
+    public static final String BAIDU_KEY = "apikey:139ac5b32ede0368d654a01505b30e15";
+
+    //笑话  文字
+    public static final String JOKE_TEXT = "showapi_open_bus/showapi_joke/joke_text";
+
+    //笑话  图片
+    public static final String JOKE_PIC = "showapi_open_bus/showapi_joke/joke_pic";
 }

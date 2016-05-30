@@ -11,6 +11,7 @@ import com.example.y.mvp.R;
 import com.example.y.mvp.fragment.AboutFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
+import com.example.y.mvp.fragment.JokeMainPagerFragment;
 import com.example.y.mvp.fragment.NewsViewPagerFragment;
 import com.example.y.mvp.fragment.TestFragment;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
@@ -85,6 +86,12 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
     public void switchNewImage() {
         toolBar.setTitle(UIUtils.getString(R.string.toolbar_image_image_new));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageNewFragment()).commit();
+    }
+
+    @Override
+    public void switchJoke() {
+        toolBar.setTitle(UIUtils.getString(R.string.toolbar_joke));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new JokeMainPagerFragment()).commit();
     }
 
     @Override

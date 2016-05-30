@@ -44,5 +44,13 @@ public interface BasePresenter {
         void requestNetWork();
     }
 
+    interface JokeTextPresenter {
+        void requestNetWork(int page, boolean isNull);
+    }
+
+    interface JokePicPresenter {
+        void requestNetWork(int page, boolean isNull);
+    }
+
 
 }

@@ -13,4 +13,5 @@
     <dimen name="news_image_height">100dp</dimen>
     <dimen name="news_image_width">100dp</dimen>
     <dimen name="tv_marginLeft">5dp</dimen>
+    <dimen name="tv_size">18sp</dimen>
 </resources>

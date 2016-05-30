@@ -30,4 +30,12 @@ public interface BaseModel<T> {
         void netWorkDetail(int id, BaseDataBridge.ImageDetailData imageDetailData);
     }
 
+    interface JokeTextListModel {
+        void netWorkJoke(int page, BaseDataBridge.JokeTextList jokeList);
+    }
+
+    interface JokePicListModel {
+        void netWorkJoke(int page, BaseDataBridge.JokePicList jokeList);
+    }
+
 }

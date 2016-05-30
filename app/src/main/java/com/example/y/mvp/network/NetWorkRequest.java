@@ -1,6 +1,8 @@
 package com.example.y.mvp.network;
 
 import com.example.y.mvp.mvp.Bean.BaseBean;
+import com.example.y.mvp.mvp.Bean.JokePicBean;
+import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
 
 import rx.Subscriber;
@@ -58,6 +60,23 @@ public class NetWorkRequest {
 
     public static void tabName(Subscriber<BaseBean.TabNameBean> subscriber) {
         Network.getTngouApi().getTabName()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+
+    /////////////////////////////////////////////////////////////
+
+    public static void jokeTextList(int page, Subscriber<JokeTextBean> subscriber) {
+        Network.getBaiDuApi().getJokeText(page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public static void jokePicList(int page, Subscriber<JokePicBean> subscriber) {
+        Network.getBaiDuApi().getJokePic(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
