@@ -1,5 +1,10 @@
 # Retrofit_RxJava_MVP
 Demo基于Retrofit_RxJava,并且采用了MVP模式
+
+
+![](https://github.com/blackCave/Retrofit_RxJava_MVP/blob/master/image/Screenshot_20160504-172004.png)
+
+
 接口用的天狗云的免费接口,非常感谢 [http://www.tngou.net/doc/gallery](http://www.tngou.net/doc/gallery)
 
 #框架说明
