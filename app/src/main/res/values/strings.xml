@@ -52,5 +52,9 @@
     <string name="toolbar_joke">笑话</string>
     <string name="joke_text">文字笑话</string>
     <string name="joke_pic">图片笑话</string>
+    <string name="exit_app">再按一次</string>
+    <string name="toolbar_item_share">分享</string>
+    <string name="image_detail">图片详情</string>
+    <string name="share">分享到平台</string>
 
 </resources>

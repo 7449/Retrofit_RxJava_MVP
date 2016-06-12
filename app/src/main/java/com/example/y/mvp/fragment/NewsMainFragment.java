@@ -147,9 +147,4 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
         newsListPresenter.onClick(info);
     }
 
-    @Override
-    public void onItemLongClick(View view, int position, NewsListInfo info) {
-
-    }
-
 }

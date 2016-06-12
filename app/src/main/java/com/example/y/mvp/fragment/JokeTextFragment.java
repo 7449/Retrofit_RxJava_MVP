@@ -3,15 +3,18 @@ package com.example.y.mvp.fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Html;
 import android.view.View;
 
 import com.example.y.mvp.R;
+import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.JokeTextAdapter;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.JokeTextPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
+import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 
@@ -22,7 +25,7 @@ import java.util.List;
  * by y on 2016/5/30.
  */
 public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, BaseView.JokeTextView {
+        MyRecyclerView.LoadingData, BaseView.JokeTextView, BaseRecyclerViewAdapter.OnItemLongClickListener<JokeTextBean.JokeTextInfo> {
 
     private MyRecyclerView recyclerView;
     private SwipeRefreshLayout srfLayout;
@@ -62,6 +65,7 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
         srfLayout.setOnRefreshListener(this);
 
         adapter = new JokeTextAdapter(jokeTextInfo);
+        adapter.setOnLongClickListener(this);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLoadingData(this);
@@ -126,4 +130,8 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
         adapter.isShowFooter(false);
     }
 
+    @Override
+    public void onLongClick(View view, int position, JokeTextBean.JokeTextInfo info) {
+        ActivityUtils.share(String.valueOf(Html.fromHtml(info.getText())));
+    }
 }

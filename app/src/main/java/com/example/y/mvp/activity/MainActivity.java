@@ -2,6 +2,7 @@ package com.example.y.mvp.activity;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.y.mvp.R;
+import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.fragment.AboutFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
@@ -70,7 +72,18 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (Constant.BACK_EXIT) {
+                super.onBackPressed();
+                return;
+            }
+            Constant.BACK_EXIT = true;
+            Toast(UIUtils.getString(R.string.exit_app));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Constant.BACK_EXIT = false;
+                }
+            }, 2000);
         }
     }
 

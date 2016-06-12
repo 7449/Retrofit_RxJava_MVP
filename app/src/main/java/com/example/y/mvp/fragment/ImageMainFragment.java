@@ -146,9 +146,4 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
         imageListPresenter.onClick(info);
     }
 
-    @Override
-    public void onItemLongClick(View view, int position, ImageListInfo info) {
-
-    }
-
 }

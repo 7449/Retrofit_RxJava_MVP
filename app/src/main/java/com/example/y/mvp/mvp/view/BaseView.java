@@ -80,4 +80,9 @@ public interface BaseView<T> {
         void switchTest();
 
     }
+
+    interface ToolBarItemView {
+
+        void switchShare();
+    }
 }

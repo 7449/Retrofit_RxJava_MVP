@@ -131,8 +131,4 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
         imageNewPresenter.onClick(info);
     }
 
-    @Override
-    public void onItemLongClick(View view, int position, ImageNewInfo info) {
-
-    }
 }

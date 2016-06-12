@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.example.y.mvp.R;
+
 import java.io.File;
 
 /**
@@ -59,9 +61,9 @@ public class ActivityUtils {
         int i = outRect.top;
         return i;
     }
-    
+
     //获取图库路径
-    public static File ImagePath(){
+    public static File ImagePath() {
         String sdcard = Environment.getExternalStorageDirectory().toString();
         File file = new File(sdcard + "/DCIM");
         if (!file.exists()) {
@@ -72,6 +74,14 @@ public class ActivityUtils {
             mFile.mkdirs();
         }
         return mFile.getAbsoluteFile();
+    }
+
+    public static void share(String message) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        UIUtils.getActivity().startActivity(Intent.createChooser(intent, UIUtils.getString(R.string.share)));
     }
 
 

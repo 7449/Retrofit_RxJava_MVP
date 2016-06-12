@@ -25,6 +25,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     static final int TYPE_FOOTER = 1;
     private List<T> mDatas = new LinkedList<>();
     private OnItemClickListener<T> mOnItemClickListener;
+    private OnItemLongClickListener<T> mOnLongClickListener;
     private boolean showFoot = false;
 
     public BaseRecyclerViewAdapter(List<T> datas) {
@@ -99,12 +100,18 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
 
         void onItemClick(View view, int position, T info);
 
-        void onItemLongClick(View view, int position, T info);
+    }
 
+    public interface OnItemLongClickListener<T> {
+        void onLongClick(View view, int position, T info);
     }
 
     public void setOnItemClickListener(OnItemClickListener<T> listener) {
         this.mOnItemClickListener = listener;
+    }
+
+    public void setOnLongClickListener(OnItemLongClickListener<T> listener) {
+        this.mOnLongClickListener = listener;
     }
 
     @Override
@@ -131,7 +138,15 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
                 @Override
                 public void onClick(View v) {
                     mOnItemClickListener.onItemClick(v, pos, data);
-                    mOnItemClickListener.onItemLongClick(v, pos, data);
+                }
+            });
+        }
+        if (mOnLongClickListener != null) {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mOnLongClickListener.onLongClick(v, pos, data);
+                    return true;
                 }
             });
         }
