@@ -30,19 +30,11 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     private SwipeRefreshLayout srfLayout;
     private MyRecyclerView recyclerView;
 
-
     private boolean isPrepared;
     private boolean isLoad;
 
-    private View inflate;
-
     private NewsListAdapter adapter;
     private BasePresenter.NewsListPresenter newsListPresenter;
-
-
-    private static int page = 1;
-    private static boolean isNull = false;
-
 
     public static Fragment newInstance(int index) {
         Bundle bundle = new Bundle();
@@ -54,13 +46,13 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     protected View initView() {
-        if (inflate == null) {
-            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
-            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
-            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
+        if (view == null) {
+            view = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
+            recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
+            srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
         }
-        return inflate;
+        return view;
     }
 
     @Override
@@ -124,13 +116,17 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     }
 
     @Override
-    public void hideProgress() {
-        srfLayout.setRefreshing(false);
+    public void showProgress() {
+        if (!srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(true);
+        }
     }
 
     @Override
-    public void showProgress() {
-        srfLayout.setRefreshing(true);
+    public void hideProgress() {
+        if (srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(false);
+        }
     }
 
     @Override

@@ -21,10 +21,13 @@ import rx.Subscription;
 @SuppressWarnings("ALL")
 public abstract class BaseFragment extends Fragment {
 
-    boolean isVisible;
-    static final String FRAGMENT_INDEX = "fragment_index";
-    int index = 0;
+    protected boolean isVisible;
+    protected static final String FRAGMENT_INDEX = "fragment_index";
+    protected int index = 0;
+    protected int page = 1;
+    protected boolean isNull = false;
     protected Subscription subscription;
+    protected View view;
 
 
     @Override

@@ -30,10 +30,6 @@ public class JokePicFragment extends BaseFragment
 
     private boolean isPrepared;
     private boolean isLoad;
-    private static boolean isNull = false;
-    private static int page = 1;
-
-    private View inflate;
 
     private BasePresenter.JokePicPresenter jokePresenter;
     private JokePicAdapter adapter;
@@ -41,13 +37,13 @@ public class JokePicFragment extends BaseFragment
 
     @Override
     protected View initView() {
-        if (inflate == null) {
-            inflate = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_pic, null);
-            recyclerView = (MyRecyclerView) inflate.findViewById(R.id.recyclerView);
-            srfLayout = (SwipeRefreshLayout) inflate.findViewById(R.id.srf_layout);
+        if (view == null) {
+            view = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_pic, null);
+            recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
+            srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
         }
-        return inflate;
+        return view;
     }
 
     @Override
@@ -108,13 +104,17 @@ public class JokePicFragment extends BaseFragment
     }
 
     @Override
-    public void hideProgress() {
-        srfLayout.setRefreshing(false);
+    public void showProgress() {
+        if (!srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(true);
+        }
     }
 
     @Override
-    public void showProgress() {
-        srfLayout.setRefreshing(true);
+    public void hideProgress() {
+        if (srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(false);
+        }
     }
 
     @Override

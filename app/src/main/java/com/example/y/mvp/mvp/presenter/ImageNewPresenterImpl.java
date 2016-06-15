@@ -23,6 +23,7 @@ public class ImageNewPresenterImpl extends BasePresenterImpl<BaseView.ImageNewVi
 
     private final BaseModel.ImageNewModel imageNewModel;
 
+
     public ImageNewPresenterImpl(BaseView.ImageNewView view) {
         super(view);
         this.imageNewModel = new ImageNewModelImpl();
@@ -39,7 +40,9 @@ public class ImageNewPresenterImpl extends BasePresenterImpl<BaseView.ImageNewVi
             if (rows.isEmpty()) {
                 rows = "20";
             }
-            ActivityUtils.closeSyskeyBroad();
+            if (ActivityUtils.syskeyBroadStatus()) {
+                ActivityUtils.closeSyskeyBroad();
+            }
             view.showProgress();
             imageNewModel.netWorkNew(Integer.valueOf(id), Integer.valueOf(rows), this);
         }

@@ -35,9 +35,18 @@ public class ActivityUtils {
 
     // 收起软键盘
     public static void closeSyskeyBroad() {
-        if (UIUtils.getActivity().getCurrentFocus().getWindowToken() != null) {
-            ((InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) UIUtils.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        } catch (Exception e) {
+            LogUtils.i("closeSyskeyBroad", "关闭输入法异常");
         }
+    }
+
+    //检测键盘的状态
+    public static boolean syskeyBroadStatus() {
+        InputMethodManager imm = (InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        return imm.isActive();
     }
 
     //屏幕高度
