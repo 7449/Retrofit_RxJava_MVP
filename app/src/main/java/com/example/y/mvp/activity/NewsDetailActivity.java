@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
@@ -20,7 +21,6 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import butterknife.Bind;
 
@@ -41,7 +41,7 @@ public class NewsDetailActivity extends BaseActivity
     ProgressBar progressBar;
     @SuppressWarnings("unused")
     @Bind(R.id.content)
-    ThemeTextView content;
+    TextView content;
     @SuppressWarnings("unused")
     @Bind(R.id.toolbar)
     Toolbar toolbar;
