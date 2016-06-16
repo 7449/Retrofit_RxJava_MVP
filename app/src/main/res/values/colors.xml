@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="tab_text_color_normal" tools:ignore="UnusedResources">#ff737373</color>
-    <color name="white">#ffffff</color>
+    <color name="white" tools:ignore="UnusedResources">#ffffff</color>
     <color name="main_color" tools:ignore="UnusedResources">#4387F0</color>
     <color name="black">#000000</color>
 

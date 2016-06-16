@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.y.mvp.utils.theme.widget.ThemeCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:statusBarBackground="?attr/main_bg"
+    >
 
-    <android.support.design.widget.AppBarLayout
+
+    <com.example.y.mvp.utils.theme.widget.ThemeAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="256dp"
+        android:background="?attr/main_bg"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.example.y.mvp.utils.theme.widget.ThemeCollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/main_bg"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
@@ -31,27 +36,30 @@
                 tools:targetApi="lollipop" />
 
 
-            <android.support.v7.widget.Toolbar
+            <com.example.y.mvp.utils.theme.widget.ThemeToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="?attr/main_textcolor" />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-
-    </android.support.design.widget.AppBarLayout>
+        </com.example.y.mvp.utils.theme.widget.ThemeCollapsingToolbarLayout>
 
 
-    <android.support.v4.widget.NestedScrollView
+    </com.example.y.mvp.utils.theme.widget.ThemeAppBarLayout>
+
+
+    <com.example.y.mvp.utils.theme.widget.ThemeNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/main_bg"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <com.example.y.mvp.utils.theme.widget.ThemeLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/main_bg"
             android:orientation="vertical">
 
             <ProgressBar
@@ -61,15 +69,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
 
-            <TextView
+            <com.example.y.mvp.utils.theme.widget.ThemeTextView
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:lineSpacingMultiplier="1.6"
-                android:padding="@dimen/tv_padding" />
+                android:padding="@dimen/tv_padding"
+                android:textColor="?attr/main_textcolor" />
 
-        </LinearLayout>
+        </com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </com.example.y.mvp.utils.theme.widget.ThemeNestedScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</com.example.y.mvp.utils.theme.widget.ThemeCoordinatorLayout>

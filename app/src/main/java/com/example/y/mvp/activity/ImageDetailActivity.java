@@ -18,6 +18,7 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.CompetenceUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.utils.theme.widget.ThemeToolbar;
 import com.example.y.mvp.widget.MyOnPageChangeListener;
 
 import java.util.LinkedList;
@@ -38,7 +39,7 @@ public class ImageDetailActivity extends BaseActivity
     ViewPager viewPager;
     @SuppressWarnings("unused")
     @Bind(R.id.toolBar)
-    Toolbar toolBar;
+    ThemeToolbar toolBar;
 
     private int id;
     private int pos;

@@ -28,20 +28,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        initWindow();
         context = getApplicationContext();
         activity = this;
-//        initWindow();
-        setContentView(getLayoutId());
         SharedPreferencesMgr.init(context);
-        ButterKnife.bind(this);
-
-        LogUtils.i("BaseActivity", getClass().getSimpleName());
-
         if (SharedPreferencesMgr.getInt() == 1) {
             setTheme(R.style.theme_2);
         } else {
             setTheme(R.style.theme_1);
         }
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+
+        LogUtils.i("BaseActivity", getClass().getSimpleName());
 
         ActivityCollector.addActivity(this);
     }

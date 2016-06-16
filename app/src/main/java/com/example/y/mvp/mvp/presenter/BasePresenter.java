@@ -30,7 +30,7 @@ public interface BasePresenter {
     }
 
     interface MainViewPresenter {
-        void switchId(int id);
+        void switchPosition(int position);
 
         void rxBus();
     }

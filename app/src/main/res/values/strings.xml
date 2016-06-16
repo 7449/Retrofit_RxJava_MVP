@@ -14,14 +14,14 @@
 
 
     <string name="loading">加载中</string>
-    <string name="navigation_new_image">最新图片</string>
-    <string name="navigation_image_classification">图片分类</string>
+    <string name="list_menu_new_image">最新图片</string>
+    <string name="list_menu_image">图片分类</string>
     <string name="edittext_hint">请输入id索搜图片</string>
     <string name="new_image_btn">搜索</string>
     <string name="image_new_id">id不能为空</string>
     <string name="edittext_hint_rows">图片数量</string>
     <string name="number_big" tools:ignore="UnusedResources">数字过大</string>
-    <string name="navigation_about">说明</string>
+    <string name="list_menu_about">说明</string>
 
     <string name="about_text1">软件是为了学习MVP,RxJava,Retrofit,感谢githup上面诸多的开源框架,软件用到了以下框架</string>
     <string name="about_text2">com.android.support:appcompat-v7:23.3.0\n
@@ -37,10 +37,10 @@
      com.rengwuxian.materialedittext:library:2.1.4\n
      com.jakewharton:butterknife:7.0.1\n
     </string>
-    <string name="navigation_news">新闻列表</string>
+    <string name="list_menu_news">新闻列表</string>
     <string name="news_time">时间:</string>
     <string name="test">测试</string>
-    <string name="navigation_joke">笑话</string>
+    <string name="list_menu_joke">笑话</string>
     <string name="joke_text">文字笑话</string>
     <string name="joke_pic">图片笑话</string>
     <string name="exit_app">再按一次</string>

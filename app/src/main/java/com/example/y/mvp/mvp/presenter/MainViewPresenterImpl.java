@@ -1,7 +1,6 @@
 package com.example.y.mvp.mvp.presenter;
 
 
-import com.example.y.mvp.R;
 import com.example.y.mvp.data.IsNightMode;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.network.RxBus;
@@ -22,25 +21,27 @@ public class MainViewPresenterImpl extends BasePresenterImpl<BaseView.MainView>
     }
 
     @Override
-    public void switchId(int id) {
-        switch (id) {
-            case R.id.navigation_item_news:
+    public void switchPosition(int position) {
+
+        switch (position){
+            case 1:
                 view.switchNews();
                 break;
-            case R.id.navigation_item_image_classification:
+            case 2:
                 view.switchImageClassification();
                 break;
-            case R.id.navigation_item_new_image:
+            case 3:
                 view.switchNewImage();
                 break;
-            case R.id.navigation_item_joke:
+            case 4:
                 view.switchJoke();
                 break;
-            case R.id.navigation_about:
+            case 5:
                 view.switchAbout();
                 break;
-            case R.id.navigation_Test:
+            case 6:
                 view.switchTest();
+                break;
         }
     }
 

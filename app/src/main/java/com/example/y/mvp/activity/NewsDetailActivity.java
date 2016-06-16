@@ -1,7 +1,6 @@
 package com.example.y.mvp.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
@@ -9,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
@@ -21,6 +19,9 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.utils.theme.widget.ThemeCollapsingToolbarLayout;
+import com.example.y.mvp.utils.theme.widget.ThemeTextView;
+import com.example.y.mvp.utils.theme.widget.ThemeToolbar;
 
 import butterknife.Bind;
 
@@ -35,16 +36,16 @@ public class NewsDetailActivity extends BaseActivity
     ImageView image;
     @SuppressWarnings("unused")
     @Bind(R.id.collapsing_toolbar)
-    CollapsingToolbarLayout collapsingToolbar;
+    ThemeCollapsingToolbarLayout collapsingToolbar;
     @SuppressWarnings("unused")
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
     @SuppressWarnings("unused")
     @Bind(R.id.content)
-    TextView content;
+    ThemeTextView content;
     @SuppressWarnings("unused")
     @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    ThemeToolbar toolbar;
 
     private int id;
     private String message;

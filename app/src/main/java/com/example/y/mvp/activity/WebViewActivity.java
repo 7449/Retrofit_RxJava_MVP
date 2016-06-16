@@ -3,13 +3,13 @@ package com.example.y.mvp.activity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.Toolbar;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.utils.ActivityUtils;
+import com.example.y.mvp.utils.theme.widget.ThemeToolbar;
 
 import butterknife.Bind;
 
@@ -25,7 +25,7 @@ public class WebViewActivity extends BaseActivity implements SwipeRefreshLayout.
     WebView webView;
     @SuppressWarnings("unused")
     @Bind(R.id.toolBar)
-    Toolbar toolBar;
+    ThemeToolbar toolBar;
     @SuppressWarnings("unused")
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;

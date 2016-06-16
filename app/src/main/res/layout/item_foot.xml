@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <TextView
+    <com.example.y.mvp.utils.theme.widget.ThemeTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/loading"
-        android:textColor="@color/colorAccent" />
+        android:textColor="?attr/second_textcolor" />
 
 
 </com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>

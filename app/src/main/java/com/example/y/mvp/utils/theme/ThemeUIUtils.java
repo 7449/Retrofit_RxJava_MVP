@@ -1,8 +1,6 @@
 package com.example.y.mvp.utils.theme;
 
-import android.annotation.TargetApi;
 import android.content.res.Resources;
-import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -20,7 +18,6 @@ public class ThemeUIUtils {
     /**
      * 切换应用主题
      */
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static void changeTheme(View rootView, Resources.Theme theme) {
         if (rootView instanceof ThemeUIInterface) {
             ((ThemeUIInterface) rootView).setTheme(theme);
