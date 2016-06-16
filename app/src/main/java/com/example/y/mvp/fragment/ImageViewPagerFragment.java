@@ -47,7 +47,6 @@ public class ImageViewPagerFragment extends BaseFragment implements BaseView.Tab
 
         data = new LinkedList<>();
         tabNameAdapter = new TabNameAdapter(getChildFragmentManager(), data);
-
     }
 
 

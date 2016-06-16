@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.y.mvp.R;
 import com.example.y.mvp.utils.ActivityCollector;
 import com.example.y.mvp.utils.LogUtils;
+import com.example.y.mvp.utils.theme.SharedPreferencesMgr;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
@@ -28,17 +30,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         activity = this;
+//        initWindow();
         setContentView(getLayoutId());
+        SharedPreferencesMgr.init(context);
         ButterKnife.bind(this);
-        // 默认全屏显示
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        // 不全屏显示
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        // 全屏显示
-//        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
         LogUtils.i("BaseActivity", getClass().getSimpleName());
+
+        if (SharedPreferencesMgr.getInt() == 1) {
+            setTheme(R.style.theme_2);
+        } else {
+            setTheme(R.style.theme_1);
+        }
+
         ActivityCollector.addActivity(this);
+    }
+
+    private void initWindow() {
+//         默认全屏显示
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+//         不全屏显示
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+//         全屏显示
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
     }
 
     //隐藏状态栏

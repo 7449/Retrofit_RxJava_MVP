@@ -4,7 +4,6 @@
     <string name="network_error">网络异常</string>
     <string name="network_dialog_ok" tools:ignore="UnusedResources">退出</string>
     <string name="network_dialog_message" tools:ignore="UnusedResources">由于本软件所有的可见数据都是来自网络,所以在没有WIFI的情况下不允许进入</string>
-    <string name="clear_dialog_message">只是暂时在界面删除,刷新还是会有的,确认删除吗？</string>
     <string name="dialog_ok">确认</string>
     <string name="imageview_message">确认保存图片吗?</string>
 
@@ -19,15 +18,12 @@
     <string name="loading">加载中</string>
     <string name="navigation_new_image">最新图片</string>
     <string name="navigation_image_classification">图片分类</string>
-    <string name="toolbar_image_viewpager">图片分类</string>
-    <string name="toolbar_image_image_new">最新图片</string>
     <string name="edittext_hint">请输入id索搜图片</string>
     <string name="new_image_btn">搜索</string>
     <string name="image_new_id">id不能为空</string>
     <string name="edittext_hint_rows">图片数量</string>
     <string name="number_big" tools:ignore="UnusedResources">数字过大</string>
     <string name="navigation_about">说明</string>
-    <string name="toolbar_about">说明</string>
 
     <string name="about_text1">软件是为了学习MVP,RxJava,Retrofit,感谢githup上面诸多的开源框架,软件用到了以下框架</string>
     <string name="about_text2">com.android.support:appcompat-v7:23.3.0\n
@@ -44,12 +40,9 @@
      com.jakewharton:butterknife:7.0.1\n
     </string>
     <string name="navigation_news">新闻列表</string>
-    <string name="news">新闻</string>
     <string name="news_time">时间:</string>
     <string name="test">测试</string>
-    <string name="toolbar_test">测试</string>
     <string name="navigation_joke">笑话</string>
-    <string name="toolbar_joke">笑话</string>
     <string name="joke_text">文字笑话</string>
     <string name="joke_pic">图片笑话</string>
     <string name="exit_app">再按一次</string>

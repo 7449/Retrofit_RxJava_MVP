@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.y.mvp.utils.theme.widget.ThemeCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,12 +8,14 @@
     android:layout_marginEnd="@dimen/image_detail_margin"
     android:layout_marginStart="@dimen/image_detail_margin"
     android:layout_marginTop="@dimen/image_detail_margin"
+    android:background="?attr/main_bg"
     app:cardCornerRadius="@dimen/image_detail_margin">
 
 
-    <RelativeLayout
+    <com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/main_bg">
 
         <ImageView
             android:id="@+id/image"
@@ -22,52 +24,57 @@
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
-        <LinearLayout
+        <com.example.y.mvp.utils.theme.widget.ThemeLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/tv_marginLeft"
             android:layout_toRightOf="@+id/image"
+            android:background="?attr/main_bg"
             android:orientation="vertical"
             tools:ignore="RtlHardcoded">
 
-            <RelativeLayout
+            <com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="?attr/main_bg">
 
-                <TextView
+                <com.example.y.mvp.utils.theme.widget.ThemeTextView
                     android:id="@+id/tv_fromname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/image_list_padding" />
+                    android:padding="@dimen/image_list_padding"
+                    android:textColor="?attr/main_textcolor" />
 
-                <TextView
+                <com.example.y.mvp.utils.theme.widget.ThemeTextView
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_fromname"
                     android:padding="@dimen/image_list_padding"
+                    android:textColor="?attr/main_textcolor"
                     tools:ignore="RtlHardcoded" />
 
-            </RelativeLayout>
+            </com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout>
 
-            <TextView
+            <com.example.y.mvp.utils.theme.widget.ThemeTextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:padding="@dimen/image_list_padding" />
+                android:padding="@dimen/image_list_padding"
+                android:textColor="?attr/main_textcolor" />
 
 
-            <TextView
+            <com.example.y.mvp.utils.theme.widget.ThemeTextView
                 android:id="@+id/tv_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/image_list_padding"
-                android:textColor="@color/main_color" />
+                android:textColor="?attr/second_textcolor" />
 
-        </LinearLayout>
+        </com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>
 
-    </RelativeLayout>
+    </com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout>
 
-</android.support.v7.widget.CardView>
+</com.example.y.mvp.utils.theme.widget.ThemeCardView>

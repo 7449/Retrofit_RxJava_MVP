@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import java.util.List;
 
@@ -44,20 +44,17 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
         return new ViewHolder(view);
     }
 
+    @SuppressWarnings("unused")
     class ViewHolder extends BaseRecyclerViewHolder {
 
-        @SuppressWarnings("unused")
         @Bind(R.id.image)
-        ImageView iv;
-        @SuppressWarnings("unused")
+        ImageView image;
         @Bind(R.id.tv_title)
-        TextView tvTitle;
-        @SuppressWarnings("unused")
+        ThemeTextView tvTitle;
         @Bind(R.id.tv_size)
-        TextView tvSize;
-        @SuppressWarnings("unused")
+        ThemeTextView tvSize;
         @Bind(R.id.tv_count)
-        TextView tvCount;
+        ThemeTextView tvCount;
 
         ViewHolder(View view) {
             super(view);
@@ -70,7 +67,7 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
             tvTitle.setText(data.getTitle());
             tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
             tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(UIUtils.getContext(), iv, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(UIUtils.getContext(), image, Api.IMAGER_URL + data.getImg());
         }
     }
 }

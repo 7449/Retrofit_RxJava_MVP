@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.y.mvp.utils.theme.widget.ThemeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/main_bg"
     android:gravity="center"
     android:orientation="horizontal">
 
@@ -20,4 +21,4 @@
         android:textColor="@color/colorAccent" />
 
 
-</LinearLayout>
+</com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>

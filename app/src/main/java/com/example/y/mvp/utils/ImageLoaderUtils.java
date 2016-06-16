@@ -25,7 +25,7 @@ public class ImageLoaderUtils {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).placeholder(R.drawable.loading)
+        Glide.with(context).load(url).placeholder(R.drawable.night)
                 .error(R.drawable.image_error).crossFade().into(imageView);
     }
 }

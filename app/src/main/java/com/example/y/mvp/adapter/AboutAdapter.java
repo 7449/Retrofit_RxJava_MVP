@@ -38,6 +38,7 @@ public class AboutAdapter extends BaseRecyclerViewAdapter<String> {
         return new ViewHolder(view);
     }
 
+    @SuppressWarnings("unused")
     class ViewHolder extends BaseRecyclerViewHolder {
 
 

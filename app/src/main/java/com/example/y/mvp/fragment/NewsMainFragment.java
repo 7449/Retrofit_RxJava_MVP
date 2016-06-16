@@ -10,13 +10,13 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.NewsListAdapter;
-import com.example.y.mvp.constant.Constant;
+import com.example.y.mvp.data.Constant;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.NewsListPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyRecyclerView;
+import com.example.y.mvp.utils.theme.widget.ThemeRecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,10 +25,10 @@ import java.util.List;
  * by 12406 on 2016/5/14.
  */
 public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, BaseView.NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
+        ThemeRecyclerView.LoadingData, BaseView.NewsListView, BaseRecyclerViewAdapter.OnItemClickListener<NewsListInfo> {
 
     private SwipeRefreshLayout srfLayout;
-    private MyRecyclerView recyclerView;
+    private ThemeRecyclerView recyclerView;
 
     private boolean isPrepared;
     private boolean isLoad;
@@ -48,7 +48,7 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     protected View initView() {
         if (view == null) {
             view = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
-            recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
+            recyclerView = (ThemeRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
         }

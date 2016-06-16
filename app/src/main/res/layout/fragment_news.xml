@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.y.mvp.widget.MyRecyclerView
+    <com.example.y.mvp.utils.theme.widget.ThemeRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="?attr/main_bg" />
 
 </android.support.v4.widget.SwipeRefreshLayout>

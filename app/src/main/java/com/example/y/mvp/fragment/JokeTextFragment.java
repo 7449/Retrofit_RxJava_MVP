@@ -9,14 +9,14 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.JokeTextAdapter;
-import com.example.y.mvp.constant.Constant;
+import com.example.y.mvp.data.Constant;
 import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.JokeTextPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyRecyclerView;
+import com.example.y.mvp.utils.theme.widget.ThemeRecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,9 +25,9 @@ import java.util.List;
  * by y on 2016/5/30.
  */
 public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, BaseView.JokeTextView, BaseRecyclerViewAdapter.OnItemLongClickListener<JokeTextBean.JokeTextInfo> {
+        ThemeRecyclerView.LoadingData, BaseView.JokeTextView, BaseRecyclerViewAdapter.OnItemLongClickListener<JokeTextBean.JokeTextInfo> {
 
-    private MyRecyclerView recyclerView;
+    private ThemeRecyclerView recyclerView;
     private SwipeRefreshLayout srfLayout;
 
     private boolean isPrepared;
@@ -41,7 +41,7 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
     protected View initView() {
         if (view == null) {
             view = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_text, null);
-            recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
+            recyclerView = (ThemeRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
         }

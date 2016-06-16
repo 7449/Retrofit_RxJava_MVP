@@ -7,11 +7,11 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import java.util.List;
 
@@ -51,15 +51,13 @@ public class JokeTextAdapter extends BaseRecyclerViewAdapter<JokeTextBean.JokeTe
         return null;
     }
 
+    @SuppressWarnings("unused")
     class ViewHolder extends BaseRecyclerViewHolder {
 
-
-        @SuppressWarnings("unused")
         @Bind(R.id.tv_time)
-        TextView tvTime;
-        @SuppressWarnings("unused")
+        ThemeTextView tvTime;
         @Bind(R.id.tv_text)
-        TextView tvText;
+        ThemeTextView tvText;
 
         public ViewHolder(View itemView) {
             super(itemView);

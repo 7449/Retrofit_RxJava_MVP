@@ -10,13 +10,13 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.ImageListAdapter;
-import com.example.y.mvp.constant.Constant;
+import com.example.y.mvp.data.Constant;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageListPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyRecyclerView;
+import com.example.y.mvp.utils.theme.widget.ThemeRecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,9 +25,9 @@ import java.util.List;
  * by y on 2016/4/28.
  */
 public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
-        MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
+        ThemeRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageListInfo>, BaseView.ImageListView {
 
-    private MyRecyclerView recyclerView;
+    private ThemeRecyclerView recyclerView;
     private SwipeRefreshLayout srfLayout;
 
     private boolean isPrepared;
@@ -48,7 +48,7 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
     protected View initView() {
         if (view == null) {
             view = View.inflate(UIUtils.getActivity(), R.layout.fragment_main, null);
-            recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
+            recyclerView = (ThemeRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
         }
@@ -83,6 +83,7 @@ public class ImageMainFragment extends BaseFragment implements SwipeRefreshLayou
             }
         });
         isLoad = true;
+
     }
 
 

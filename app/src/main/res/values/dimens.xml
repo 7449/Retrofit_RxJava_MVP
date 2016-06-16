@@ -15,4 +15,7 @@
     <dimen name="tv_marginLeft">5dp</dimen>
     <dimen name="tv_size">18sp</dimen>
     <dimen name="tv_padding">6dp</dimen>
+    <dimen name="drawer_item_height" tools:ignore="UnusedResources">40dp</dimen>
+    <dimen name="head_marginTop">30dp</dimen>
+    <dimen name="head_marginRight">30dp</dimen>
 </resources>

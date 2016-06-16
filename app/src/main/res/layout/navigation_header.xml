@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@color/colorPrimary"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:ignore="Overdraw">
 
+
     <ImageView
+        android:id="@+id/iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/head_marginRight"
+        android:layout_marginTop="@dimen/head_marginTop"
+        android:background="@drawable/day"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="30dp"
-        android:background="@mipmap/ic_launcher"
+        android:background="@drawable/head"
         tools:ignore="ContentDescription" />
 
-</LinearLayout>
+</com.example.y.mvp.utils.theme.widget.ThemeRelativeLayout>

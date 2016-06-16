@@ -9,13 +9,13 @@ import android.view.View;
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.ImageNewAdapter;
-import com.example.y.mvp.constant.Constant;
+import com.example.y.mvp.data.Constant;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyRecyclerView;
+import com.example.y.mvp.utils.theme.widget.ThemeRecyclerView;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.LinkedList;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
+public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener, ThemeRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
 
 
     @SuppressWarnings("unused")
@@ -38,7 +38,7 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
     MaterialEditText etRows;
     @SuppressWarnings("unused")
     @Bind(R.id.recyclerView)
-    MyRecyclerView recyclerView;
+    ThemeRecyclerView recyclerView;
     @SuppressWarnings("unused")
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;

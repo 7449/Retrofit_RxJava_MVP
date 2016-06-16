@@ -30,7 +30,7 @@ public class ImageDetailAdapter extends BasePagerAdapter<ImageDetailInfo> {
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                DiaLogUtils.iamgeViewDialog(UIUtils.getActivity(), imageView, position);
+                DiaLogUtils.iamgeViewDialog(imageView, position);
                 return true;
             }
         });

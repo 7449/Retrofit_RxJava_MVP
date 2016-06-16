@@ -6,15 +6,15 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.TabLayout
+        <com.example.y.mvp.utils.theme.widget.ThemeTabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:background="?attr/second_bg"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/white" />
+            app:tabTextColor="?attr/main_textcolor" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
