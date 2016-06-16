@@ -20,7 +20,6 @@ public class ThemeCardView extends CardView implements ThemeUIInterface {
 
     public ThemeCardView(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeCardView(Context context, AttributeSet attrs) {

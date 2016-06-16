@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.y.mvp.utils.theme.widget.ThemeCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,6 @@
     android:layout_marginEnd="@dimen/image_detail_margin"
     android:layout_marginStart="@dimen/image_detail_margin"
     android:layout_marginTop="@dimen/image_detail_margin"
-    android:background="?attr/main_bg"
     app:cardCornerRadius="@dimen/image_detail_margin">
 
     <com.example.y.mvp.utils.theme.widget.ThemeLinearLayout
@@ -34,4 +33,4 @@
     </com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>
 
 
-</com.example.y.mvp.utils.theme.widget.ThemeCardView>
+</android.support.v7.widget.CardView>

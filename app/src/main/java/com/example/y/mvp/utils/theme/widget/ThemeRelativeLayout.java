@@ -19,7 +19,6 @@ public class ThemeRelativeLayout extends RelativeLayout implements ThemeUIInterf
 
     public ThemeRelativeLayout(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeRelativeLayout(Context context, AttributeSet attrs) {

@@ -29,7 +29,6 @@ public class ThemeEditText extends EditText implements ThemeUIInterface {
 
     public ThemeEditText(Context context) {
         super(context);
-        init(null);
     }
 
     private void init(AttributeSet attrs) {

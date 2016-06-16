@@ -19,7 +19,6 @@ public class ThemeFrameLayout extends FrameLayout implements ThemeUIInterface {
 
     public ThemeFrameLayout(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeFrameLayout(Context context, AttributeSet attrs) {

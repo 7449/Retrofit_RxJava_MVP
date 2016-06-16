@@ -19,7 +19,6 @@ public class ThemeTabLayout extends TabLayout implements ThemeUIInterface {
 
     public ThemeTabLayout(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeTabLayout(Context context, AttributeSet attrs) {

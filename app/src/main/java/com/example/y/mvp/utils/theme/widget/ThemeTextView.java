@@ -19,7 +19,6 @@ public class ThemeTextView extends TextView implements ThemeUIInterface {
 
     public ThemeTextView(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeTextView(Context context, AttributeSet attrs) {

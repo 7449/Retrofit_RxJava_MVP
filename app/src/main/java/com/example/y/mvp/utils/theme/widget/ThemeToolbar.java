@@ -20,7 +20,6 @@ public class ThemeToolbar extends Toolbar implements ThemeUIInterface {
 
     public ThemeToolbar(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeToolbar(Context context, @Nullable AttributeSet attrs) {

@@ -29,7 +29,6 @@ public class ThemeButton extends Button implements ThemeUIInterface {
 
     public ThemeButton(Context context) {
         super(context);
-        init(null);
     }
 
     private void init(AttributeSet attrs) {

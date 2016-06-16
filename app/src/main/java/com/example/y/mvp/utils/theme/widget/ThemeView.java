@@ -18,7 +18,6 @@ public class ThemeView extends ImageView implements ThemeUIInterface {
 
     public ThemeView(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeView(Context context, AttributeSet attrs) {

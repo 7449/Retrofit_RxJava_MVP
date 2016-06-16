@@ -18,7 +18,6 @@ public class ThemeLinearLayout extends LinearLayout implements ThemeUIInterface 
 
     public ThemeLinearLayout(Context context) {
         super(context);
-        init(null);
     }
 
     public ThemeLinearLayout(Context context, AttributeSet attrs) {

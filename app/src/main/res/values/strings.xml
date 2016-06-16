@@ -2,8 +2,6 @@
     <string name="app_name">练习</string>
 
     <string name="network_error">网络异常</string>
-    <string name="network_dialog_ok" tools:ignore="UnusedResources">退出</string>
-    <string name="network_dialog_message" tools:ignore="UnusedResources">由于本软件所有的可见数据都是来自网络,所以在没有WIFI的情况下不允许进入</string>
     <string name="dialog_ok">确认</string>
     <string name="imageview_message">确认保存图片吗?</string>
 
