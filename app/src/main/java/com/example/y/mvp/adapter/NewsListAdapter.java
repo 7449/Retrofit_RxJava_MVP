@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
@@ -14,7 +15,6 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.TimeUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import java.util.List;
 
@@ -24,6 +24,7 @@ import butterknife.Bind;
  * by 12406 on 2016/5/15.
  */
 public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
+
 
     public NewsListAdapter(List<NewsListInfo> datas) {
         super(datas);
@@ -54,20 +55,23 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
     }
 
 
-    @SuppressWarnings("unused")
     class ViewHolder extends BaseRecyclerViewHolder {
 
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
         ImageView image;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_fromname)
-        ThemeTextView tvFromname;
+        TextView tvFromname;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_time)
-        ThemeTextView tvTime;
+        TextView tvTime;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_title)
-        ThemeTextView tvTitle;
+        TextView tvTitle;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_url)
-        ThemeTextView tvUrl;
-
+        TextView tvUrl;
 
         public ViewHolder(View itemView) {
             super(itemView);

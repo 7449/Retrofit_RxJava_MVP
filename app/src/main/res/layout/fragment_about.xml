@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.y.mvp.utils.theme.widget.ThemeRecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/main_bg" />
+        android:layout_height="wrap_content" />
     
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".main.widget.MainActivity">
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/navigation_item_news"
+            android:checked="true"
+            android:title="@string/navigation_news" />
+        <item
+            android:id="@+id/navigation_item_image_classification"
+            android:title="@string/navigation_image_classification" />
+        <item
+            android:id="@+id/navigation_item_new_image"
+            android:title="@string/navigation_new_image" />
+
+        <item
+            android:id="@+id/navigation_item_joke"
+            android:title="@string/navigation_joke" />
+        
+        <item
+            android:id="@+id/navigation_about"
+            android:title="@string/navigation_about" />
+        <item
+            android:id="@+id/navigation_Test"
+            android:title="@string/test" />
+    </group>
+</menu>

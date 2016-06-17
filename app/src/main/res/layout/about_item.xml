@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.y.mvp.utils.theme.widget.ThemeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/main_bg"
     android:orientation="vertical">
 
-    <com.example.y.mvp.utils.theme.widget.ThemeTextView
+    <TextView
         android:id="@+id/tv_about"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/main_textcolor" />
+        android:layout_height="wrap_content" />
 
-</com.example.y.mvp.utils.theme.widget.ThemeLinearLayout>
+</LinearLayout>

@@ -1,29 +1,25 @@
-package com.example.y.mvp.utils.theme.widget;
+package com.example.y.mvp.widget;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
-
-import com.example.y.mvp.utils.theme.ThemeUIInterface;
 
 /**
  * by y on 2016/4/28.
  */
 @SuppressWarnings("ALL")
-public class ThemeViewPager extends ViewPager implements ThemeUIInterface{
+public class MyViewPager extends ViewPager {
 
     private boolean isScroll = true;
 
 
-    public ThemeViewPager(Context context) {
+    public MyViewPager(Context context) {
         super(context);
     }
 
-    public ThemeViewPager(Context context, AttributeSet attrs) {
+    public MyViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -40,16 +36,6 @@ public class ThemeViewPager extends ViewPager implements ThemeUIInterface{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return isScroll && super.onInterceptTouchEvent(ev);
-
-    }
-
-    @Override
-    public View getView() {
-        return this;
-    }
-
-    @Override
-    public void setTheme(Resources.Theme themeId) {
 
     }
 }

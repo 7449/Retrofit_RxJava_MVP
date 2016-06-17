@@ -30,9 +30,7 @@ public interface BasePresenter {
     }
 
     interface MainViewPresenter {
-        void switchPosition(int position);
-
-        void rxBus();
+        void switchId(int id);
     }
 
     interface ToolBarItemPresenter {

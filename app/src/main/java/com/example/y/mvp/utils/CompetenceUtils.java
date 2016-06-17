@@ -5,7 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.example.y.mvp.data.Constant;
+import com.example.y.mvp.constant.Constant;
 
 /**
  * by y on 2016/5/4.

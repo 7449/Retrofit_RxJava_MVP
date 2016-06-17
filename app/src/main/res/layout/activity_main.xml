@@ -8,30 +8,28 @@
     tools:context=".activity.MainActivity">
 
 
-    <com.example.y.mvp.utils.theme.widget.ThemeCoordinatorLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        app:statusBarBackground="?attr/main_bg"
         android:layout_height="match_parent">
 
         <include layout="@layout/toolbar" />
 
-        <com.example.y.mvp.utils.theme.widget.ThemeFrameLayout
+        <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/main_bg"
             android:scrollbars="none"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    </com.example.y.mvp.utils.theme.widget.ThemeCoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
-    <com.example.y.mvp.utils.theme.widget.ThemeListView
-        android:id="@+id/list_menu"
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?attr/main_bg"
-        android:divider="@null" />
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/navigation_menu" />
 
 
 </android.support.v4.widget.DrawerLayout>

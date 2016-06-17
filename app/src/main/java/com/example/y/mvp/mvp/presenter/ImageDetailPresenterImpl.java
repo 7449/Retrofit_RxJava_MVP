@@ -5,7 +5,7 @@ import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.data.Constant;
+import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.mvp.model.BaseDataBridge;
 import com.example.y.mvp.mvp.model.BaseModel;

@@ -1,36 +1,18 @@
-package com.example.y.mvp.utils.theme.widget;
+package com.example.y.mvp.widget;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.view.View;
-
-import com.example.y.mvp.utils.theme.ThemeUIInterface;
-import com.example.y.mvp.utils.theme.ViewAttributeUtils;
 
 /**
  * by 12406 on 2016/4/30.
  */
-public class ThemeRecyclerView extends RecyclerView implements ThemeUIInterface {
+public class MyRecyclerView extends RecyclerView {
 
-    private int attr_background = -1;
-
-    @Override
-    public View getView() {
-        return this;
-    }
-
-    @Override
-    public void setTheme(Resources.Theme themeId) {
-        if (attr_background != -1) {
-            ViewAttributeUtils.applyBackgroundDrawable(this, themeId, attr_background);
-        }
-    }
 
     public enum LAYOUT_MANAGER_TYPE {
         LINEAR,
@@ -58,22 +40,17 @@ public class ThemeRecyclerView extends RecyclerView implements ThemeUIInterface 
     }
 
 
-    public ThemeRecyclerView(Context context) {
+    public MyRecyclerView(Context context) {
         super(context);
-        init(null);
     }
 
-    public ThemeRecyclerView(Context context, AttributeSet attrs) {
+    public MyRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs);
+
     }
 
-    public ThemeRecyclerView(Context context, AttributeSet attrs, int defStyle) {
+    public MyRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-    }
-
-    private void init(AttributeSet attrs) {
-        attr_background = ViewAttributeUtils.getBackgroundAttibute(attrs);
     }
 
 

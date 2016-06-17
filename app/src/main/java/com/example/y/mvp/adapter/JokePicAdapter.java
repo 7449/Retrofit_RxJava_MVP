@@ -7,12 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.JokePicBean;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import java.util.List;
 
@@ -52,14 +52,16 @@ public class JokePicAdapter extends BaseRecyclerViewAdapter<JokePicBean.JokePicI
         return null;
     }
 
-    @SuppressWarnings("unused")
     class ViewHolder extends BaseRecyclerViewHolder {
 
+
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_time)
-        ThemeTextView tvTime;
+        TextView tvTime;
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
         ImageView image;
-        
+
         public ViewHolder(View itemView) {
             super(itemView);
         }

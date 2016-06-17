@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.utils.theme.widget.ThemeTextView;
 
 import java.util.List;
 
@@ -55,17 +55,21 @@ public class ImageListAdapter extends BaseRecyclerViewAdapter<ImageListInfo> {
 
     }
 
-    @SuppressWarnings("unused")
+
     class ViewHolder extends BaseRecyclerViewHolder {
 
+        @SuppressWarnings("unused")
         @Bind(R.id.image)
-        ImageView image;
+        ImageView iv;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_title)
-        ThemeTextView tvTitle;
+        TextView tvTitle;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_size)
-        ThemeTextView tvSize;
+        TextView tvSize;
+        @SuppressWarnings("unused")
         @Bind(R.id.tv_count)
-        ThemeTextView tvCount;
+        TextView tvCount;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -78,7 +82,7 @@ public class ImageListAdapter extends BaseRecyclerViewAdapter<ImageListInfo> {
             tvTitle.setText(data.getTitle());
             tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
             tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(UIUtils.getContext(), image, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(UIUtils.getContext(), iv, Api.IMAGER_URL + data.getImg());
         }
     }
 }

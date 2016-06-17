@@ -45,8 +45,8 @@ public class ImageListPresenterImpl extends BasePresenterImpl<BaseView.ImageList
     @Override
     public void addData(List<ImageListInfo> imageListInfo) {
         view.setData(imageListInfo);
-        view.hideProgress();
         view.hideFoot();
+        view.hideProgress();
     }
 
     @Override

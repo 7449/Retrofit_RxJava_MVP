@@ -45,4 +45,5 @@ dependencies {
     compile 'com.github.liuguangqiang.swipeback:library:1.0.2'
     compile 'org.greenrobot:greendao:2.2.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.jiechic.library:xUtils:2.6.14'
 }
