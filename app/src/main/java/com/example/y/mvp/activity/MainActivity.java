@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
 
 
     private void init() {
-        toolBar.setTitle(UIUtils.getString(R.string.news));
+        toolBar.setTitle(UIUtils.getString(R.string.navigation_news));
         setSupportActionBar(toolBar);
         setupDrawerContent(navigationView);
         mainViewPresenter = new MainViewPresenterImpl(this);
@@ -60,6 +60,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
+                        toolBar.setTitle(menuItem.getTitle());
                         mainViewPresenter.switchId(menuItem.getItemId());
                         drawerLayout.closeDrawers();
                         return true;
@@ -95,37 +96,31 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
 
     @Override
     public void switchNews() {
-        toolBar.setTitle(UIUtils.getString(R.string.news));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new NewsViewPagerFragment()).commit();
     }
 
     @Override
     public void switchImageClassification() {
-        toolBar.setTitle(UIUtils.getString(R.string.toolbar_image_viewpager));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageViewPagerFragment()).commit();
     }
 
     @Override
     public void switchNewImage() {
-        toolBar.setTitle(UIUtils.getString(R.string.toolbar_image_image_new));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageNewFragment()).commit();
     }
 
     @Override
     public void switchJoke() {
-        toolBar.setTitle(UIUtils.getString(R.string.toolbar_joke));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new JokeMainPagerFragment()).commit();
     }
 
     @Override
     public void switchAbout() {
-        toolBar.setTitle(UIUtils.getString(R.string.toolbar_about));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new AboutFragment()).commit();
     }
 
     @Override
     public void switchTest() {
-        toolBar.setTitle(UIUtils.getString(R.string.toolbar_test));
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new TestFragment()).commit();
     }
 
