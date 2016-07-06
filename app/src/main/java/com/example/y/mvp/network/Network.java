@@ -55,14 +55,11 @@ class Network {
         @Override
         public okhttp3.Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            LogUtils.i("嗷大喵来打印日志咯", "request:" + request.toString());
+            LogUtils.i("LogUtils--> ", "request:" + request.toString());
             okhttp3.Response response = chain.proceed(chain.request());
-//            long t1 = System.nanoTime();
-//            long t2 = System.nanoTime();
-//            LogUtils.i("嗷大喵来打印日志咯", String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.headers()));
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            LogUtils.i("嗷大喵来打印日志咯", "response body:" + content);
+            LogUtils.i("LogUtils--> ", "response body:" + content);
             if (response.body() != null) {
                 ResponseBody body = ResponseBody.create(mediaType, content);
                 return response.newBuilder().body(body).build();

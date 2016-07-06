@@ -3,14 +3,16 @@ package com.example.y.mvp.utils;
 import rx.Subscription;
 
 /**
- * by y on 2016/5/17.
+ * by y on 2016/7/6.
  */
-@SuppressWarnings("ALL")
-public class rxUtils {
+public class RxUtils {
 
-    public static void unsubscribe(Subscription subscription) {
+    public static Subscription subscription;
+
+    public static void unsubscribe() {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
     }
+
 }

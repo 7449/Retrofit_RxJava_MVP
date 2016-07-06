@@ -33,8 +33,6 @@ public class MainViewPresenterImpl extends BasePresenterImpl<BaseView.MainView>
             case R.id.navigation_about:
                 view.switchAbout();
                 break;
-            case R.id.navigation_Test:
-                view.switchTest();
         }
     }
 }

@@ -13,7 +13,6 @@ import com.example.y.mvp.utils.LogUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.ButterKnife;
-import rx.Subscription;
 
 /**
  * by y on 2016/4/28.
@@ -26,7 +25,6 @@ public abstract class BaseFragment extends Fragment {
     protected int index = 0;
     protected int page = 1;
     protected boolean isNull = false;
-    protected Subscription subscription;
     protected View view;
 
 
@@ -88,13 +86,6 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        unsubscribe();
     }
 
-
-    protected void unsubscribe() {
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
-        }
-    }
 }

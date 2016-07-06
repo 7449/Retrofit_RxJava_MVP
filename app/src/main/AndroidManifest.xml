@@ -25,7 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ImageDetailActivity" />
-        <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.NewsDetailActivity" />
     </application>
 

@@ -77,8 +77,6 @@ public interface BaseView<T> {
 
         void switchAbout();
 
-        void switchTest();
-
     }
 
     interface ToolBarItemView {

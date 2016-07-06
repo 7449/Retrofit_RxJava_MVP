@@ -16,7 +16,6 @@ import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
 import com.example.y.mvp.fragment.JokeMainPagerFragment;
 import com.example.y.mvp.fragment.NewsViewPagerFragment;
-import com.example.y.mvp.fragment.TestFragment;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
@@ -118,11 +117,5 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
     public void switchAbout() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new AboutFragment()).commit();
     }
-
-    @Override
-    public void switchTest() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new TestFragment()).commit();
-    }
-
 
 }
