@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.y.mvp.utils.LogUtils;
+import com.example.y.mvp.utils.RxUtils;
 import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.ButterKnife;
@@ -86,6 +87,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        RxUtils.unsubscribe();
     }
 
 }

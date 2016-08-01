@@ -1,5 +1,6 @@
 package com.example.y.mvp.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -69,6 +70,29 @@ public class ActivityUtils {
         UIUtils.getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
         int i = outRect.top;
         return i;
+    }
+
+    public static void initWindow(Activity activity) {
+        // 默认全屏显示
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        // 不全屏显示
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        // 全屏显示
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+    }
+
+    //隐藏状态栏
+    public static void hideStatusBar() {
+        WindowManager.LayoutParams attrs = UIUtils.getActivity().getWindow().getAttributes();
+        attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        UIUtils.getActivity().getWindow().setAttributes(attrs);
+    }
+
+    //显示状态栏
+    public static void showStatusBar() {
+        WindowManager.LayoutParams attrs = UIUtils.getActivity().getWindow().getAttributes();
+        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        UIUtils.getActivity().getWindow().setAttributes(attrs);
     }
 
     //获取图库路径

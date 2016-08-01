@@ -4,6 +4,7 @@ package com.example.y.mvp.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import com.example.y.mvp.fragment.NewsViewPagerFragment;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
+import com.example.y.mvp.utils.ActivityCollector;
 import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.Bind;
@@ -74,6 +76,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
         } else {
             if (Constant.BACK_EXIT) {
                 super.onBackPressed();
+                ActivityCollector.removeAllActivity();
                 return;
             }
             Constant.BACK_EXIT = true;
@@ -95,27 +98,31 @@ public class MainActivity extends BaseActivity implements BaseView.MainView {
 
     @Override
     public void switchNews() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new NewsViewPagerFragment()).commit();
+        replaceFragment(new NewsViewPagerFragment());
     }
 
     @Override
     public void switchImageClassification() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageViewPagerFragment()).commit();
+        replaceFragment(new ImageViewPagerFragment());
     }
 
     @Override
     public void switchNewImage() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ImageNewFragment()).commit();
+        replaceFragment(new ImageNewFragment());
     }
 
     @Override
     public void switchJoke() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new JokeMainPagerFragment()).commit();
+        replaceFragment(new JokeMainPagerFragment());
     }
 
     @Override
     public void switchAbout() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new AboutFragment()).commit();
+        replaceFragment(new AboutFragment());
+    }
+
+    void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
     }
 
 }

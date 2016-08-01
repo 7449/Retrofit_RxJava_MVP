@@ -36,19 +36,12 @@ public class JokeTextAdapter extends BaseRecyclerViewAdapter<JokeTextBean.JokeTe
 
     @Override
     protected BaseRecyclerViewHolder onCreate(ViewGroup parent, int viewType) {
-
-        if (viewType == TYPE_ITEM) {
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.joke_text_list_item, parent, false);
-            return new ViewHolder(view);
-
-        } else if (viewType == TYPE_FOOTER) {
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false);
-            return new BaseRecyclerViewHolder(view);
+        switch (viewType) {
+            case TYPE_ITEM:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.joke_text_list_item, parent, false));
+            default:
+                return new BaseRecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false));
         }
-
-        return null;
     }
 
     class ViewHolder extends BaseRecyclerViewHolder {

@@ -39,20 +39,12 @@ public class ImageListAdapter extends BaseRecyclerViewAdapter<ImageListInfo> {
 
     @Override
     protected BaseRecyclerViewHolder onCreate(ViewGroup parent, int viewType) {
-
-        if (viewType == TYPE_ITEM) {
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_list_item, parent, false);
-            return new ViewHolder(view);
-
-        } else if (viewType == TYPE_FOOTER) {
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false);
-            return new BaseRecyclerViewHolder(view);
+        switch (viewType) {
+            case TYPE_ITEM:
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.image_list_item, parent, false));
+            default:
+                return new BaseRecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foot, parent, false));
         }
-
-        return null;
-
     }
 
 

@@ -58,7 +58,6 @@ public class ImageDetailActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        hideStatusBar();
         toolBar.setTitle(UIUtils.getString(R.string.image_detail));
         setSupportActionBar(toolBar);
         CompetenceUtils.Storage();
