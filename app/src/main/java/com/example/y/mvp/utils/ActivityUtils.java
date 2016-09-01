@@ -44,6 +44,12 @@ public class ActivityUtils {
         }
     }
 
+    public static void offKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
     //检测键盘的状态
     public static boolean syskeyBroadStatus() {
         InputMethodManager imm = (InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
