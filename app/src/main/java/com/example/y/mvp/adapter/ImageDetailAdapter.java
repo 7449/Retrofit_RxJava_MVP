@@ -9,7 +9,6 @@ import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.DiaLogUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
-import com.example.y.mvp.utils.UIUtils;
 
 import java.util.List;
 
@@ -24,14 +23,14 @@ public class ImageDetailAdapter extends BasePagerAdapter<ImageDetailInfo> {
     }
 
     @Override
-    protected Object instantiate(ViewGroup container, final int position, ImageDetailInfo data) {
-        final ImageView imageView = new ImageView(UIUtils.getContext());
+    protected Object instantiate(final ViewGroup container, final int position, ImageDetailInfo data) {
+        final ImageView imageView = new ImageView(container.getContext());
         ImageLoaderUtils.display(imageView, Api.IMAGER_URL + data.getSrc());
         container.addView(imageView);
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                DiaLogUtils.iamgeViewDialog((Activity) UIUtils.getContext(), imageView, position);
+                DiaLogUtils.iamgeViewDialog((Activity) container.getContext(), imageView, position);
                 return true;
             }
         });
