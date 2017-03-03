@@ -40,7 +40,7 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
     @Override
     protected View initView() {
         if (view == null) {
-            view = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_text, null);
+            view = View.inflate(getActivity(), R.layout.fragment_joke_text, null);
             recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;
@@ -132,6 +132,6 @@ public class JokeTextFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void onLongClick(View view, int position, JokeTextBean.JokeTextInfo info) {
-        ActivityUtils.share(String.valueOf(Html.fromHtml(info.getText())));
+        ActivityUtils.share(getActivity(), String.valueOf(Html.fromHtml(info.getText())));
     }
 }

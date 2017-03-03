@@ -70,7 +70,7 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
             tvTitle.setText(data.getTitle());
             tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
             tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(UIUtils.getContext(), iv, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(iv, Api.IMAGER_URL + data.getImg());
         }
     }
 }

@@ -27,7 +27,7 @@ public class JokeMainPagerFragment extends BaseFragment {
 
     @Override
     protected View initView() {
-        return View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_viewpager, null);
+        return View.inflate(getActivity(), R.layout.fragment_joke_viewpager, null);
     }
 
     @Override

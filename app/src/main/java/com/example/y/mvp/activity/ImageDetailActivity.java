@@ -60,7 +60,7 @@ public class ImageDetailActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         toolBar.setTitle(UIUtils.getString(R.string.image_detail));
         setSupportActionBar(toolBar);
-        CompetenceUtils.Storage();
+        CompetenceUtils.storage(this);
         getBundle();
         init();
     }
@@ -156,6 +156,6 @@ public class ImageDetailActivity extends BaseActivity
 
     @Override
     public void switchShare() {
-        ActivityUtils.share(Api.IMAGER_URL + list.get(pos).getSrc());
+        ActivityUtils.share(this, Api.IMAGER_URL + list.get(pos).getSrc());
     }
 }

@@ -14,6 +14,7 @@ import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
+import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.MyRecyclerView;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -61,7 +62,7 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
 
     @Override
     public View initView() {
-        return View.inflate(UIUtils.getActivity(), R.layout.fragment_new_image, null);
+        return View.inflate(getActivity(), R.layout.fragment_new_image, null);
     }
 
     @Override
@@ -131,4 +132,8 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
         imageNewPresenter.onClick(info);
     }
 
+    @Override
+    public void offKeyBoard() {
+        ActivityUtils.offKeyboard(getActivity());
+    }
 }

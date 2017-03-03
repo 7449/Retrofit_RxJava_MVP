@@ -28,7 +28,7 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     public View initView() {
-        return View.inflate(UIUtils.getActivity(), R.layout.fragment_about, null);
+        return View.inflate(getActivity(), R.layout.fragment_about, null);
     }
 
     @Override

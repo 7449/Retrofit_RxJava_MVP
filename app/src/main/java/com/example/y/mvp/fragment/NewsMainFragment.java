@@ -47,7 +47,7 @@ public class NewsMainFragment extends BaseFragment implements SwipeRefreshLayout
     @Override
     protected View initView() {
         if (view == null) {
-            view = View.inflate(UIUtils.getActivity(), R.layout.fragment_news, null);
+            view = View.inflate(getActivity(), R.layout.fragment_news, null);
             recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;

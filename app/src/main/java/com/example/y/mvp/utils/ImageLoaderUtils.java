@@ -21,11 +21,11 @@ public class ImageLoaderUtils {
                 .error(error).crossFade().into(imageView);
     }
 
-    public static void display(Context context, ImageView imageView, String url) {
+    public static void display(ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).placeholder(R.drawable.loading)
-                .error(R.drawable.image_error).crossFade().into(imageView);
+        Glide.with(imageView.getContext()).load(url).placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher).crossFade().into(imageView);
     }
 }

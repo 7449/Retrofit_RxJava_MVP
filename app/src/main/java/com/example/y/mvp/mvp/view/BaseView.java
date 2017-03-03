@@ -43,6 +43,7 @@ public interface BaseView<T> {
     }
 
     interface ImageNewView extends BaseView<ImageNewInfo> {
+        void offKeyBoard();
     }
 
     interface NewsListView extends BaseView<NewsListInfo> {

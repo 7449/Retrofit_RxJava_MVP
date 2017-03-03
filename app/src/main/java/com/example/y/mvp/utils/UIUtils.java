@@ -1,11 +1,10 @@
 package com.example.y.mvp.utils;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.example.y.mvp.activity.BaseActivity;
+import com.example.y.mvp.App;
 
 
 /**
@@ -16,13 +15,8 @@ public class UIUtils {
 
 
     public static Context getContext() {
-        return BaseActivity.getContext();
+        return App.getContext();
     }
-
-    public static Activity getActivity() {
-        return BaseActivity.getActivity();
-    }
-
 
     public static Drawable getDrawable(int id) {
         return getContext().getResources().getDrawable(id);

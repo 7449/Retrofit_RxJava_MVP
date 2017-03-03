@@ -64,7 +64,7 @@ public class JokePicAdapter extends BaseRecyclerViewAdapter<JokePicBean.JokePicI
         protected void setData(@NonNull JokePicBean.JokePicInfo data) {
             super.setData(data);
             tvTime.setText(data.getTitle());
-            ImageLoaderUtils.display(UIUtils.getContext(), image, data.getImg());
+            ImageLoaderUtils.display(image, data.getImg());
         }
     }
 }

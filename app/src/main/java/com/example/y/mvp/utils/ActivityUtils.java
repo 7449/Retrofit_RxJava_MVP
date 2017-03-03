@@ -35,30 +35,30 @@ public class ActivityUtils {
     }
 
     // 收起软键盘
-    public static void closeSyskeyBroad() {
+    public static void closeSyskeyBroad(Activity activity) {
         try {
             InputMethodManager inputMethodManager = (InputMethodManager) UIUtils.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         } catch (Exception e) {
             LogUtils.i("closeSyskeyBroad", "关闭输入法异常");
         }
     }
 
-    public static void offKeyboard() {
-        InputMethodManager inputMethodManager = (InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+    public static void offKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 
     //检测键盘的状态
-    public static boolean syskeyBroadStatus() {
-        InputMethodManager imm = (InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+    public static boolean syskeyBroadStatus(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         return imm.isActive();
     }
 
     //屏幕高度
-    public static int getTop() {
-        WindowManager windowManager = UIUtils.getActivity().getWindowManager();
+    public static int getTop(Activity activity) {
+        WindowManager windowManager = activity.getWindowManager();
         int width = windowManager.getDefaultDisplay().getWidth();
         int height = windowManager.getDefaultDisplay().getHeight();
         return height;
@@ -71,9 +71,9 @@ public class ActivityUtils {
 
 
     //状态栏高度
-    public static int getRectTop() {
+    public static int getRectTop(Activity activity) {
         Rect outRect = new Rect();
-        UIUtils.getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
         int i = outRect.top;
         return i;
     }
@@ -88,17 +88,17 @@ public class ActivityUtils {
     }
 
     //隐藏状态栏
-    public static void hideStatusBar() {
-        WindowManager.LayoutParams attrs = UIUtils.getActivity().getWindow().getAttributes();
+    public static void hideStatusBar(Activity activity) {
+        WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
         attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        UIUtils.getActivity().getWindow().setAttributes(attrs);
+        activity.getWindow().setAttributes(attrs);
     }
 
     //显示状态栏
-    public static void showStatusBar() {
-        WindowManager.LayoutParams attrs = UIUtils.getActivity().getWindow().getAttributes();
+    public static void showStatusBar(Activity activity) {
+        WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
         attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        UIUtils.getActivity().getWindow().setAttributes(attrs);
+        activity.getWindow().setAttributes(attrs);
     }
 
     //获取图库路径
@@ -115,12 +115,12 @@ public class ActivityUtils {
         return mFile.getAbsoluteFile();
     }
 
-    public static void share(String message) {
+    public static void share(Activity activity,String message) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        UIUtils.getActivity().startActivity(Intent.createChooser(intent, UIUtils.getString(R.string.share)));
+        activity.startActivity(Intent.createChooser(intent, UIUtils.getString(R.string.share)));
     }
 
 

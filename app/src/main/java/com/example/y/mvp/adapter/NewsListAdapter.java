@@ -78,7 +78,7 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
             tvTime.setText(UIUtils.getString(R.string.news_time) + TimeUtils.getDateToString(data.getTime()));
             tvTitle.setText(data.getTitle());
             tvUrl.setText(data.getFromurl());
-            ImageLoaderUtils.display(UIUtils.getContext(), image, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(image, Api.IMAGER_URL + data.getImg());
         }
     }
 }

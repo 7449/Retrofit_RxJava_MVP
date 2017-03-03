@@ -1,5 +1,6 @@
 package com.example.y.mvp.adapter;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,12 +26,12 @@ public class ImageDetailAdapter extends BasePagerAdapter<ImageDetailInfo> {
     @Override
     protected Object instantiate(ViewGroup container, final int position, ImageDetailInfo data) {
         final ImageView imageView = new ImageView(UIUtils.getContext());
-        ImageLoaderUtils.display(UIUtils.getActivity(), imageView, Api.IMAGER_URL + data.getSrc());
+        ImageLoaderUtils.display(imageView, Api.IMAGER_URL + data.getSrc());
         container.addView(imageView);
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                DiaLogUtils.iamgeViewDialog(UIUtils.getActivity(), imageView, position);
+                DiaLogUtils.iamgeViewDialog((Activity) UIUtils.getContext(), imageView, position);
                 return true;
             }
         });

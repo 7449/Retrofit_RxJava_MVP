@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.y.mvp.utils.LogUtils;
 import com.example.y.mvp.utils.RxUtils;
-import com.example.y.mvp.utils.UIUtils;
 
 import butterknife.ButterKnife;
 
@@ -67,7 +66,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     void Toast(String content) {
-        Toast.makeText(UIUtils.getContext(), content, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), content, Toast.LENGTH_LONG).show();
     }
 
 

@@ -96,7 +96,7 @@ public class NewsDetailActivity extends BaseActivity
 
     @Override
     public void setData(NewsDetailInfo datas) {
-        ImageLoaderUtils.display(getApplicationContext(), image, Api.IMAGER_URL + datas.getImg());
+        ImageLoaderUtils.display(image, Api.IMAGER_URL + datas.getImg());
         content.setText(Html.fromHtml(datas.getMessage()));
         collapsingToolbar.setTitle(datas.getTitle());
         message = String.valueOf(Html.fromHtml(datas.getMessage()));
@@ -104,7 +104,7 @@ public class NewsDetailActivity extends BaseActivity
 
     @Override
     public void switchShare() {
-        ActivityUtils.share(message);
+        ActivityUtils.share(this, message);
     }
 
     @Override

@@ -10,7 +10,6 @@ import com.example.y.mvp.mvp.Bean.TabNewsInfo;
 import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.TabNewsPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
-import com.example.y.mvp.utils.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
 
     @Override
     protected View initView() {
-        return View.inflate(UIUtils.getActivity(), R.layout.fragment_viewpager, null);
+        return View.inflate(getActivity(), R.layout.fragment_viewpager, null);
     }
 
     @Override
@@ -58,7 +57,7 @@ public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabN
 
     @Override
     public void netWorkError() {
-        Toast(UIUtils.getContext().getResources().getString(R.string.network_error));
+        Toast(getString(R.string.network_error));
     }
 
     @Override

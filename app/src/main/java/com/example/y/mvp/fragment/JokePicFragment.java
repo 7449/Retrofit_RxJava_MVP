@@ -38,7 +38,7 @@ public class JokePicFragment extends BaseFragment
     @Override
     protected View initView() {
         if (view == null) {
-            view = View.inflate(UIUtils.getActivity(), R.layout.fragment_joke_pic, null);
+            view = View.inflate(getActivity(), R.layout.fragment_joke_pic, null);
             recyclerView = (MyRecyclerView) view.findViewById(R.id.recyclerView);
             srfLayout = (SwipeRefreshLayout) view.findViewById(R.id.srf_layout);
             isPrepared = true;

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.example.y.mvp"
@@ -41,9 +41,4 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    //暂时不用
-    compile 'com.github.liuguangqiang.swipeback:library:1.0.2'
-    compile 'org.greenrobot:greendao:2.2.0'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.jiechic.library:xUtils:2.6.14'
 }

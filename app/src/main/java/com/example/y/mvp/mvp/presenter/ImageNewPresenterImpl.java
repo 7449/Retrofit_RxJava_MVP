@@ -41,7 +41,7 @@ public class ImageNewPresenterImpl extends BasePresenterImpl<BaseView.ImageNewVi
             if (TextUtils.isEmpty(rows)) {
                 rows = "20";
             }
-            ActivityUtils.offKeyboard();
+            view.offKeyBoard();
             view.showProgress();
             imageNewModel.netWorkNew(Integer.valueOf(id), Integer.valueOf(rows), this);
         }
