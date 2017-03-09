@@ -24,13 +24,12 @@ public class ImageListPresenterImpl extends BasePresenterImpl<BaseView.ImageList
     }
 
     @Override
-    public void requestNetWork(int id, int page, boolean isNull) {
+    public void requestNetWork(int id, int page) {
         if (page == 1) {
+            view.hideFoot();
             view.showProgress();
         } else {
-            if (!isNull) {
-                view.showFoot();
-            }
+            view.showFoot();
         }
         imageListModel.netWorkList(id, page, this);
     }

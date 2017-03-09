@@ -1,4 +1,4 @@
-package com.example.y.mvp.activity;
+package com.example.y.mvp.widget;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityCollector.addActivity(this);
     }
 
-    void Toast(String content) {
+    protected void Toast(String content) {
         Toast.makeText(this, content, Toast.LENGTH_LONG).show();
     }
 
@@ -34,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        RxUtils.unsubscribe();
+        ActivityCollector.removeActivity(this);
+        RxUtils.getInstance().unSubscription();
     }
 }

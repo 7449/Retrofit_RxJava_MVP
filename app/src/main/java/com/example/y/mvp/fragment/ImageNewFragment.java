@@ -2,12 +2,12 @@ package com.example.y.mvp.fragment;
 
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.adapter.BaseRecyclerViewAdapter;
 import com.example.y.mvp.adapter.ImageNewAdapter;
 import com.example.y.mvp.constant.Constant;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
@@ -16,8 +16,9 @@ import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyRecyclerView;
-import com.rengwuxian.materialedittext.MaterialEditText;
+import com.example.y.mvp.widget.LoadMoreAdapter;
+import com.example.y.mvp.widget.LoadMoreRecyclerView;
+import com.example.y.mvp.widget.MVPLazyFragment;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,30 +29,32 @@ import butterknife.OnClick;
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener, MyRecyclerView.LoadingData, BaseRecyclerViewAdapter.OnItemClickListener<ImageNewInfo> {
+public class ImageNewFragment extends MVPLazyFragment
+        implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener,
+        LoadMoreAdapter.OnItemClickListener<ImageNewInfo> {
 
 
-    @SuppressWarnings("unused")
     @Bind(R.id.et_id)
-    MaterialEditText etId;
-    @SuppressWarnings("unused")
+    AppCompatEditText etId;
+
     @Bind(R.id.et_rows)
-    MaterialEditText etRows;
-    @SuppressWarnings("unused")
+    AppCompatEditText etRows;
+
     @Bind(R.id.recyclerView)
-    MyRecyclerView recyclerView;
-    @SuppressWarnings("unused")
+    LoadMoreRecyclerView recyclerView;
+
     @Bind(R.id.srf_layout)
     SwipeRefreshLayout srfLayout;
 
     private ImageNewAdapter adapter;
     private BasePresenter.ImageNewPresenter imageNewPresenter;
 
+    public static ImageNewFragment getInstance() {
+        return new ImageNewFragment();
+    }
 
-    @SuppressWarnings("unused")
     @OnClick({R.id.btn_image})
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.btn_image:
                 onRefresh();
@@ -61,12 +64,7 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
     }
 
     @Override
-    public View initView() {
-        return View.inflate(getActivity(), R.layout.fragment_new_image, null);
-    }
-
-    @Override
-    public void initData() {
+    public void initActivityCreated() {
 
 
         List<ImageNewInfo> data = new LinkedList<>();
@@ -75,7 +73,6 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
 
         srfLayout.setOnRefreshListener(this);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLoadingData(this);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
 
         adapter = new ImageNewAdapter(data);
@@ -84,12 +81,15 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
 
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_new_image;
+    }
+
 
     @Override
     public void setData(List<ImageNewInfo> datas) {
-        if (!datas.isEmpty()) {
-            adapter.addAll(datas);
-        }
+        adapter.addAll(datas);
     }
 
     @Override
@@ -99,22 +99,13 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
 
     @Override
     public void hideProgress() {
-        srfLayout.setRefreshing(false);
+        if (srfLayout != null)
+            srfLayout.setRefreshing(false);
     }
 
     @Override
     public void showProgress() {
-        srfLayout.setRefreshing(true);
-    }
-
-    @Override
-    public void showFoot() {
-
-    }
-
-    @Override
-    public void hideFoot() {
-
+        if (srfLayout != null) srfLayout.setRefreshing(true);
     }
 
     @Override
@@ -124,16 +115,12 @@ public class ImageNewFragment extends BaseFragment implements BaseView.ImageNewV
     }
 
     @Override
-    public void onLoadMore() {
-    }
-
-    @Override
     public void onItemClick(View view, int position, ImageNewInfo info) {
         imageNewPresenter.onClick(info);
     }
 
     @Override
     public void offKeyBoard() {
-        ActivityUtils.offKeyboard(getActivity());
+        ActivityUtils.offKeyboard(etId);
     }
 }

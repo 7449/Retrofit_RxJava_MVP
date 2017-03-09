@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * by 12406 on 2016/4/28.
  */
-@SuppressWarnings("ALL")
+
 public class LogUtils {
 
 

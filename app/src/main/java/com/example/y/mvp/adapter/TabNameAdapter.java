@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.y.mvp.fragment.ImageMainFragment;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
+import com.example.y.mvp.widget.BaseFragmentPagerAdapter;
 
 import java.util.List;
 

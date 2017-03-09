@@ -3,7 +3,7 @@ package com.example.y.mvp.mvp.Bean;
 /**
  * by y on 2016/4/28.
  */
-@SuppressWarnings("ALL")
+
 public class TabNameInfo {
 
     private int id;

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.network.MySubscriber;
+import com.example.y.mvp.network.NetWorkSubscriber;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,28 +20,27 @@ import rx.schedulers.Schedulers;
 /**
  * by 12406 on 2016/4/30.
  */
-@SuppressWarnings("ALL")
+
 public class SaveImageUtils {
 
 
     public static void imageSave(final ImageView imageView, final int id) {
-
-
         Observable
                 .create(new Observable.OnSubscribe<ImageView>() {
                             @Override
                             public void call(Subscriber<? super ImageView> sub) {
                                 sub.onNext(imageView);
+                                RxUtils.getInstance().addSubscription(sub);
                             }
 
                         }
                 ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new MySubscriber<ImageView>() {
+                .subscribe(new NetWorkSubscriber<ImageView>() {
                     @Override
                     public void onNext(ImageView imageView) {
                         File imageFile = new File(ActivityUtils.ImagePath(), id + ".jpg");
-                        FileOutputStream outStream = null;
+                        FileOutputStream outStream;
                         try {
                             outStream = new FileOutputStream(imageFile);
                             Bitmap image = imageView.getDrawingCache();
@@ -53,10 +52,12 @@ public class SaveImageUtils {
                             e.printStackTrace();
                             onError(e);
                         }
+                        RxUtils.getInstance().unSubscription();
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        RxUtils.getInstance().unSubscription();
                         Toast.makeText(UIUtils.getContext(), UIUtils.getString(R.string.save_picture_failed), Toast.LENGTH_LONG).show();
                     }
                 });

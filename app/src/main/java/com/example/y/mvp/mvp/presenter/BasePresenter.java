@@ -7,7 +7,7 @@ import com.example.y.mvp.mvp.Bean.NewsListInfo;
 /**
  * by y on 2016/5/27.
  */
-@SuppressWarnings("ALL")
+
 public interface BasePresenter {
 
 
@@ -18,7 +18,7 @@ public interface BasePresenter {
     }
 
     interface ImageListPresenter {
-        void requestNetWork(int id, int page, boolean isNull);
+        void requestNetWork(int id, int page);
 
         void onClick(ImageListInfo info);
     }
@@ -39,7 +39,7 @@ public interface BasePresenter {
 
 
     interface NewsListPresenter {
-        void requestNetWork(int id, int page, boolean isNull);
+        void requestNetWork(int id, int page);
 
         void onClick(NewsListInfo info);
     }
@@ -55,14 +55,5 @@ public interface BasePresenter {
     interface TabNewsPresenter {
         void requestNetWork();
     }
-
-    interface JokeTextPresenter {
-        void requestNetWork(int page, boolean isNull);
-    }
-
-    interface JokePicPresenter {
-        void requestNetWork(int page, boolean isNull);
-    }
-
 
 }

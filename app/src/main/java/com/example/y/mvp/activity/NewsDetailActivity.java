@@ -21,6 +21,7 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.widget.BaseActivity;
 
 import butterknife.Bind;
 
@@ -30,19 +31,19 @@ import butterknife.Bind;
 public class NewsDetailActivity extends BaseActivity
         implements BaseView.NewsDetailView, BaseView.ToolBarItemView {
 
-    @SuppressWarnings("unused")
+
     @Bind(R.id.image)
     ImageView image;
-    @SuppressWarnings("unused")
+
     @Bind(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbar;
-    @SuppressWarnings("unused")
+
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
-    @SuppressWarnings("unused")
+
     @Bind(R.id.content)
     TextView content;
-    @SuppressWarnings("unused")
+
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 

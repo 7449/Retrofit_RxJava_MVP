@@ -3,8 +3,6 @@ package com.example.y.mvp.mvp.view;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
-import com.example.y.mvp.mvp.Bean.JokePicBean;
-import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
@@ -22,31 +20,36 @@ public interface BaseView<T> {
 
     void netWorkError();
 
-    void hideProgress();
+    /**
+     * 需要刷新的继承此View
+     *
+     * @param <T>
+     */
+    interface OnRefreshView<T> extends BaseView<T> {
+        void hideProgress();
 
-    void showProgress();
+        void showProgress();
 
-    void showFoot();
+        void showFoot();
 
-    void hideFoot();
-
-    interface JokePicView extends BaseView<JokePicBean.JokePicInfo> {
-    }
-
-    interface JokeTextView extends BaseView<JokeTextBean.JokeTextInfo> {
+        void hideFoot();
     }
 
     interface ImageDetailView extends BaseView<ImageDetailInfo> {
     }
 
-    interface ImageListView extends BaseView<ImageListInfo> {
+    interface ImageListView extends OnRefreshView<ImageListInfo> {
     }
 
     interface ImageNewView extends BaseView<ImageNewInfo> {
+        void hideProgress();
+
+        void showProgress();
+
         void offKeyBoard();
     }
 
-    interface NewsListView extends BaseView<NewsListInfo> {
+    interface NewsListView extends OnRefreshView<NewsListInfo> {
     }
 
     interface NewsDetailView {
@@ -66,22 +69,16 @@ public interface BaseView<T> {
     }
 
     interface MainView {
-
-
         void switchNews();
 
         void switchImageClassification();
 
         void switchNewImage();
 
-        void switchJoke();
-
         void switchAbout();
-
     }
 
     interface ToolBarItemView {
-
         void switchShare();
     }
 }

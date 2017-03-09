@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.y.mvp.fragment.NewsMainFragment;
 import com.example.y.mvp.mvp.Bean.TabNewsInfo;
+import com.example.y.mvp.widget.BaseFragmentPagerAdapter;
 
 import java.util.List;
 

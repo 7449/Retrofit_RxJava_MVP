@@ -27,9 +27,6 @@ public class MainViewPresenterImpl extends BasePresenterImpl<BaseView.MainView>
             case R.id.navigation_item_new_image:
                 view.switchNewImage();
                 break;
-            case R.id.navigation_item_joke:
-                view.switchJoke();
-                break;
             case R.id.navigation_about:
                 view.switchAbout();
                 break;

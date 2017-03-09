@@ -1,29 +1,20 @@
 package com.example.y.mvp.adapter;
 
 
-import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.widget.LoadMoreAdapter;
+import com.example.y.mvp.widget.ViewHolder;
 
 import java.util.List;
-
-import butterknife.Bind;
 
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
+public class ImageNewAdapter extends LoadMoreAdapter<ImageNewInfo> {
 
 
     public ImageNewAdapter(List<ImageNewInfo> datas) {
@@ -31,47 +22,17 @@ public class ImageNewAdapter extends BaseRecyclerViewAdapter<ImageNewInfo> {
     }
 
     @Override
-    protected void onBind(RecyclerView.ViewHolder holder, int position, ImageNewInfo data) {
-        if (holder instanceof ViewHolder) {
-            ((ViewHolder) holder).setData(data);
-        }
+    protected void onBind(ViewHolder holder, int position, ImageNewInfo data) {
+        holder.setTextView(R.id.tv_title, data.getTitle());
+        holder.setTextView(R.id.tv_size, data.getSize() + UIUtils.getString(R.string.list_adapter_number));
+        holder.setTextView(R.id.tv_count, UIUtils.getString(R.string.list_adapter_views) + data.getCount());
+        ImageLoaderUtils.display(holder.getImageView(R.id.image), Api.IMAGER_URL + data.getImg());
     }
 
     @Override
-    protected BaseRecyclerViewHolder onCreate(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_new_item, parent, false);
-        return new ViewHolder(view);
+    protected int getLayoutId() {
+        return R.layout.image_new_item;
     }
 
-    class ViewHolder extends BaseRecyclerViewHolder {
-
-        @SuppressWarnings("unused")
-        @Bind(R.id.image)
-        ImageView iv;
-        @SuppressWarnings("unused")
-        @Bind(R.id.tv_title)
-        TextView tvTitle;
-        @SuppressWarnings("unused")
-        @Bind(R.id.tv_size)
-        TextView tvSize;
-        @SuppressWarnings("unused")
-        @Bind(R.id.tv_count)
-        TextView tvCount;
-
-        ViewHolder(View view) {
-            super(view);
-        }
-
-        @SuppressLint("SetTextI18n")
-        @Override
-        protected void setData(@NonNull ImageNewInfo data) {
-            super.setData(data);
-            tvTitle.setText(data.getTitle());
-            tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
-            tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(iv, Api.IMAGER_URL + data.getImg());
-        }
-    }
 }
 

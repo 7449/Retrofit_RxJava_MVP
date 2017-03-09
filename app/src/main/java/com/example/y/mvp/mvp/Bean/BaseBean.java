@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * by y on 2016/5/27.
  */
-@SuppressWarnings("ALL")
+
 public class BaseBean<T> {
 
     private List<T> tngou;
@@ -35,7 +35,7 @@ public class BaseBean<T> {
     public class NewsListBean extends BaseBean<NewsListInfo> {
     }
 
-    public class ImageDetailBean extends BaseBean<ImageDetailInfo> {
+    public class ImageDetailBean {
         private List<ImageDetailInfo> list;
 
         public List<ImageDetailInfo> getList() {

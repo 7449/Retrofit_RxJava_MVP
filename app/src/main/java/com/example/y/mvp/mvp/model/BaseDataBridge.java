@@ -3,8 +3,6 @@ package com.example.y.mvp.mvp.model;
 import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
 import com.example.y.mvp.mvp.Bean.ImageListInfo;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
-import com.example.y.mvp.mvp.Bean.JokePicBean;
-import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.mvp.Bean.TabNameInfo;
@@ -36,6 +34,7 @@ public interface BaseDataBridge<T> {
 
     interface NewsDetailData {
         void addData(NewsDetailInfo datas);
+
         void error();
     }
 
@@ -43,11 +42,5 @@ public interface BaseDataBridge<T> {
     }
 
     interface TabNameData extends BaseDataBridge<TabNameInfo> {
-    }
-
-    interface JokeTextList extends BaseDataBridge<JokeTextBean.JokeTextInfo> {
-    }
-
-    interface JokePicList extends BaseDataBridge<JokePicBean.JokePicInfo> {
     }
 }

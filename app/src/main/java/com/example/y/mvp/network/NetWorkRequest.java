@@ -1,8 +1,6 @@
 package com.example.y.mvp.network;
 
 import com.example.y.mvp.mvp.Bean.BaseBean;
-import com.example.y.mvp.mvp.Bean.JokePicBean;
-import com.example.y.mvp.mvp.Bean.JokeTextBean;
 import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
 import com.example.y.mvp.utils.RxUtils;
 
@@ -17,80 +15,53 @@ public class NetWorkRequest {
 
 
     public static void newsDetail(int id, Subscriber<NewsDetailInfo> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getNewsDetail(id)
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getNewsDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void newsList(int id, int page, Subscriber<BaseBean.NewsListBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getNewsList(id, page)
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getNewsList(id, page)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void tabNews(Subscriber<BaseBean.TabNewsBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getTabNews()
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getTabNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void imageDetail(int id, Subscriber<BaseBean.ImageDetailBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getImageDetail(id)
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getImageDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void imageList(int id, int page, Subscriber<BaseBean.ImageListBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getImageList(id, page)
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getImageList(id, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void imageNew(int id, int rows, Subscriber<BaseBean.ImageNewBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getImageNews(id, rows)
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getImageNews(id, rows)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
 
     public static void tabName(Subscriber<BaseBean.TabNameBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getTngouApi().getTabName()
+        RxUtils.getInstance().addSubscription(Network.getTngouApi().getTabName()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
     }
-
-
-    /////////////////////////////////////////////////////////////
-
-    public static void jokeTextList(int page, Subscriber<JokeTextBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getBaiDuApi().getJokeText(page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
-    public static void jokePicList(int page, Subscriber<JokePicBean> subscriber) {
-        RxUtils.unsubscribe();
-        RxUtils.subscription = Network.getBaiDuApi().getJokePic(page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
 
 }

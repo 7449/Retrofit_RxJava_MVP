@@ -1,10 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">练习</string>
+    <string name="app_name">Sample</string>
 
     <string name="network_error">网络异常</string>
-    <string name="network_dialog_ok" tools:ignore="UnusedResources">退出</string>
-    <string name="network_dialog_message" tools:ignore="UnusedResources">由于本软件所有的可见数据都是来自网络,所以在没有WIFI的情况下不允许进入</string>
-    <string name="clear_dialog_message">只是暂时在界面删除,刷新还是会有的,确认删除吗？</string>
     <string name="dialog_ok">确认</string>
     <string name="imageview_message">确认保存图片吗?</string>
 
@@ -26,25 +23,10 @@
     <string name="number_big" tools:ignore="UnusedResources">数字过大</string>
     <string name="navigation_about">说明</string>
 
-    <string name="about_text1">软件是为了学习MVP,RxJava,Retrofit,感谢githup上面诸多的开源框架,软件用到了以下框架</string>
-    <string name="about_text2">com.android.support:appcompat-v7:23.3.0\n
-     com.android.support:design:23.3.0\n
-     com.android.support:recyclerview-v7:23.3.0\n
-     com.android.support:cardview-v7:23.3.0\n
-     io.reactivex:rxjava:1.1.3\n
-     io.reactivex:rxandroid:1.1.0\n
-     com.squareup.retrofit2:retrofit:2.0.2\n
-     com.squareup.retrofit2:converter-gson:2.0.2\n
-     com.squareup.retrofit2:adapter-rxjava:2.0.2\n
-     com.github.bumptech.glide:glide:3.7.0\n
-     com.rengwuxian.materialedittext:library:2.1.4\n
-     com.jakewharton:butterknife:7.0.1\n
-    </string>
+    <string name="about_text1">软件是为了学习MVP,RxJava,Retrofit,感谢github上面诸多的开源框架,软件用到了以下框架</string>
+    <string name="about_text2">  android \n rx \n retrofit2 \n glide \n butterknife</string>
     <string name="navigation_news">新闻列表</string>
     <string name="news_time">时间:</string>
-    <string name="navigation_joke">笑话</string>
-    <string name="joke_text">文字笑话</string>
-    <string name="joke_pic">图片笑话</string>
     <string name="exit_app">再按一次</string>
     <string name="toolbar_item_share">分享</string>
     <string name="image_detail">图片详情</string>

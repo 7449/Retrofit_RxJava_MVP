@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * by y on 2016/5/30.
  */
-@SuppressWarnings("ALL")
+
 public class JokePicBean {
 
     private String showapi_res_code;

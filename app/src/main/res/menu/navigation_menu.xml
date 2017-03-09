@@ -17,10 +17,6 @@
             android:title="@string/navigation_new_image" />
 
         <item
-            android:id="@+id/navigation_item_joke"
-            android:title="@string/navigation_joke" />
-
-        <item
             android:id="@+id/navigation_about"
             android:title="@string/navigation_about" />
     </group>

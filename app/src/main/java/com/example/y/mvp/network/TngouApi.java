@@ -38,7 +38,6 @@ public interface TngouApi {
 
     @GET(Api.IMAGE_SHOW)
     Observable<BaseBean.ImageDetailBean> getImageDetail(@Query("id") int id);
-    
-    
+
 
 }

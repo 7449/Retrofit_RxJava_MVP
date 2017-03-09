@@ -18,7 +18,7 @@ import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.CompetenceUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.MyOnPageChangeListener;
+import com.example.y.mvp.widget.BaseActivity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,10 +33,9 @@ public class ImageDetailActivity extends BaseActivity
         implements BaseView.ImageDetailView, BaseView.ToolBarItemView {
 
 
-    @SuppressWarnings("unused")
     @Bind(R.id.viewPager)
     ViewPager viewPager;
-    @SuppressWarnings("unused")
+
     @Bind(R.id.toolBar)
     Toolbar toolBar;
 
@@ -88,7 +87,7 @@ public class ImageDetailActivity extends BaseActivity
             }
         });
 
-        viewPager.addOnPageChangeListener(new MyOnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
@@ -116,27 +115,6 @@ public class ImageDetailActivity extends BaseActivity
     public void netWorkError() {
         Toast(UIUtils.getString(R.string.network_error));
     }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void showFoot() {
-
-    }
-
-    @Override
-    public void hideFoot() {
-
-    }
-
 
     @Override
     public void setData(List<ImageDetailInfo> datas) {

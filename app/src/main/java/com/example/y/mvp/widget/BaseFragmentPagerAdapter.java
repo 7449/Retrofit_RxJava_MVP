@@ -1,4 +1,4 @@
-package com.example.y.mvp.adapter;
+package com.example.y.mvp.widget;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * by y on 2016/5/27.
  */
-@SuppressWarnings("ALL")
+
 public abstract class BaseFragmentPagerAdapter<T> extends FragmentPagerAdapter {
 
     private List<T> mData;

@@ -9,7 +9,7 @@ import java.util.List;
  * by y on 2016/5/17.
  * Activity管理类
  */
-@SuppressWarnings("ALL")
+
 public class ActivityCollector {
 
 
