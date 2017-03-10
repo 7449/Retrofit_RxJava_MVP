@@ -1,50 +1,43 @@
 package com.example.y.mvp.activity;
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.ImageDetailAdapter;
-import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
+import com.example.y.mvp.mvp.model.ImageDetailInfo;
 import com.example.y.mvp.mvp.presenter.ImageDetailPresenterImpl;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.presenter.ToolBarItemPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.CompetenceUtils;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.BaseActivity;
+import com.example.y.mvp.widget.DarkViewActivity;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-
-
 /**
  * by y on 2016/4/29.
  */
-public class ImageDetailActivity extends BaseActivity
-        implements BaseView.ImageDetailView, BaseView.ToolBarItemView {
+public class ImageDetailActivity extends DarkViewActivity
+        implements BaseView.ImageDetailView, BaseView.ToolBarItemView
+        , Toolbar.OnMenuItemClickListener {
 
 
-    @Bind(R.id.viewPager)
-    ViewPager viewPager;
-
-    @Bind(R.id.toolBar)
-    Toolbar toolBar;
-
-    private int id;
+    private ViewPager viewPager;
+    private Toolbar toolBar;
     private int pos;
     private LinkedList<ImageDetailInfo> list;
-    private BasePresenter.ImageDetailPresenter imageDetailPresenter;
-    private BasePresenter.ToolBarItemPresenter toolBarItemPresenter;
+    private Presenter.ImageDetailPresenter imageDetailPresenter;
+    private Presenter.ToolBarItemPresenter toolBarItemPresenter;
     private ImageDetailAdapter bigImageAdapter;
 
 
@@ -56,13 +49,17 @@ public class ImageDetailActivity extends BaseActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initCreate(Bundle savedInstanceState) {
         toolBar.setTitle(UIUtils.getString(R.string.image_detail));
         setSupportActionBar(toolBar);
         CompetenceUtils.storage(this);
-        getBundle();
         init();
+    }
+
+    @Override
+    protected void initById() {
+        viewPager = getView(R.id.viewPager);
+        toolBar = getView(R.id.toolBar);
     }
 
 
@@ -77,18 +74,14 @@ public class ImageDetailActivity extends BaseActivity
         imageDetailPresenter = new ImageDetailPresenterImpl(this);
         toolBarItemPresenter = new ToolBarItemPresenterImpl(this);
         list = new LinkedList<>();
-        imageDetailPresenter.requestNetWork(id);
+        imageDetailPresenter.requestNetWork(getIntent().getExtras().getInt("id"));
         bigImageAdapter = new ImageDetailAdapter(list);
-
-        toolBar.setOnMenuItemClickListener(item -> {
-            toolBarItemPresenter.switchId(item.getItemId());
-            return true;
-        });
-
+        toolBar.setOnMenuItemClickListener(this);
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                setSwipeBackEnable(position == 0);
                 pos = position;
             }
         });
@@ -104,18 +97,11 @@ public class ImageDetailActivity extends BaseActivity
         return R.layout.activity_image_detail;
     }
 
-
-    private void getBundle() {
-        Bundle bundle = getIntent().getExtras();
-        if (null != bundle && !bundle.isEmpty()) {
-            id = bundle.getInt("id");
-        }
-    }
-
     @Override
     public void netWorkError() {
-        Toast(UIUtils.getString(R.string.network_error));
+        ActivityUtils.Toast(UIUtils.getString(R.string.network_error));
     }
+
 
     @Override
     public void setData(List<ImageDetailInfo> datas) {
@@ -142,6 +128,12 @@ public class ImageDetailActivity extends BaseActivity
 
     @Override
     public void switchShare() {
-        ActivityUtils.share(this, TextUtils.concat(Api.IMAGER_URL, list.get(pos).getSrc()));
+        ActivityUtils.share(this, Api.IMAGER_URL + list.get(pos).getSrc());
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        toolBarItemPresenter.switchId(item.getItemId());
+        return true;
     }
 }

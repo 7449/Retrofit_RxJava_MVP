@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.6"
+        android:padding="@dimen/tv_padding"
+        android:text="@string/about_text_compile"
+        android:textColor="?attr/textColor" />
+</LinearLayout>

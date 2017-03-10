@@ -1,13 +1,10 @@
 package com.example.y.mvp.network;
 
 
-import com.example.y.mvp.utils.LogUtils;
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
@@ -18,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * by y on 2016/4/28.
  */
-class Network {
+public class Network {
 
 
     private static final Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
@@ -32,25 +29,32 @@ class Network {
         return tngouApi;
     }
 
+    private static OkHttpClient getOkHttp() {
+        return new OkHttpClient
+                .Builder()
+                .addInterceptor(new BaseInterceptor())
+                .build();
+    }
+
+
     private static Retrofit getRetrofit(String baseUrl) {
 
         return new Retrofit.Builder()
-                .client(new OkHttpClient.Builder().addInterceptor(new LogInterceptor()).build())
+                .client(getOkHttp())
                 .baseUrl(baseUrl)
                 .addConverterFactory(gsonConverterFactory)
                 .addCallAdapterFactory(rxJavaCallAdapterFactory)
                 .build();
     }
 
-    private static class LogInterceptor implements Interceptor {
+
+    private static class BaseInterceptor implements Interceptor {
         @Override
         public okhttp3.Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
-            LogUtils.i("LogUtils--> ", "request:" + request.toString());
             okhttp3.Response response = chain.proceed(chain.request());
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            LogUtils.i("LogUtils--> ", "response body:" + content);
+//            KLog.json(content);
             if (response.body() != null) {
                 ResponseBody body = ResponseBody.create(mediaType, content);
                 return response.newBuilder().body(body).build();

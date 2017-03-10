@@ -4,7 +4,7 @@ package com.example.y.mvp.adapter;
 import android.text.TextUtils;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.mvp.Bean.ImageListInfo;
+import com.example.y.mvp.mvp.model.ImageListInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;

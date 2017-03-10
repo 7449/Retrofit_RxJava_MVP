@@ -1,40 +1,33 @@
 package com.example.y.mvp.mvp.presenter;
 
 
-import com.example.y.mvp.mvp.Bean.TabNameInfo;
-import com.example.y.mvp.mvp.model.BaseDataBridge;
-import com.example.y.mvp.mvp.model.BaseModel;
-import com.example.y.mvp.mvp.model.TabNameModelImpl;
+import com.example.y.mvp.mvp.model.BaseBean;
 import com.example.y.mvp.mvp.view.BaseView;
-
-import java.util.List;
+import com.example.y.mvp.network.Network;
 
 /**
  * by y on 2016/4/29.
  */
-public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView>
-        implements BasePresenter.TabNamePresenter, BaseDataBridge.TabNameData {
+public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView, BaseBean.TabNameBean>
+        implements Presenter.TabNamePresenter {
 
-    private final BaseModel.TabNameModel tabNameModel;
 
     public TabNamePresenterImpl(BaseView.TabNameView view) {
         super(view);
-        this.tabNameModel = new TabNameModelImpl();
     }
 
+    @Override
+    protected void onNetWorkSuccess(BaseBean.TabNameBean tabNameBean) {
+        view.setData(tabNameBean.getTngou());
+    }
+
+    @Override
+    protected void onNetWorkError() {
+        view.netWorkError();
+    }
 
     @Override
     public void requestNetWork() {
-        tabNameModel.netWork(this);
-    }
-
-    @Override
-    public void addData(List<TabNameInfo> tabNameInfo) {
-        view.setData(tabNameInfo);
-    }
-
-    @Override
-    public void error() {
-        view.netWorkError();
+        startNetWork(Network.getTngouApi().getTabName());
     }
 }

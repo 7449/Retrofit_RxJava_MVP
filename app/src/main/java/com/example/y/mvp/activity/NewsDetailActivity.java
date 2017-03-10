@@ -1,5 +1,6 @@
 package com.example.y.mvp.activity;
 
+
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
@@ -7,49 +8,38 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
+import com.example.y.mvp.mvp.model.NewsDetailInfo;
 import com.example.y.mvp.mvp.presenter.NewsDetailPresenterImpl;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.presenter.ToolBarItemPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.ImageLoaderUtils;
+import com.example.y.mvp.utils.StatusBarUtil;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.BaseActivity;
-
-import butterknife.Bind;
+import com.example.y.mvp.widget.DarkViewActivity;
+import com.example.y.mvp.widget.MImageView;
 
 /**
  * by 12406 on 2016/5/30.
  */
-public class NewsDetailActivity extends BaseActivity
+public class NewsDetailActivity extends DarkViewActivity
         implements BaseView.NewsDetailView, BaseView.ToolBarItemView {
 
-
-    @Bind(R.id.image)
-    ImageView image;
-
-    @Bind(R.id.collapsing_toolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-
-    @Bind(R.id.progressBar)
-    ProgressBar progressBar;
-
-    @Bind(R.id.content)
-    TextView content;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    private MImageView image;
+    private CollapsingToolbarLayout collapsingToolbar;
+    private ProgressBar progressBar;
+    private TextView content;
+    private Toolbar toolbar;
 
     private int id;
     private String message;
-    private BasePresenter.ToolBarItemPresenter toolBarItemPresenter;
+    private Presenter.ToolBarItemPresenter toolBarItemPresenter;
 
 
     public static void startIntent(int id) {
@@ -59,15 +49,26 @@ public class NewsDetailActivity extends BaseActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initCreate(Bundle savedInstanceState) {
         setSupportActionBar(toolbar);
+        StatusBarUtil.setTranslucentForImageView(this, image);
         getBundle();
         init();
     }
 
+
+    @Override
+    protected void initById() {
+        image = getView(R.id.image);
+        collapsingToolbar = getView(R.id.collapsing_toolbar);
+        progressBar = getView(R.id.progressBar);
+        content = getView(R.id.content);
+        toolbar = getView(R.id.toolbar);
+    }
+
     private void init() {
-        BasePresenter.NewsDetailPresenter newsDetailPresenter = new NewsDetailPresenterImpl(this);
+        swipeBackLayout.setEdgeDp(100);
+        Presenter.NewsDetailPresenter newsDetailPresenter = new NewsDetailPresenterImpl(this);
         toolBarItemPresenter = new ToolBarItemPresenterImpl(this);
         newsDetailPresenter.requestNetWork(id);
 
@@ -118,7 +119,7 @@ public class NewsDetailActivity extends BaseActivity
 
     @Override
     public void netWorkError() {
-        Toast(UIUtils.getString(R.string.network_error));
+        ActivityUtils.Toast(UIUtils.getString(R.string.network_error));
     }
 
     @Override

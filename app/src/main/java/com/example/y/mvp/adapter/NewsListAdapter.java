@@ -1,10 +1,11 @@
 package com.example.y.mvp.adapter;
 
+
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.mvp.Bean.NewsListInfo;
+import com.example.y.mvp.mvp.model.NewsListInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.UIUtils;

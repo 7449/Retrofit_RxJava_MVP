@@ -1,7 +1,8 @@
 package com.example.y.mvp.network;
 
-import com.example.y.mvp.mvp.Bean.BaseBean;
-import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
+
+import com.example.y.mvp.mvp.model.BaseBean;
+import com.example.y.mvp.mvp.model.NewsDetailInfo;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

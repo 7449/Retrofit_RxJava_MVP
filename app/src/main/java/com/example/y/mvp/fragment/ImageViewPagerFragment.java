@@ -6,46 +6,41 @@ import android.support.v4.view.ViewPager;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.TabNameAdapter;
-import com.example.y.mvp.mvp.Bean.TabNameInfo;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
+import com.example.y.mvp.mvp.model.TabNameInfo;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.presenter.TabNamePresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
-import com.example.y.mvp.widget.MVPLazyFragment;
+import com.example.y.mvp.utils.ActivityUtils;
+import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.widget.BaseFragment;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageViewPagerFragment extends MVPLazyFragment implements BaseView.TabNameView {
+public class ImageViewPagerFragment extends BaseFragment implements BaseView.TabNameView {
 
-
-    @Bind(R.id.tab_layout)
-    TabLayout tabLayout;
-
-    @Bind(R.id.viewPager)
-    ViewPager viewPager;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     private TabNameAdapter tabNameAdapter;
     private List<TabNameInfo> data;
 
-    public static ImageViewPagerFragment getInstance() {
-        return new ImageViewPagerFragment();
+    @Override
+    protected void initById() {
+        tabLayout = getView(R.id.tab_layout);
+        viewPager = getView(R.id.viewPager);
     }
 
     @Override
     public void initActivityCreated() {
-
-
-        BasePresenter.TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(this);
-        tabNamePresenter.requestNetWork();
-
         data = new LinkedList<>();
         tabNameAdapter = new TabNameAdapter(getChildFragmentManager(), data);
 
+        Presenter.TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(this);
+        tabNamePresenter.requestNetWork();
     }
 
     @Override
@@ -65,7 +60,7 @@ public class ImageViewPagerFragment extends MVPLazyFragment implements BaseView.
 
     @Override
     public void netWorkError() {
-        Toast(getString(R.string.network_error));
+        ActivityUtils.Toast(UIUtils.getString(R.string.network_error));
     }
 
 }

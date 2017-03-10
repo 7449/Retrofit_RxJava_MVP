@@ -6,11 +6,13 @@ import com.example.y.mvp.mvp.view.BaseView;
 /**
  * by y on 2016/6/12.
  */
-public class ToolBarItemPresenterImpl extends BasePresenterImpl<BaseView.ToolBarItemView>
-        implements BasePresenter.ToolBarItemPresenter {
+public class ToolBarItemPresenterImpl
+        implements Presenter.ToolBarItemPresenter {
+
+    private BaseView.ToolBarItemView toolBarItemView;
 
     public ToolBarItemPresenterImpl(BaseView.ToolBarItemView view) {
-        super(view);
+        this.toolBarItemView = view;
     }
 
 
@@ -18,7 +20,7 @@ public class ToolBarItemPresenterImpl extends BasePresenterImpl<BaseView.ToolBar
     public void switchId(int id) {
         switch (id) {
             case R.id.toolbar_item_share:
-                view.switchShare();
+                toolBarItemView.switchShare();
                 break;
         }
     }

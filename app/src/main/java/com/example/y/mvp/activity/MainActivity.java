@@ -2,57 +2,89 @@ package com.example.y.mvp.activity;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
+import com.example.y.mvp.App;
 import com.example.y.mvp.R;
+import com.example.y.mvp.adapter.MenuAdapter;
+import com.example.y.mvp.data.Constant;
 import com.example.y.mvp.fragment.AboutFragment;
 import com.example.y.mvp.fragment.ImageNewFragment;
 import com.example.y.mvp.fragment.ImageViewPagerFragment;
 import com.example.y.mvp.fragment.NewsViewPagerFragment;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
 import com.example.y.mvp.mvp.presenter.MainViewPresenterImpl;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.view.BaseView;
-import com.example.y.mvp.utils.ActivityCollector;
-import com.example.y.mvp.utils.RxUtils;
+import com.example.y.mvp.utils.ActivityUtils;
+import com.example.y.mvp.utils.StatusBarUtil;
 import com.example.y.mvp.utils.UIUtils;
-import com.example.y.mvp.widget.BaseActivity;
+import com.example.y.mvp.widget.DarkViewActivity;
+import com.example.y.mvp.widget.MRecyclerView;
 
-import butterknife.Bind;
+public class MainActivity extends DarkViewActivity
+        implements BaseView.MainView, MenuAdapter.OnItemClickListener {
 
-public class MainActivity extends BaseActivity implements BaseView.MainView, NavigationView.OnNavigationItemSelectedListener {
 
+    private Toolbar toolBar;
+    private DrawerLayout drawerLayout;
+    private MRecyclerView recyclerViewMenu;
 
-    @Bind(R.id.toolBar)
-    Toolbar toolBar;
-
-    @Bind(R.id.navigation_view)
-    NavigationView navigationView;
-
-    @Bind(R.id.dl_layout)
-    DrawerLayout drawerLayout;
-    private BasePresenter.MainViewPresenter mainViewPresenter;
-    private long exitTime = 0;
+    private Presenter.MainViewPresenter mainViewPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initCreate(Bundle savedInstanceState) {
+        toolBar.setTitle(UIUtils.getString(R.string.list_menu_news));
+        setSupportActionBar(toolBar);
+        StatusBarUtil.setColorForDrawerLayout(this, drawerLayout, 0);
+        mainViewPresenter = new MainViewPresenterImpl(this);
+        setUpDrawer();
         init();
     }
 
+    @Override
+    protected void initById() {
+        toolBar = getView(R.id.toolBar);
+        drawerLayout = getView(R.id.dl_layout);
+        recyclerViewMenu = getView(R.id.recyclerView_menu);
+    }
+
     private void init() {
-        toolBar.setTitle(UIUtils.getString(R.string.navigation_news));
-        setSupportActionBar(toolBar);
-        mainViewPresenter = new MainViewPresenterImpl(this);
-        navigationView.setNavigationItemSelectedListener(this);
+        setSwipeBackEnable(false);
         switchNews();
     }
+
+
+    private void setUpDrawer() {
+        MenuAdapter adapter = new MenuAdapter();
+        recyclerViewMenu.setHasFixedSize(true);
+        recyclerViewMenu.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, StaggeredGridLayoutManager.VERTICAL));
+        recyclerViewMenu.setAdapter(adapter);
+        adapter.setOnItemClickListener(this);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (Constant.BACK_EXIT) {
+                super.onBackPressed();
+                App.getInstance().exit();
+                return;
+            }
+            Constant.BACK_EXIT = true;
+            ActivityUtils.Toast(UIUtils.getString(R.string.exit_app));
+            new Handler().postDelayed(() -> Constant.BACK_EXIT = false, 2000);
+        }
+    }
+
 
     @Override
     public int getLayoutId() {
@@ -61,50 +93,34 @@ public class MainActivity extends BaseActivity implements BaseView.MainView, Nav
 
     @Override
     public void switchNews() {
-        replaceFragment(NewsViewPagerFragment.getInstance());
+        getFragment(new NewsViewPagerFragment());
     }
+
 
     @Override
     public void switchImageClassification() {
-        replaceFragment(ImageViewPagerFragment.getInstance());
+        getFragment(new ImageViewPagerFragment());
     }
 
     @Override
     public void switchNewImage() {
-        replaceFragment(ImageNewFragment.getInstance());
+        getFragment(new ImageNewFragment());
     }
 
     @Override
     public void switchAbout() {
-        replaceFragment(AboutFragment.getInstance());
+        getFragment(new AboutFragment());
     }
 
-    void replaceFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
+
+    private int getFragment(Fragment fragment) {
+        return getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        toolBar.setTitle(item.getTitle());
-        mainViewPresenter.switchId(item.getItemId());
+    public void onclickItem(View view, int position, String data) {
+        toolBar.setTitle(data);
+        mainViewPresenter.switchPosition(position);
         drawerLayout.closeDrawers();
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(getApplicationContext(), UIUtils.getString(R.string.exit_app), Toast.LENGTH_LONG).show();
-                exitTime = System.currentTimeMillis();
-            } else {
-                ActivityCollector.removeAllActivity();
-                RxUtils.getInstance().clearSubscription();
-                super.onBackPressed();
-            }
-        }
-
     }
 }

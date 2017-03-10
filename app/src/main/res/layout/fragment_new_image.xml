@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor">
 
 
     <LinearLayout
@@ -10,21 +11,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/edittext_margintop">
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/et_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/edittext_hint"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="?attr/textColor" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/et_rows"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/edittext_hint_rows"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="?attr/textColor"
+            tools:ignore="Deprecated" />
     </LinearLayout>
 
     <Button
@@ -43,10 +47,11 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/btn_image">
 
-        <com.example.y.mvp.widget.LoadMoreRecyclerView
+        <com.example.y.mvp.widget.MRecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="?attr/backgroundColor" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

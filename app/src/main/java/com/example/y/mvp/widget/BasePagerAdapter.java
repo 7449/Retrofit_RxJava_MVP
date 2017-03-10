@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class BasePagerAdapter<T> extends PagerAdapter {
 
-    private List<T> data;
+    protected List<T> data;
 
     public BasePagerAdapter(List<T> datas) {
         if (datas != null) {

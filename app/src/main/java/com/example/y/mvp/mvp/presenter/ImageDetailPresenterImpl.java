@@ -5,34 +5,39 @@ import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.constant.Constant;
-import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
-import com.example.y.mvp.mvp.model.BaseDataBridge;
-import com.example.y.mvp.mvp.model.BaseModel;
-import com.example.y.mvp.mvp.model.ImageDetailModelImpl;
+import com.example.y.mvp.data.Constant;
+import com.example.y.mvp.mvp.model.BaseBean;
 import com.example.y.mvp.mvp.view.BaseView;
+import com.example.y.mvp.network.Network;
 import com.example.y.mvp.utils.UIUtils;
-
-import java.util.List;
 
 /**
  * by y on 2016/4/29.
  */
-public class ImageDetailPresenterImpl extends BasePresenterImpl<BaseView.ImageDetailView>
-        implements BasePresenter.ImageDetailPresenter, BaseDataBridge.ImageDetailData {
+public class ImageDetailPresenterImpl extends BasePresenterImpl<BaseView.ImageDetailView, BaseBean.ImageDetailBean>
+        implements Presenter.ImageDetailPresenter {
 
-    private final BaseModel.ImageDetailModel imageDetailModel;
 
     public ImageDetailPresenterImpl(BaseView.ImageDetailView view) {
         super(view);
-        this.imageDetailModel = new ImageDetailModelImpl();
+    }
+
+    @Override
+    public void requestNetWork(int id) {
+        startNetWork(Network.getTngouApi().getImageDetail(id));
+    }
+
+    @Override
+    protected void onNetWorkSuccess(BaseBean.ImageDetailBean imageDetailBean) {
+        view.setData(imageDetailBean.getList());
     }
 
 
     @Override
-    public void requestNetWork(int id) {
-        imageDetailModel.netWorkDetail(id, this);
+    protected void onNetWorkError() {
+        view.netWorkError();
     }
+
 
     @Override
     public void competence(int requestCode, int[] grantResults) {
@@ -43,13 +48,4 @@ public class ImageDetailPresenterImpl extends BasePresenterImpl<BaseView.ImageDe
         }
     }
 
-    @Override
-    public void addData(List<ImageDetailInfo> imageDetailInfo) {
-        view.setData(imageDetailInfo);
-    }
-
-    @Override
-    public void error() {
-        view.netWorkError();
-    }
 }

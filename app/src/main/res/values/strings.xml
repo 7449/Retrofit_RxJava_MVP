@@ -1,35 +1,37 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Sample</string>
+<resources>
+    <string name="app_name">simple</string>
+
+    <string name="list_menu_news">新闻列表</string>
+    <string name="list_menu_image">图片分类</string>
+    <string name="list_menu_new_image">最新图片</string>
+    <string name="list_menu_about">致谢</string>
 
     <string name="network_error">网络异常</string>
-    <string name="dialog_ok">确认</string>
+    <string name="loading">加载中</string>
+
     <string name="imageview_message">确认保存图片吗?</string>
+    <string name="dialog_ok">确认</string>
 
     <string name="list_adapter_number">张</string>
     <string name="list_adapter_views">访问量:</string>
 
-    <string name="save_picture_failed"> 保存失败 </string>
-    <string name="save_picture_success"> 图片成功保存 </string>
+    <string name="save_picture_failed">保存失败</string>
+    <string name="save_picture_success">图片成功保存</string>
     <string name="competence_error">没有权限无法保存图片</string>
 
 
-    <string name="loading">加载中</string>
-    <string name="navigation_new_image">最新图片</string>
-    <string name="navigation_image_classification">图片分类</string>
     <string name="edittext_hint">请输入id索搜图片</string>
     <string name="new_image_btn">搜索</string>
     <string name="image_new_id">id不能为空</string>
     <string name="edittext_hint_rows">图片数量</string>
-    <string name="number_big" tools:ignore="UnusedResources">数字过大</string>
-    <string name="navigation_about">说明</string>
 
-    <string name="about_text1">软件是为了学习MVP,RxJava,Retrofit,感谢github上面诸多的开源框架,软件用到了以下框架</string>
-    <string name="about_text2">  android \n rx \n retrofit2 \n glide \n butterknife</string>
-    <string name="navigation_news">新闻列表</string>
     <string name="news_time">时间:</string>
-    <string name="exit_app">再按一次</string>
     <string name="toolbar_item_share">分享</string>
-    <string name="image_detail">图片详情</string>
     <string name="share">分享到平台</string>
+    <string name="exit_app">再按一次</string>
 
+    <string name="about_text_compile">
+        感谢开源：\n androidSupport \n rx \n retrofit2 \n Klog \n glide
+    </string>
+    <string name="image_detail">图片详情</string>
 </resources>

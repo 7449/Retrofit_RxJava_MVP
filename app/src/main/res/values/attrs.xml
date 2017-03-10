@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textColor" format="reference|color" />
+    <attr name="titleColor" format="reference|color" />
+    <attr name="backgroundColor" format="reference|color" />
+    <attr name="toolbarTextColor" format="reference|color" />
+    <attr name="toolbarbackgroundColor" format="reference|color" />
+    <attr name="tab_TextColor" format="reference|color" />
+    <attr name="tab_BackgroundColor" format="reference|color" />
+    <attr name="tab_SelectedTextColor" format="reference|color" />
+    <attr name="tab_IndicatroColor" format="reference|color" />
+    <attr name="headViewColor" format="reference|color" />
+</resources>

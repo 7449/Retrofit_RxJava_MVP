@@ -8,6 +8,7 @@
     android:layout_marginEnd="@dimen/image_detail_margin"
     android:layout_marginStart="@dimen/image_detail_margin"
     android:layout_marginTop="@dimen/image_detail_margin"
+    app:cardBackgroundColor="?attr/backgroundColor"
     app:cardCornerRadius="@dimen/image_detail_margin">
 
 
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground">
 
-        <ImageView
+        <com.example.y.mvp.widget.MImageView
             android:id="@+id/image"
             android:layout_width="@dimen/news_image_width"
             android:layout_height="@dimen/news_image_height"
@@ -31,25 +32,15 @@
             android:orientation="vertical"
             tools:ignore="RtlHardcoded">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_fromname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/image_list_padding" />
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/image_list_padding"
+                android:textColor="?attr/textColor"
+                tools:ignore="RtlHardcoded" />
 
-                <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_fromname"
-                    android:padding="@dimen/image_list_padding"
-                    tools:ignore="RtlHardcoded" />
-
-            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -57,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:padding="@dimen/image_list_padding" />
+                android:padding="@dimen/image_list_padding"
+                android:textColor="?attr/textColor" />
 
 
             <TextView
@@ -65,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/image_list_padding"
-                android:textColor="@color/main_color" />
+                android:textColor="?attr/textColor" />
 
         </LinearLayout>
 

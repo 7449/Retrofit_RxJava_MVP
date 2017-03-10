@@ -1,17 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_vertical_margin" tools:ignore="UnusedResources">16dp</dimen>
 
     <dimen name="image_detail_margin">2dp</dimen>
     <dimen name="image_list_padding">5dp</dimen>
     <dimen name="image_list_text_padding">3dp</dimen>
-    <dimen name="image_list_iamge_height">280dp</dimen>
     <dimen name="edittext_margintop">5dp</dimen>
-    <dimen name="activity_image_detail_pro_width" tools:ignore="UnusedResources">50dp</dimen>
-    <dimen name="activity_image_detail_pro_height" tools:ignore="UnusedResources">50dp</dimen>
-    <dimen name="image_padding" tools:ignore="UnusedResources">3dp</dimen>
     <dimen name="news_image_height">100dp</dimen>
     <dimen name="news_image_width">100dp</dimen>
     <dimen name="tv_marginLeft">5dp</dimen>
     <dimen name="tv_padding">6dp</dimen>
+    <dimen name="head_marginTop">30dp</dimen>
 </resources>

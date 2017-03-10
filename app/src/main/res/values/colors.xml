@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="tab_text_color_normal" tools:ignore="UnusedResources">#ff737373</color>
-    <color name="white">#ffffff</color>
-    <color name="main_color" tools:ignore="UnusedResources">#4387F0</color>
-    <color name="black">#000000</color>
+    <color name="text_color_day">#777</color>
+    <color name="text_color_night">#ccc</color>
+
+    <color name="background_color_day">#fff</color>
+    <color name="background_color_night">#2b2b2b</color>
+
+    <color name="toolbar_text_color_day">#ccc</color>
+    <color name="toolbar_text_color_night">#ccc</color>
+
+    <color name="toolbar_background_color_day">#3F51B5</color>
+    <color name="toolbar_background_color_night">#DD000000</color>
+
+    <color name="tab_text_color_day">#ccc</color>
+    <color name="tab_text_color_night">#777</color>
+
+    <color name="tab_background_color_day">#3F51B5</color>
+    <color name="tab_background_color_night">#DD000000</color>
+
+    <color name="tab_selected_color_day">#DD000000</color>
+    <color name="tab_selected_color_night">#ccc</color>
+
+    <color name="tab_indicatro_color_day">#FF4081</color>
+    <color name="tab_indicatro_color_night">#777</color>
+
+    <color name="head_view_color_day">#000</color>
+    <color name="head_view_color_night">#ccc</color>
+
+
+    <color name="night_mask">#90000000</color>
+
 </resources>

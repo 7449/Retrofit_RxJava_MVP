@@ -1,36 +1,46 @@
 package com.example.y.mvp.mvp.presenter;
 
 import com.example.y.mvp.activity.NewsDetailActivity;
-import com.example.y.mvp.mvp.Bean.NewsListInfo;
-import com.example.y.mvp.mvp.model.BaseDataBridge;
-import com.example.y.mvp.mvp.model.BaseModel;
-import com.example.y.mvp.mvp.model.NewsListModelImpl;
+import com.example.y.mvp.mvp.model.BaseBean;
+import com.example.y.mvp.mvp.model.NewsListInfo;
 import com.example.y.mvp.mvp.view.BaseView;
-
-import java.util.List;
+import com.example.y.mvp.network.Network;
 
 /**
  * by 12406 on 2016/5/15.
  */
-public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListView>
-        implements BasePresenter.NewsListPresenter, BaseDataBridge.NewsListData {
+public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListView, BaseBean.NewsListBean>
+        implements Presenter.NewsListPresenter {
 
-    private final BaseModel.NewsListModel newsListModel;
 
     public NewsListPresenterImpl(BaseView.NewsListView view) {
         super(view);
-        this.newsListModel = new NewsListModelImpl();
     }
 
+    @Override
+    protected void onNetWorkSuccess(BaseBean.NewsListBean newsListBean) {
+        view.setData(newsListBean.getTngou());
+        view.hideFoot();
+        view.hideProgress();
+    }
 
     @Override
-    public void requestNetWork(int id, int page) {
+    public void requestNetWork(final int id, final int page) {
         if (page == 1) {
+            view.hideFoot();
             view.showProgress();
         } else {
             view.showFoot();
         }
-        newsListModel.netWorkNewList(id, page, this);
+        startNetWork(Network.getTngouApi().getNewsList(id, page));
+    }
+
+
+    @Override
+    protected void onNetWorkError() {
+        view.hideFoot();
+        view.hideProgress();
+        view.netWorkError();
     }
 
     @Override
@@ -38,18 +48,4 @@ public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListVi
         NewsDetailActivity.startIntent(info.getId());
     }
 
-
-    @Override
-    public void addData(List<NewsListInfo> tngou) {
-        view.setData(tngou);
-        view.hideFoot();
-        view.hideProgress();
-    }
-
-    @Override
-    public void error() {
-        view.hideFoot();
-        view.hideProgress();
-        view.netWorkError();
-    }
 }

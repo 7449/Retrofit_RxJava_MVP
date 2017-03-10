@@ -3,12 +3,14 @@ package com.example.y.mvp.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.y.mvp.R;
 
@@ -17,7 +19,6 @@ import java.io.File;
 /**
  * by y on 2016/4/29.
  */
-
 public class ActivityUtils {
 
     public static void startActivity(Class<?> clz) {
@@ -34,26 +35,6 @@ public class ActivityUtils {
         UIUtils.getContext().startActivity(intent);
     }
 
-    public static void offKeyboard(@NonNull EditText editText) {
-        if (detectKeyboard(editText)) {
-            InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-        }
-    }
-
-    public static void openKeyboard(@NonNull final EditText editText) {
-        if (!detectKeyboard(editText)) {
-            editText.post(() -> {
-                InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-            });
-        }
-    }
-
-    private static boolean detectKeyboard(@NonNull EditText editText) {
-        InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        return imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-    }
 
     //隐藏状态栏
     public static void hideStatusBar(Activity activity) {
@@ -67,6 +48,17 @@ public class ActivityUtils {
         WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
         attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
         activity.getWindow().setAttributes(attrs);
+    }
+
+    public static void Toast(Object object) {
+        Toast.makeText(UIUtils.getContext(), object + "", Toast.LENGTH_LONG).show();
+    }
+
+
+    // 收起软键盘
+    public static void closeSyskeyBroad(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     //获取图库路径
@@ -83,10 +75,26 @@ public class ActivityUtils {
         return mFile.getAbsoluteFile();
     }
 
-    public static void share(Activity activity, Object message) {
+    public static Bitmap captureContent(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        Bitmap b1 = view.getDrawingCache();
+        Rect frame = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+        int statusBarHeight = frame.top;
+        int width = activity.getWindowManager().getDefaultDisplay().getWidth();
+        int height = activity.getWindowManager().getDefaultDisplay().getHeight();
+        Bitmap b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height - statusBarHeight);
+        view.destroyDrawingCache();
+        return b;
+    }
+
+
+    public static void share(Activity activity, String message) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, message.toString());
+        intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(Intent.createChooser(intent, UIUtils.getString(R.string.share)));
     }

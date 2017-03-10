@@ -2,55 +2,51 @@ package com.example.y.mvp.mvp.presenter;
 
 
 import com.example.y.mvp.activity.ImageDetailActivity;
-import com.example.y.mvp.mvp.Bean.ImageListInfo;
-import com.example.y.mvp.mvp.model.BaseDataBridge;
-import com.example.y.mvp.mvp.model.BaseModel;
-import com.example.y.mvp.mvp.model.ImageListModelImpl;
+import com.example.y.mvp.mvp.model.BaseBean;
+import com.example.y.mvp.mvp.model.ImageListInfo;
 import com.example.y.mvp.mvp.view.BaseView;
-
-import java.util.List;
+import com.example.y.mvp.network.Network;
 
 /**
  * by y on 2016/4/29.
  */
-public class ImageListPresenterImpl extends BasePresenterImpl<BaseView.ImageListView>
-        implements BasePresenter.ImageListPresenter, BaseDataBridge.ImageListData {
+public class ImageListPresenterImpl extends BasePresenterImpl<BaseView.ImageListView, BaseBean.ImageListBean>
+        implements Presenter.ImageListPresenter {
 
-    private final BaseModel.ImageListModel imageListModel;
 
     public ImageListPresenterImpl(BaseView.ImageListView view) {
         super(view);
-        this.imageListModel = new ImageListModelImpl();
     }
 
     @Override
     public void requestNetWork(int id, int page) {
         if (page == 1) {
+            view.hideFoot();
             view.showProgress();
         } else {
             view.showFoot();
         }
-        imageListModel.netWorkList(id, page, this);
+        startNetWork(Network.getTngouApi().getImageList(id, page));
     }
 
+    @Override
+    protected void onNetWorkSuccess(BaseBean.ImageListBean imageListBean) {
+        view.setData(imageListBean.getTngou());
+        view.hideFoot();
+        view.hideProgress();
+    }
+
+
+    @Override
+    protected void onNetWorkError() {
+        view.hideFoot();
+        view.hideProgress();
+        view.netWorkError();
+    }
 
     @Override
     public void onClick(ImageListInfo info) {
         ImageDetailActivity.startIntent(info.getId(), info.getTitle());
     }
 
-
-    @Override
-    public void addData(List<ImageListInfo> imageListInfo) {
-        view.setData(imageListInfo);
-        view.hideFoot();
-        view.hideProgress();
-    }
-
-    @Override
-    public void error() {
-        view.hideFoot();
-        view.hideProgress();
-        view.netWorkError();
-    }
 }

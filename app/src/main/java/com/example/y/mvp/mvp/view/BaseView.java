@@ -1,12 +1,13 @@
 package com.example.y.mvp.mvp.view;
 
-import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
-import com.example.y.mvp.mvp.Bean.ImageListInfo;
-import com.example.y.mvp.mvp.Bean.ImageNewInfo;
-import com.example.y.mvp.mvp.Bean.NewsDetailInfo;
-import com.example.y.mvp.mvp.Bean.NewsListInfo;
-import com.example.y.mvp.mvp.Bean.TabNameInfo;
-import com.example.y.mvp.mvp.Bean.TabNewsInfo;
+
+import com.example.y.mvp.mvp.model.ImageDetailInfo;
+import com.example.y.mvp.mvp.model.ImageListInfo;
+import com.example.y.mvp.mvp.model.ImageNewInfo;
+import com.example.y.mvp.mvp.model.NewsDetailInfo;
+import com.example.y.mvp.mvp.model.NewsListInfo;
+import com.example.y.mvp.mvp.model.TabNameInfo;
+import com.example.y.mvp.mvp.model.TabNewsInfo;
 
 import java.util.List;
 

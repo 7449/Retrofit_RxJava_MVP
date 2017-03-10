@@ -1,48 +1,46 @@
 package com.example.y.mvp.fragment;
 
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.TabNewsAdapter;
-import com.example.y.mvp.mvp.Bean.TabNewsInfo;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
+import com.example.y.mvp.mvp.model.TabNewsInfo;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.presenter.TabNewsPresenterImpl;
 import com.example.y.mvp.mvp.view.BaseView;
-import com.example.y.mvp.widget.MVPLazyFragment;
+import com.example.y.mvp.utils.ActivityUtils;
+import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.widget.BaseFragment;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-
 /**
  * by 12406 on 2016/5/14.
  */
-public class NewsViewPagerFragment extends MVPLazyFragment implements BaseView.TabNewsView {
+public class NewsViewPagerFragment extends BaseFragment implements BaseView.TabNewsView {
 
-
-    @Bind(R.id.tab_layout)
-    TabLayout tabLayout;
-
-    @Bind(R.id.viewPager)
-    ViewPager viewPager;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     private List<TabNewsInfo> data;
     private TabNewsAdapter tabNewsAdapter;
 
-    public static NewsViewPagerFragment getInstance() {
-        return new NewsViewPagerFragment();
+    @Override
+    protected void initById() {
+        tabLayout = getView(R.id.tab_layout);
+        viewPager = getView(R.id.viewPager);
     }
 
     @Override
     protected void initActivityCreated() {
-
-        BasePresenter.TabNewsPresenter tabNewsPresenter = new TabNewsPresenterImpl(this);
-        tabNewsPresenter.requestNetWork();
-
         data = new LinkedList<>();
         tabNewsAdapter = new TabNewsAdapter(getChildFragmentManager(), data);
+        Presenter.TabNewsPresenter tabNewsPresenter = new TabNewsPresenterImpl(this);
+        tabNewsPresenter.requestNetWork();
+
     }
 
     @Override
@@ -61,7 +59,6 @@ public class NewsViewPagerFragment extends MVPLazyFragment implements BaseView.T
 
     @Override
     public void netWorkError() {
-        Toast(getString(R.string.network_error));
+        ActivityUtils.Toast(UIUtils.getContext().getResources().getString(R.string.network_error));
     }
-
 }

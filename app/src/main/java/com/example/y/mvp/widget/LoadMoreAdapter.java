@@ -129,14 +129,6 @@ public abstract class LoadMoreAdapter<T> extends RecyclerView.Adapter<ViewHolder
         this.mOnLongClickListener = listener;
     }
 
-    public interface OnItemClickListener<T> {
-        void onItemClick(View view, int position, T info);
-    }
-
-    public interface OnItemLongClickListener<T> {
-        void onLongClick(View view, int position, T info);
-    }
-
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -168,6 +160,14 @@ public abstract class LoadMoreAdapter<T> extends RecyclerView.Adapter<ViewHolder
                 stagger.setFullSpan(false);
             }
         }
+    }
+
+    public interface OnItemClickListener<T> {
+        void onItemClick(View view, int position, T info);
+    }
+
+    public interface OnItemLongClickListener<T> {
+        void onLongClick(View view, int position, T info);
     }
 }
 

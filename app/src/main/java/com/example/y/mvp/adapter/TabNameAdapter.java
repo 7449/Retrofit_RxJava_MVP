@@ -4,8 +4,8 @@ package com.example.y.mvp.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.example.y.mvp.fragment.ImageMainFragment;
-import com.example.y.mvp.mvp.Bean.TabNameInfo;
+import com.example.y.mvp.fragment.ImageListFragment;
+import com.example.y.mvp.mvp.model.TabNameInfo;
 import com.example.y.mvp.widget.BaseFragmentPagerAdapter;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class TabNameAdapter extends BaseFragmentPagerAdapter<TabNameInfo> {
 
     @Override
     protected Fragment getFragmentItem(int position) {
-        return ImageMainFragment.newInstance(position);
+        return ImageListFragment.newInstance(position);
     }
 
     @Override

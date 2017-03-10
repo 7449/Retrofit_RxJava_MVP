@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.y.mvp.R;
-import com.example.y.mvp.mvp.Bean.ImageDetailInfo;
+import com.example.y.mvp.mvp.model.ImageDetailInfo;
 import com.example.y.mvp.network.Api;
 import com.example.y.mvp.utils.ImageLoaderUtils;
 import com.example.y.mvp.utils.RxUtils;
@@ -16,6 +16,7 @@ import com.example.y.mvp.utils.UIUtils;
 import com.example.y.mvp.widget.BasePagerAdapter;
 
 import java.util.List;
+
 
 /**
  * by y on 2016/5/3.

@@ -2,64 +2,52 @@ package com.example.y.mvp.fragment;
 
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.y.mvp.R;
 import com.example.y.mvp.adapter.ImageNewAdapter;
-import com.example.y.mvp.constant.Constant;
-import com.example.y.mvp.mvp.Bean.ImageNewInfo;
-import com.example.y.mvp.mvp.presenter.BasePresenter;
+import com.example.y.mvp.data.Constant;
+import com.example.y.mvp.mvp.model.ImageNewInfo;
 import com.example.y.mvp.mvp.presenter.ImageNewPresenterImpl;
+import com.example.y.mvp.mvp.presenter.Presenter;
 import com.example.y.mvp.mvp.view.BaseView;
 import com.example.y.mvp.utils.ActivityUtils;
 import com.example.y.mvp.utils.UIUtils;
+import com.example.y.mvp.widget.BaseFragment;
 import com.example.y.mvp.widget.LoadMoreAdapter;
-import com.example.y.mvp.widget.LoadMoreRecyclerView;
-import com.example.y.mvp.widget.MVPLazyFragment;
+import com.example.y.mvp.widget.MRecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.OnClick;
-
 /**
  * by 12406 on 2016/5/1.
  */
-public class ImageNewFragment extends MVPLazyFragment
-        implements BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener,
+public class ImageNewFragment extends BaseFragment implements
+        BaseView.ImageNewView, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,
         LoadMoreAdapter.OnItemClickListener<ImageNewInfo> {
 
 
-    @Bind(R.id.et_id)
-    AppCompatEditText etId;
+    private EditText etId;
+    private EditText etRows;
+    private Button button;
 
-    @Bind(R.id.et_rows)
-    AppCompatEditText etRows;
-
-    @Bind(R.id.recyclerView)
-    LoadMoreRecyclerView recyclerView;
-
-    @Bind(R.id.srf_layout)
-    SwipeRefreshLayout srfLayout;
+    private MRecyclerView recyclerView;
+    private SwipeRefreshLayout srfLayout;
 
     private ImageNewAdapter adapter;
-    private BasePresenter.ImageNewPresenter imageNewPresenter;
+    private Presenter.ImageNewPresenter imageNewPresenter;
 
-    public static ImageNewFragment getInstance() {
-        return new ImageNewFragment();
-    }
-
-    @OnClick({R.id.btn_image})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_image:
-                onRefresh();
-                break;
-        }
-
+    @Override
+    protected void initById() {
+        etId = getView(R.id.et_id);
+        etRows = getView(R.id.et_rows);
+        recyclerView = getView(R.id.recyclerView);
+        srfLayout = getView(R.id.srf_layout);
+        button = getView(R.id.btn_image);
     }
 
     @Override
@@ -69,7 +57,7 @@ public class ImageNewFragment extends MVPLazyFragment
         List<ImageNewInfo> data = new LinkedList<>();
 
         imageNewPresenter = new ImageNewPresenterImpl(this);
-
+        button.setOnClickListener(this);
         srfLayout.setOnRefreshListener(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, StaggeredGridLayoutManager.VERTICAL));
@@ -77,7 +65,6 @@ public class ImageNewFragment extends MVPLazyFragment
         adapter = new ImageNewAdapter(data);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -93,7 +80,7 @@ public class ImageNewFragment extends MVPLazyFragment
 
     @Override
     public void netWorkError() {
-        Toast(UIUtils.getString(R.string.network_error));
+        ActivityUtils.Toast(UIUtils.getString(R.string.network_error));
     }
 
     @Override
@@ -109,6 +96,11 @@ public class ImageNewFragment extends MVPLazyFragment
     }
 
     @Override
+    public void offKeyBoard() {
+        ActivityUtils.closeSyskeyBroad(getActivity());
+    }
+
+    @Override
     public void onRefresh() {
         adapter.removeAll();
         imageNewPresenter.requestNetWork(etId.getText().toString().trim(), etRows.getText().toString().trim());
@@ -120,7 +112,11 @@ public class ImageNewFragment extends MVPLazyFragment
     }
 
     @Override
-    public void offKeyBoard() {
-        ActivityUtils.offKeyboard(etId);
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_image:
+                onRefresh();
+                break;
+        }
     }
 }
