@@ -3,7 +3,6 @@ package com.example.y.mvp.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
@@ -73,7 +72,7 @@ public class ImageNewFragment extends MVPLazyFragment
 
         srfLayout.setOnRefreshListener(this);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, StaggeredGridLayoutManager.VERTICAL));
 
         adapter = new ImageNewAdapter(data);
         adapter.setOnItemClickListener(this);
@@ -105,7 +104,8 @@ public class ImageNewFragment extends MVPLazyFragment
 
     @Override
     public void showProgress() {
-        if (srfLayout != null) srfLayout.setRefreshing(true);
+        if (srfLayout != null)
+            srfLayout.setRefreshing(true);
     }
 
     @Override

@@ -13,7 +13,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -26,13 +25,9 @@ public class SaveImageUtils {
 
     public static void imageSave(final ImageView imageView, final int id) {
         Observable
-                .create(new Observable.OnSubscribe<ImageView>() {
-                            @Override
-                            public void call(Subscriber<? super ImageView> sub) {
-                                sub.onNext(imageView);
-                                RxUtils.getInstance().addSubscription(sub);
-                            }
-
+                .create((Observable.OnSubscribe<ImageView>) sub -> {
+                            sub.onNext(imageView);
+                            RxUtils.getInstance().addSubscription(sub);
                         }
                 ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

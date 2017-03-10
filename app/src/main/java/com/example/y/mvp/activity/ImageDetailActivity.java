@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -79,12 +80,9 @@ public class ImageDetailActivity extends BaseActivity
         imageDetailPresenter.requestNetWork(id);
         bigImageAdapter = new ImageDetailAdapter(list);
 
-        toolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                toolBarItemPresenter.switchId(item.getItemId());
-                return true;
-            }
+        toolBar.setOnMenuItemClickListener(item -> {
+            toolBarItemPresenter.switchId(item.getItemId());
+            return true;
         });
 
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -95,6 +93,9 @@ public class ImageDetailActivity extends BaseActivity
             }
         });
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
 
@@ -131,9 +132,16 @@ public class ImageDetailActivity extends BaseActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void switchShare() {
-        ActivityUtils.share(this, Api.IMAGER_URL + list.get(pos).getSrc());
+        ActivityUtils.share(this, TextUtils.concat(Api.IMAGER_URL, list.get(pos).getSrc()));
     }
 }

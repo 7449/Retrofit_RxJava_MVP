@@ -38,14 +38,13 @@ public class MainActivity extends BaseActivity implements BaseView.MainView, Nav
     @Bind(R.id.dl_layout)
     DrawerLayout drawerLayout;
     private BasePresenter.MainViewPresenter mainViewPresenter;
-
+    private long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
     }
-
 
     private void init() {
         toolBar.setTitle(UIUtils.getString(R.string.navigation_news));
@@ -91,8 +90,6 @@ public class MainActivity extends BaseActivity implements BaseView.MainView, Nav
         drawerLayout.closeDrawers();
         return true;
     }
-
-    private long exitTime = 0;
 
     @Override
     public void onBackPressed() {

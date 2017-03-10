@@ -61,12 +61,7 @@ public class NewsMainFragment extends MVPLazyFragment implements SwipeRefreshLay
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_LINEAR, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
 
-        srfLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                onRefresh();
-            }
-        });
+        srfLayout.post(this::onRefresh);
 
         setLoad();
     }

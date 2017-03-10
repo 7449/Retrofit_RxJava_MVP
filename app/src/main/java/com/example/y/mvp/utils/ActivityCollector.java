@@ -26,11 +26,7 @@ public class ActivityCollector {
 
     public static void removeAllActivity() {
 
-        for (Activity activity : list) {
-            if (!activity.isFinishing()) {
-                activity.finish();
-            }
-        }
+        list.stream().filter(activity -> !activity.isFinishing()).forEach(Activity::finish);
     }
 
 }

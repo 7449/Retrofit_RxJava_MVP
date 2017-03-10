@@ -71,13 +71,14 @@ public class NewsDetailActivity extends BaseActivity
         toolBarItemPresenter = new ToolBarItemPresenterImpl(this);
         newsDetailPresenter.requestNetWork(id);
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                toolBarItemPresenter.switchId(item.getItemId());
-                return true;
-            }
+        toolbar.setOnMenuItemClickListener(item -> {
+            toolBarItemPresenter.switchId(item.getItemId());
+            return true;
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
     }
 
@@ -94,6 +95,13 @@ public class NewsDetailActivity extends BaseActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void setData(NewsDetailInfo datas) {

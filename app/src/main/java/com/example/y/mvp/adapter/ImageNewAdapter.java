@@ -1,6 +1,8 @@
 package com.example.y.mvp.adapter;
 
 
+import android.text.TextUtils;
+
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.ImageNewInfo;
 import com.example.y.mvp.network.Api;
@@ -24,9 +26,9 @@ public class ImageNewAdapter extends LoadMoreAdapter<ImageNewInfo> {
     @Override
     protected void onBind(ViewHolder holder, int position, ImageNewInfo data) {
         holder.setTextView(R.id.tv_title, data.getTitle());
-        holder.setTextView(R.id.tv_size, data.getSize() + UIUtils.getString(R.string.list_adapter_number));
-        holder.setTextView(R.id.tv_count, UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-        ImageLoaderUtils.display(holder.getImageView(R.id.image), Api.IMAGER_URL + data.getImg());
+        holder.setTextView(R.id.tv_size, TextUtils.concat(Integer.toString(data.getSize()), UIUtils.getString(R.string.list_adapter_number)));
+        holder.setTextView(R.id.tv_count, TextUtils.concat(UIUtils.getString(R.string.list_adapter_views), Integer.toString(data.getCount())));
+        ImageLoaderUtils.display(holder.getImageView(R.id.image), TextUtils.concat(Api.IMAGER_URL, data.getImg()));
     }
 
     @Override

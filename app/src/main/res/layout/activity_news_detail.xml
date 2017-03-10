@@ -27,8 +27,8 @@
                 android:transitionName="@string/transition_news_img"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"
-                tools:targetApi="lollipop"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:targetApi="lollipop" />
 
 
             <android.support.v7.widget.Toolbar

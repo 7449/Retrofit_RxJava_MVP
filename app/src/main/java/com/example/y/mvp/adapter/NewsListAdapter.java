@@ -1,5 +1,7 @@
 package com.example.y.mvp.adapter;
 
+import android.text.TextUtils;
+
 import com.example.y.mvp.R;
 import com.example.y.mvp.mvp.Bean.NewsListInfo;
 import com.example.y.mvp.network.Api;
@@ -23,10 +25,10 @@ public class NewsListAdapter extends LoadMoreAdapter<NewsListInfo> {
 
     @Override
     protected void onBind(ViewHolder holder, int position, NewsListInfo data) {
-        holder.setTextView(R.id.tv_time, UIUtils.getString(R.string.news_time) + TimeUtils.getDateToString(data.getTime()));
+        holder.setTextView(R.id.tv_time, TextUtils.concat(UIUtils.getString(R.string.news_time), TimeUtils.getDateToString(data.getTime())));
         holder.setTextView(R.id.tv_title, data.getTitle());
         holder.setTextView(R.id.tv_url, data.getFromurl());
-        ImageLoaderUtils.display(holder.getImageView(R.id.image), Api.IMAGER_URL + data.getImg());
+        ImageLoaderUtils.display(holder.getImageView(R.id.image), TextUtils.concat(Api.IMAGER_URL, data.getImg()));
     }
 
     @Override

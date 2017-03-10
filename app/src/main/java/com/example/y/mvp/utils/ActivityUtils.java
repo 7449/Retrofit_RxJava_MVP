@@ -43,12 +43,9 @@ public class ActivityUtils {
 
     public static void openKeyboard(@NonNull final EditText editText) {
         if (!detectKeyboard(editText)) {
-            editText.post(new Runnable() {
-                @Override
-                public void run() {
-                    InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-                }
+            editText.post(() -> {
+                InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
             });
         }
     }
@@ -86,10 +83,10 @@ public class ActivityUtils {
         return mFile.getAbsoluteFile();
     }
 
-    public static void share(Activity activity, String message) {
+    public static void share(Activity activity, Object message) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.putExtra(Intent.EXTRA_TEXT, message.toString());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(Intent.createChooser(intent, UIUtils.getString(R.string.share)));
     }

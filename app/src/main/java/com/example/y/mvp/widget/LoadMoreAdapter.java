@@ -53,20 +53,12 @@ public abstract class LoadMoreAdapter<T> extends RecyclerView.Adapter<ViewHolder
         }
         onBind(holder, position, data);
         if (mOnItemClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(v, position, data);
-                }
-            });
+            holder.itemView.setOnClickListener(v -> mOnItemClickListener.onItemClick(v, position, data));
         }
         if (mOnLongClickListener != null) {
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mOnLongClickListener.onLongClick(v, position, data);
-                    return true;
-                }
+            holder.itemView.setOnLongClickListener(v -> {
+                mOnLongClickListener.onLongClick(v, position, data);
+                return true;
             });
         }
 
@@ -127,20 +119,20 @@ public abstract class LoadMoreAdapter<T> extends RecyclerView.Adapter<ViewHolder
         return mDatas;
     }
 
-    public interface OnItemClickListener<T> {
-        void onItemClick(View view, int position, T info);
-    }
-
-    public interface OnItemLongClickListener<T> {
-        void onLongClick(View view, int position, T info);
-    }
-
     public void setOnItemClickListener(OnItemClickListener<T> listener) {
         this.mOnItemClickListener = listener;
     }
 
     public void setOnLongClickListener(OnItemLongClickListener<T> listener) {
         this.mOnLongClickListener = listener;
+    }
+
+    public interface OnItemClickListener<T> {
+        void onItemClick(View view, int position, T info);
+    }
+
+    public interface OnItemLongClickListener<T> {
+        void onLongClick(View view, int position, T info);
     }
 
 }

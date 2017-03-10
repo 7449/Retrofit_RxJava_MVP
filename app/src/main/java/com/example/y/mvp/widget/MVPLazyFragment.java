@@ -17,12 +17,11 @@ import butterknife.ButterKnife;
  */
 
 public abstract class MVPLazyFragment extends Fragment {
+    protected static final String FRAGMENT_INDEX = "fragment_index";
     protected boolean isLoad;
     protected boolean isPrepared;
     protected boolean isVisible;
     protected View view;
-
-    protected static final String FRAGMENT_INDEX = "fragment_index";
     protected int index = 0;
     protected int page = 1;
 

@@ -3,7 +3,6 @@ package com.example.y.mvp.fragment;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
@@ -65,15 +64,10 @@ public class ImageMainFragment extends MVPLazyFragment implements SwipeRefreshLa
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLoadingData(this);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, LinearLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(Constant.RECYCLERVIEW_GRIDVIEW, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
 
-        srfLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                onRefresh();
-            }
-        });
+        srfLayout.post(this::onRefresh);
         setLoad();
     }
 

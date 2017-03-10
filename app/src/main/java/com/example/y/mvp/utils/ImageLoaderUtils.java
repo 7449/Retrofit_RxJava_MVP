@@ -18,7 +18,7 @@ public class ImageLoaderUtils {
                 .error(error).crossFade().into(imageView);
     }
 
-    public static void display(@NonNull ImageView imageView, @NonNull String url) {
+    public static void display(@NonNull ImageView imageView, @NonNull Object url) {
         Glide.with(imageView.getContext()).load(url).placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher).crossFade().into(imageView);
     }

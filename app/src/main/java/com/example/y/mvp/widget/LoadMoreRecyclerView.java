@@ -14,45 +14,35 @@ import android.util.AttributeSet;
 public class LoadMoreRecyclerView extends RecyclerView {
 
 
-    private enum LAYOUT_MANAGER_TYPE {
-        LINEAR,
-        GRID,
-        STAGGERED_GRID
-    }
-
     private LAYOUT_MANAGER_TYPE layoutManagerType;
-
     /**
      * 最后一个的位置
      */
     private int[] lastPositions;
-
     /**
      * 最后一个可见的item的位置
      */
     private int lastVisibleItemPosition;
-
     private LoadMoreListener loadingData;
-
-
-    public void setLoadingData(LoadMoreListener loadingData) {
-        this.loadingData = loadingData;
-    }
-
 
     public LoadMoreRecyclerView(Context context) {
         super(context);
     }
+
 
     public LoadMoreRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
     }
 
+
     public LoadMoreRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
+    public void setLoadingData(LoadMoreListener loadingData) {
+        this.loadingData = loadingData;
+    }
 
     @Override
     public void onScrolled(int dx, int dy) {
@@ -89,7 +79,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
     }
 
-
     @Override
     public void onScrollStateChanged(int state) {
         super.onScrollStateChanged(state);
@@ -109,6 +98,12 @@ public class LoadMoreRecyclerView extends RecyclerView {
             }
         }
         return max;
+    }
+
+    private enum LAYOUT_MANAGER_TYPE {
+        LINEAR,
+        GRID,
+        STAGGERED_GRID
     }
 
     public interface LoadMoreListener {

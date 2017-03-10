@@ -6,12 +6,10 @@ package com.example.y.mvp.network;
 public class Api {
 
 
-    //天狗api
-    static final String BASE_API_TNGOU = "http://www.tngou.net/";
-
     //图片URL前缀
     public static final String IMAGER_URL = "http://tnfs.tngou.net/image";
-
+    //天狗api
+    static final String BASE_API_TNGOU = "http://www.tngou.net/";
     //图片分类
     static final String TAB_NAME = "tnfs/api/classify";
 
