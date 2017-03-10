@@ -17,8 +17,6 @@ import com.example.y.mvp.widget.BasePagerAdapter;
 
 import java.util.List;
 
-import static android.R.attr.id;
-
 /**
  * by y on 2016/5/3.
  */
@@ -48,7 +46,7 @@ public class ImageDetailAdapter extends BasePagerAdapter<ImageDetailInfo> implem
                         (dialog, which) -> {
                             v.setDrawingCacheEnabled(true);
                             RxUtils.getInstance().unSubscription();
-                            SaveImageUtils.imageSave((ImageView) v, id);
+                            SaveImageUtils.imageSave((ImageView) v, System.currentTimeMillis());
                         }).create().show();
         return true;
     }

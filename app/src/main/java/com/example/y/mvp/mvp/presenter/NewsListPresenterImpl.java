@@ -26,7 +26,6 @@ public class NewsListPresenterImpl extends BasePresenterImpl<BaseView.NewsListVi
     @Override
     public void requestNetWork(int id, int page) {
         if (page == 1) {
-            view.hideFoot();
             view.showProgress();
         } else {
             view.showFoot();

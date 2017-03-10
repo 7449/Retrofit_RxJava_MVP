@@ -23,7 +23,7 @@ import rx.schedulers.Schedulers;
 public class SaveImageUtils {
 
 
-    public static void imageSave(final ImageView imageView, final int id) {
+    public static void imageSave(final ImageView imageView, final long id) {
         Observable
                 .create((Observable.OnSubscribe<ImageView>) sub -> {
                             sub.onNext(imageView);

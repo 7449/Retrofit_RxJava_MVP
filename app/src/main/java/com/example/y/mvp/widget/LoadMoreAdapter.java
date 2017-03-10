@@ -2,7 +2,9 @@ package com.example.y.mvp.widget;
 
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,5 +137,37 @@ public abstract class LoadMoreAdapter<T> extends RecyclerView.Adapter<ViewHolder
         void onLongClick(View view, int position, T info);
     }
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridManager = ((GridLayoutManager) manager);
+            gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    if (!(getItemViewType(position) == TYPE_ITEM)) {
+                        return gridManager.getSpanCount();
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onViewAttachedToWindow(ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+        if (layoutParams != null && layoutParams instanceof StaggeredGridLayoutManager.LayoutParams) {
+            StaggeredGridLayoutManager.LayoutParams stagger = (StaggeredGridLayoutManager.LayoutParams) layoutParams;
+            if (!(getItemViewType(holder.getLayoutPosition()) == TYPE_ITEM)) {
+                stagger.setFullSpan(true);
+            } else {
+                stagger.setFullSpan(false);
+            }
+        }
+    }
 }
 

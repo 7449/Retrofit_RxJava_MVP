@@ -26,7 +26,6 @@ public class ImageListPresenterImpl extends BasePresenterImpl<BaseView.ImageList
     @Override
     public void requestNetWork(int id, int page) {
         if (page == 1) {
-            view.hideFoot();
             view.showProgress();
         } else {
             view.showFoot();

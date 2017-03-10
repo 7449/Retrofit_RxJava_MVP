@@ -37,9 +37,7 @@ public class ImageDetailPresenterImpl extends BasePresenterImpl<BaseView.ImageDe
     @Override
     public void competence(int requestCode, int[] grantResults) {
         if (requestCode == Constant.WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
-            //noinspection StatementWithEmptyBody
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            } else {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(UIUtils.getContext(), UIUtils.getString(R.string.competence_error), Toast.LENGTH_LONG).show();
             }
         }
