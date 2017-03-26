@@ -41,7 +41,6 @@ public class ImageDetailActivity extends BaseActivity
     Toolbar toolBar;
 
     private int id;
-    private int pos;
     private LinkedList<ImageDetailInfo> list;
     private BasePresenter.ImageDetailPresenter imageDetailPresenter;
     private BasePresenter.ToolBarItemPresenter toolBarItemPresenter;
@@ -83,14 +82,6 @@ public class ImageDetailActivity extends BaseActivity
         toolBar.setOnMenuItemClickListener(item -> {
             toolBarItemPresenter.switchId(item.getItemId());
             return true;
-        });
-
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                pos = position;
-            }
         });
 
         if (getSupportActionBar() != null) {
@@ -142,6 +133,6 @@ public class ImageDetailActivity extends BaseActivity
 
     @Override
     public void switchShare() {
-        ActivityUtils.share(this, TextUtils.concat(Api.IMAGER_URL, list.get(pos).getSrc()));
+        ActivityUtils.share(this, TextUtils.concat(Api.IMAGER_URL, list.get(viewPager.getCurrentItem()).getSrc()));
     }
 }
