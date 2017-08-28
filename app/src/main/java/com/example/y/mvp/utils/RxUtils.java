@@ -14,8 +14,12 @@ public class RxUtils {
     private RxUtils() {
     }
 
+    private static final class RxUtilsHolder {
+        private static final RxUtils RX_UTILS = new RxUtils();
+    }
+
     public static RxUtils getInstance() {
-        return new RxUtils();
+        return RxUtilsHolder.RX_UTILS;
     }
 
     public void clearSubscription() {
